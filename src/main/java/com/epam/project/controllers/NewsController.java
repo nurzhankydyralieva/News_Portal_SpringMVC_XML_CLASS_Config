@@ -5,7 +5,10 @@ import com.epam.project.models.News;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
 
 @Controller
 @RequestMapping("/")
@@ -35,7 +38,12 @@ public class NewsController {
     }
 
     @PostMapping("/news")
-    public String createNews(@ModelAttribute("newsPage") News news) {
+    public String createNews(@ModelAttribute("newsPage") @Valid News news,
+                             BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {
+            return "newNews";
+        }
+
         newsDAO.saveNews(news);
         return "redirect:/";
     }
@@ -47,7 +55,11 @@ public class NewsController {
     }
 
     @PatchMapping("/news/{id}")
-    public String updateNews(@ModelAttribute("newsPage") News news, @PathVariable("id") int id) {
+    public String updateNews(@ModelAttribute("newsPage") @Valid News news,
+                             BindingResult bindingResult, @PathVariable("id") int id) {
+        if (bindingResult.hasErrors()) {
+            return "editNews";
+        }
         newsDAO.updateNews(id, news);
         return "redirect:/";
     }

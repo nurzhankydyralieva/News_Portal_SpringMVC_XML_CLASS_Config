@@ -9,15 +9,29 @@
     <input type="hidden" name="_method" value="put"/>
     <label>News Title: </label>
     <input type="text" th:field="*{newsTitle}" id="newsTitle">
+    <div style="color: red" th:if="${#fields.hasErrors('newsTitle')}" th:errors="*{newsTitle}">News
+        title
+        error
+    </div>
     <br>
     <label>News Date: </label>
     <input type="text" th:field="*{newsDate}" id="newsDate">
+    <div style="color: red" th:if="${#fields.hasErrors('newsDate')}" th:errors="*{newsDate}">News
+        date
+        error
+    </div>
     <br>
     <label>Brief: </label>
     <input type="text" th:field="*{brief}" id="brief">
+    <div style="color: red" th:if="${#fields.hasErrors('brief')}" th:errors="*{brief}">
+        Brief error
+    </div>
     <br>
     <label>Content: </label>
     <input type="text" th:field="*{content}" id="content">
+    <div style="color: red" th:if="${#fields.hasErrors('content')}" th:errors="*{content}">
+        Content error
+    </div>
     <input type="submit" value="Edit news">
 </form>
 
