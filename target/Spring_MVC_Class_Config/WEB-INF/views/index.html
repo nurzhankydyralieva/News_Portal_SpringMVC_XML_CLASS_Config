@@ -1,10 +1,24 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>All news</title>
 </head>
 <body>
-<h1>Class configuration</h1>
+
+<div th:each="newsPage : ${news}">
+    <a th:href="@{/news/{id}(id=${newsPage.getId()})}" th:text="${newsPage.getNewsTitle()}">news</a>
+    <br>
+    <a th:text="${newsPage.getNewsDate()}">news</a>
+    <br>
+    <a th:text="${newsPage.getCreatedAt()}">news</a>
+    <br>
+    <a th:text="${newsPage.getBrief()}">news</a>
+    <br>
+    <a th:text="${newsPage.getContent()}">news</a>
+</div>
+<br>
+
+<a href="/news/new">Create new news</a>
 </body>
 </html>
