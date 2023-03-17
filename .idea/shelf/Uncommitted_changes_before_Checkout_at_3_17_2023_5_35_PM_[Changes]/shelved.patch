@@ -1,0 +1,41 @@
+Index: src/main/java/com/epam/project/controller/WelcomeController.java
+===================================================================
+diff --git a/src/main/java/com/epam/project/controller/WelcomeController.java b/src/main/java/com/epam/project/controller/WelcomeController.java
+deleted file mode 100644
+--- a/src/main/java/com/epam/project/controller/WelcomeController.java	(revision e65a0730a7a3aca1e1d70fe89a222686be99975c)
++++ /dev/null	(revision e65a0730a7a3aca1e1d70fe89a222686be99975c)
+@@ -1,14 +0,0 @@
+-package com.epam.project.controller;
+-
+-import org.springframework.stereotype.Controller;
+-import org.springframework.web.bind.annotation.GetMapping;
+-import org.springframework.web.bind.annotation.RequestMapping;
+-
+-@Controller
+-@RequestMapping("/")
+-public class WelcomeController {
+-    @GetMapping
+-    public String welcome() {
+-        return "index";
+-    }
+-}
+Index: .idea/News_Portal_SpringMVC_XML_CLASS_Config.iml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<module org.jetbrains.idea.maven.project.MavenProjectsManager.isMavenModule=\"true\" type=\"JAVA_MODULE\" version=\"4\">\r\n  <component name=\"FacetManager\">\r\n    <facet type=\"web\" name=\"Web\">\r\n      <configuration>\r\n        <webroots>\r\n          <root url=\"file://$MODULE_DIR$/src/main/webapp\" relative=\"/\" />\r\n        </webroots>\r\n      </configuration>\r\n    </facet>\r\n    <facet type=\"Spring\" name=\"Spring\">\r\n      <configuration />\r\n    </facet>\r\n  </component>\r\n  <component name=\"NewModuleRootManager\" LANGUAGE_LEVEL=\"JDK_1_8\">\r\n    <output url=\"file://$MODULE_DIR$/target/classes\" />\r\n    <output-test url=\"file://$MODULE_DIR$/target/test-classes\" />\r\n    <content url=\"file://$MODULE_DIR$\">\r\n      <sourceFolder url=\"file://$MODULE_DIR$/src/main/java\" isTestSource=\"false\" />\r\n      <sourceFolder url=\"file://$MODULE_DIR$/src/main/resources\" type=\"java-resource\" />\r\n      <excludeFolder url=\"file://$MODULE_DIR$/target\" />\r\n    </content>\r\n    <orderEntry type=\"inheritedJdk\" />\r\n    <orderEntry type=\"sourceFolder\" forTests=\"false\" />\r\n    <orderEntry type=\"library\" scope=\"TEST\" name=\"Maven: junit:junit:4.11\" level=\"project\" />\r\n    <orderEntry type=\"library\" scope=\"TEST\" name=\"Maven: org.hamcrest:hamcrest-core:1.3\" level=\"project\" />\r\n    <orderEntry type=\"library\" name=\"Maven: org.springframework:spring-core:5.2.1.RELEASE\" level=\"project\" />\r\n    <orderEntry type=\"library\" name=\"Maven: org.springframework:spring-jcl:5.2.1.RELEASE\" level=\"project\" />\r\n    <orderEntry type=\"library\" name=\"Maven: org.springframework:spring-context:5.2.1.RELEASE\" level=\"project\" />\r\n    <orderEntry type=\"library\" name=\"Maven: org.springframework:spring-aop:5.2.1.RELEASE\" level=\"project\" />\r\n    <orderEntry type=\"library\" name=\"Maven: org.springframework:spring-beans:5.2.1.RELEASE\" level=\"project\" />\r\n    <orderEntry type=\"library\" name=\"Maven: org.springframework:spring-expression:5.2.1.RELEASE\" level=\"project\" />\r\n    <orderEntry type=\"library\" name=\"Maven: org.springframework:spring-web:5.2.1.RELEASE\" level=\"project\" />\r\n    <orderEntry type=\"library\" name=\"Maven: org.springframework:spring-webmvc:5.2.1.RELEASE\" level=\"project\" />\r\n    <orderEntry type=\"library\" name=\"Maven: org.thymeleaf:thymeleaf-spring5:3.0.11.RELEASE\" level=\"project\" />\r\n    <orderEntry type=\"library\" name=\"Maven: org.thymeleaf:thymeleaf:3.0.11.RELEASE\" level=\"project\" />\r\n    <orderEntry type=\"library\" name=\"Maven: org.attoparser:attoparser:2.0.5.RELEASE\" level=\"project\" />\r\n    <orderEntry type=\"library\" name=\"Maven: org.unbescape:unbescape:1.1.6.RELEASE\" level=\"project\" />\r\n    <orderEntry type=\"library\" name=\"Maven: org.slf4j:slf4j-api:1.7.25\" level=\"project\" />\r\n  </component>\r\n</module>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/News_Portal_SpringMVC_XML_CLASS_Config.iml b/.idea/News_Portal_SpringMVC_XML_CLASS_Config.iml
+--- a/.idea/News_Portal_SpringMVC_XML_CLASS_Config.iml	(revision e65a0730a7a3aca1e1d70fe89a222686be99975c)
++++ b/.idea/News_Portal_SpringMVC_XML_CLASS_Config.iml	(date 1679052892734)
+@@ -3,6 +3,9 @@
+   <component name="FacetManager">
+     <facet type="web" name="Web">
+       <configuration>
++        <descriptors>
++          <deploymentDescriptor name="web.xml" url="file://$MODULE_DIR$/src/main/webapp/WEB-INF/web.xml" />
++        </descriptors>
+         <webroots>
+           <root url="file://$MODULE_DIR$/src/main/webapp" relative="/" />
+         </webroots>

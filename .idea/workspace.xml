@@ -10,8 +10,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e34d4f6a-8112-4341-8847-9aef8adcf705" name="Changes" comment="Added CRUD with List">
-      <change beforePath="$PROJECT_DIR$/target/Spring_MVC_Class_Config/WEB-INF/classes/com/epam/project/config/SpringConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/Spring_MVC_Class_Config/WEB-INF/classes/com/epam/project/config/SpringConfig.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/epam/project/config/SpringConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/epam/project/config/SpringConfig.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_classmate_1_3_4.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__jakarta_validation_jakarta_validation_api_2_0_2.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_hibernate_validator_hibernate_validator_6_1_6_Final.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_jboss_logging_jboss_logging_3_3_2_Final.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/artifacts/Spring_MVC_Class_Config_war_exploded.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/Spring_MVC_Class_Config_war_exploded.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Spring_MVC_Class_Config.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Spring_MVC_Class_Config.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/epam/project/models/News.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/epam/project/models/News.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/editNews.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/newNews.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/viewNews.html" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,7 +72,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "D:/EPAM_LAB/GitHub_resource/News_Portal/News_Portal_SpringMVC_XML_CLASS_Config/src/main/webapp/WEB-INF/views",
+    "last_opened_file_path": "D:/EPAM_LAB/GitHub_resource/News_Portal/News_Portal_SpringMVC_XML_CLASS_Config/src/main/webapp/WEB-INF",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -77,6 +87,7 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\EPAM_LAB\GitHub_resource\News_Portal\News_Portal_SpringMVC_XML_CLASS_Config\src\main\webapp\WEB-INF" />
       <recent name="D:\EPAM_LAB\GitHub_resource\News_Portal\News_Portal_SpringMVC_XML_CLASS_Config\src\main\webapp\WEB-INF\views" />
       <recent name="D:\EPAM_LAB\GitHub_resource\News_Portal\News_Portal_SpringMVC_XML_CLASS_Config\src\main\java\com\epam\project" />
       <recent name="D:\EPAM_LAB\GitHub_resource\News_Portal\News_Portal_SpringMVC_XML_CLASS_Config\src\main" />
