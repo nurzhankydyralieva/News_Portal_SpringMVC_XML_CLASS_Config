@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>New News</title>
+</head>
+<body>
+<form th:method="POST" th:action="@{/news}" th:object="${newsPage}">
+    <input type="hidden" name="_method" value="post"/>
+    <label>News Title: </label>
+    <input type="text" th:field="*{newsTitle}" id="newsTitle">
+    <br>
+    <label>News Date: </label>
+    <input type="text" th:field="*{newsDate}" id="newsDate">
+    <br>
+    <label>Created At: </label>
+    <input type="text" th:field="*{createdAt}" id="createdAt">
+    <br>
+    <label>Brief: </label>
+    <input type="text" th:field="*{brief}" id="brief">
+    <br>
+    <label>Content: </label>
+    <input type="text" th:field="*{content}" id="content">
+    <input type="submit" value="Create">
+</form>
+</div>
+</body>
+</html>
