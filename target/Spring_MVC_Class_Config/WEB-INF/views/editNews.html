@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit News</title>
+</head>
+<body>
+<form th:method="PATCH" th:action="@{/news/{id}(id=${newsPage.getId()})}" th:object="${newsPage}">
+    <label>News Title: </label>
+    <input type="text" th:field="*{newsTitle}" id="newsTitle">
+    <br>
+    <label>News Date: </label>
+    <input type="text" th:field="*{newsDate}" id="newsDate">
+    <br>
+    <label>Brief: </label>
+    <input type="text" th:field="*{brief}" id="brief">
+    <br>
+    <label>Content: </label>
+    <input type="text" th:field="*{content}" id="content">
+    <input type="submit" value="Edit news">
+</form>
+
+</div>
+</body>
+</html>
