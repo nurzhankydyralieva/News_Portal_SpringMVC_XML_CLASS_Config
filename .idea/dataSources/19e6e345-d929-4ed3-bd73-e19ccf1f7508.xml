@@ -3,7 +3,15 @@
   <database-model serializer="dbm" dbms="POSTGRES" family-id="POSTGRES" format-version="4.45">
     <root id="1">
       <DateStyle>mdy</DateStyle>
-      <IntrospectionStateNumber>168509</IntrospectionStateNumber>
+      <Grants>1||-9223372036854775808|c|G
+1||10|c|G
+1||10|C|G
+1||10|T|G
+13753||-9223372036854775808|c|G
+13753||10|c|G
+13753||10|C|G
+13753||10|T|G</Grants>
+      <IntrospectionStateNumber>168510</IntrospectionStateNumber>
       <ServerVersion>14.2</ServerVersion>
       <StartupTime>1679216603</StartupTime>
       <TimeZones>true ACDT
@@ -794,17 +802,6 @@ false Zulu
     </database>
     <database id="3" parent="1" name="newsdb">
       <Current>1</Current>
-      <Grants>11||10|C|G
-11||-9223372036854775808|U|G
-11||10|U|G
-2200||-9223372036854775808|C|G
-2200||10|C|G
-2200||-9223372036854775808|U|G
-2200||10|U|G
-13388||10|C|G
-13388||-9223372036854775808|U|G
-13388||10|U|G</Grants>
-      <IntrospectionStateNumber>168486</IntrospectionStateNumber>
       <ObjectId>353447</ObjectId>
       <OwnerName>postgres</OwnerName>
     </database>
@@ -872,5 +869,23 @@ false Zulu
       <StateNumber>1</StateNumber>
       <OwnerName>postgres</OwnerName>
     </tablespace>
+    <schema id="20" parent="3" name="information_schema">
+      <ObjectId>13388</ObjectId>
+      <StateNumber>533</StateNumber>
+      <OwnerName>postgres</OwnerName>
+    </schema>
+    <schema id="21" parent="3" name="pg_catalog">
+      <Comment>system catalog schema</Comment>
+      <ObjectId>11</ObjectId>
+      <StateNumber>526</StateNumber>
+      <OwnerName>postgres</OwnerName>
+    </schema>
+    <schema id="22" parent="3" name="public">
+      <Comment>standard public schema</Comment>
+      <Current>1</Current>
+      <ObjectId>2200</ObjectId>
+      <StateNumber>527</StateNumber>
+      <OwnerName>postgres</OwnerName>
+    </schema>
   </database-model>
 </dataSource>
