@@ -1,42 +1,54 @@
 package com.epam.project.dao;
 
 import com.epam.project.models.News;
+import org.hibernate.Session;
+import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.core.BeanPropertyRowMapper;
-import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
 @Component
 public class NewsDAO {
-    private final JdbcTemplate jdbcTemplate;
+    private final SessionFactory sessionFactory;
 
     @Autowired
-    public NewsDAO(JdbcTemplate jdbcTemplate) {
-        this.jdbcTemplate = jdbcTemplate;
+    public NewsDAO(SessionFactory sessionFactory) {
+        this.sessionFactory = sessionFactory;
     }
 
+    @Transactional(readOnly = true)
     public List<News> indexPage() {
-        return jdbcTemplate.query("SELECT * FROM News", new BeanPropertyRowMapper<>(News.class));
+        Session session = sessionFactory.getCurrentSession();
+        return session.createQuery("SELECT n FROM News n", News.class).getResultList();
     }
 
+    @Transactional(readOnly = true)
     public News showNews(int id) {
-        return jdbcTemplate.query("SELECT * FROM News WHERE id=?",
-                new Object[]{id}, new BeanPropertyRowMapper<>(News.class)).stream().findAny().orElse(null);
+        Session session = sessionFactory.getCurrentSession();
+        return session.get(News.class, id);
     }
 
+    @Transactional
     public void saveNews(News news) {
-        jdbcTemplate.update("INSERT INTO News VALUES (1,?,?,?,?,?)",
-                news.getNewsTitle(), news.getNewsDate(), news.getCreatedAt(), news.getBrief(), news.getContent());
+        Session session = sessionFactory.getCurrentSession();
+        session.save(news);
     }
 
+    @Transactional
     public void updateNews(int id, News updatedNews) {
-        jdbcTemplate.update("UPDATE News SET newsTitle=?, newsDate=?, brief=?, content=? WHERE id=?",
-                updatedNews.getNewsTitle(), updatedNews.getNewsDate(), updatedNews.getBrief(), updatedNews.getContent(), id);
+        Session session = sessionFactory.getCurrentSession();
+        News newsToUpdated = session.get(News.class, id);
+        newsToUpdated.setNewsTitle(updatedNews.getNewsTitle());
+        newsToUpdated.setNewsDate(updatedNews.getNewsDate());
+        newsToUpdated.setBrief(updatedNews.getBrief());
+        newsToUpdated.setContent(updatedNews.getContent());
     }
 
+    @Transactional
     public void deleteNews(int id) {
-        jdbcTemplate.update("DELETE FROM News WHERE id=?", id);
+        Session session = sessionFactory.getCurrentSession();
+        session.delete(session.get(News.class,id));
     }
 }
