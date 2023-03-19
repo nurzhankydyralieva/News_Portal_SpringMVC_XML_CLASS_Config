@@ -10,18 +10,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e34d4f6a-8112-4341-8847-9aef8adcf705" name="Changes" comment="Added CRUD with List">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_fasterxml_classmate_1_3_4.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__jakarta_validation_jakarta_validation_api_2_0_2.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_hibernate_validator_hibernate_validator_6_1_6_Final.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_jboss_logging_jboss_logging_3_3_2_Final.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_checkerframework_checker_qual_3_5_0.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_postgresql_postgresql_42_2_18.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/artifacts/Spring_MVC_Class_Config_war_exploded.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/Spring_MVC_Class_Config_war_exploded.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_3_17_2023_5_32_PM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_3_17_2023_5_32_PM__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_3_17_2023_5_35_PM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_3_17_2023_5_35_PM__Changes_.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Spring_MVC_Class_Config.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Spring_MVC_Class_Config.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/epam/project/models/News.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/epam/project/models/News.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/editNews.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/newNews.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/viewNews.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/epam/project/config/SpringConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/epam/project/config/SpringConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/epam/project/dao/NewsDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/epam/project/dao/NewsDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Spring_MVC_Class_Config/WEB-INF/classes/com/epam/project/config/SpringConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/Spring_MVC_Class_Config/WEB-INF/classes/com/epam/project/config/SpringConfig.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Spring_MVC_Class_Config/WEB-INF/classes/com/epam/project/dao/NewsDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/Spring_MVC_Class_Config/WEB-INF/classes/com/epam/project/dao/NewsDAO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/epam/project/config/SpringConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/epam/project/config/SpringConfig.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/epam/project/dao/NewsDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/epam/project/dao/NewsDAO.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,7 +42,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="main" />
+        <entry key="$PROJECT_DIR$" value="Spring_MVC_XML_Config" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -62,6 +65,7 @@
     </option>
   </component>
   <component name="ProjectId" id="2N8NdHUksnReFCJN5xD7toSQ4kn" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="showLibraryContents" value="true" />
   </component>
@@ -72,7 +76,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "D:/EPAM_LAB/GitHub_resource/News_Portal/News_Portal_SpringMVC_XML_CLASS_Config/src/main/webapp/WEB-INF",
+    "last_opened_file_path": "D:/EPAM_LAB/GitHub_resource/News_Portal/News_Portal_SpringMVC_XML_CLASS_Config",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -81,8 +85,13 @@
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.3218391",
     "settings.editor.selected.configurable": "preferences.lookFeel",
-    "spring.configuration.checksum": "b7bfaba395a5b095a75d727da36fe6d9",
+    "spring.configuration.checksum": "831c09b6972220f7cbb85219b71c0316",
     "vue.rearranger.settings.migration": "true"
+  },
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "postgresql"
+    ]
   }
 }]]></component>
   <component name="RecentsManager">
@@ -193,6 +202,7 @@
       <updated>1679041834742</updated>
       <workItem from="1679041835973" duration="316000" />
       <workItem from="1679042171655" duration="9058000" />
+      <workItem from="1679217488370" duration="6981000" />
     </task>
     <task id="LOCAL-00001" summary="Added XML configuration">
       <created>1679042596034</created>
