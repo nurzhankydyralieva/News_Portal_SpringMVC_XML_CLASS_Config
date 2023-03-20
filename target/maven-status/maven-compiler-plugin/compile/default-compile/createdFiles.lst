@@ -1,5 +1,0 @@
-com\epam\project\models\News.class
-com\epam\project\controllers\NewsController.class
-com\epam\project\dao\NewsDAO.class
-com\epam\project\config\SpringConfig.class
-com\epam\project\config\SpringMVCDispatcherServletInitializer.class

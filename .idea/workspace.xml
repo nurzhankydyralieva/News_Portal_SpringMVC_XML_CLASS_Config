@@ -9,47 +9,94 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e34d4f6a-8112-4341-8847-9aef8adcf705" name="Changes" comment="Changed JDBC to JdbcTemplate and added jdbc driver">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__antlr_antlr_2_7_7.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_sun_istack_istack_commons_runtime_3_0_7.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_sun_xml_fastinfoset_FastInfoset_1_2_15.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__javax_activation_javax_activation_api_1_2_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__javax_persistence_javax_persistence_api_2_2.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__javax_xml_bind_jaxb_api_2_3_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__net_bytebuddy_byte_buddy_1_10_17.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_dom4j_dom4j_2_1_3.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_glassfish_jaxb_jaxb_runtime_2_3_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_glassfish_jaxb_txw2_2_3_1.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_hibernate_common_hibernate_commons_annotations_5_1_2_Final.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_hibernate_hibernate_core_5_4_28_Final.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_javassist_javassist_3_27_0_GA.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_jboss_jandex_2_2_3_Final.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_jboss_spec_javax_transaction_jboss_transaction_api_1_2_spec_1_1_1_Final.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_jvnet_staxex_stax_ex_1_8.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/artifacts/Spring_MVC_Class_Config_war_exploded.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/Spring_MVC_Class_Config_war_exploded.xml" afterDir="false" />
+    <list default="true" id="27bb97ab-c273-40b1-b82b-6c7d81e6f9eb" name="Changes" comment="Added Hibernate configuration">
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase_[Changes]/shelved.patch" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase__Changes_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/19e6e345-d929-4ed3-bd73-e19ccf1f7508.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/19e6e345-d929-4ed3-bd73-e19ccf1f7508.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/e4f351c7-c179-454b-8ac9-29510e9df16a.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/e4f351c7-c179-454b-8ac9-29510e9df16a/storage_v2/_src_/database/newsdb.kS58wQ.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/e4f351c7-c179-454b-8ac9-29510e9df16a/storage_v2/_src_/database/newsdb.kS58wQ/schema/information_schema.FNRwLQ.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/e4f351c7-c179-454b-8ac9-29510e9df16a/storage_v2/_src_/database/newsdb.kS58wQ/schema/pg_catalog.0S1ZNQ.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/e4f351c7-c179-454b-8ac9-29510e9df16a/storage_v2/_src_/database/newsdb.kS58wQ/schema/public.abK9xQ.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/19e6e345-d929-4ed3-bd73-e19ccf1f7508.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/19e6e345-d929-4ed3-bd73-e19ccf1f7508/storage_v2/_src_/database/newsdb.kS58wQ.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/19e6e345-d929-4ed3-bd73-e19ccf1f7508/storage_v2/_src_/database/newsdb.kS58wQ/schema/information_schema.FNRwLQ.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/19e6e345-d929-4ed3-bd73-e19ccf1f7508/storage_v2/_src_/database/newsdb.kS58wQ/schema/pg_catalog.0S1ZNQ.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/1d48e715-3a5b-4533-b917-bb2372c18483.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/1d48e715-3a5b-4533-b917-bb2372c18483.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__javax_servlet_javax_servlet_api_4_0_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__junit_junit_4_11.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_attoparser_attoparser_2_0_5_RELEASE.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_hamcrest_hamcrest_core_1_3.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_slf4j_slf4j_api_1_7_25.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_aop_5_2_1_RELEASE.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_beans_5_2_1_RELEASE.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_context_5_2_1_RELEASE.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_core_5_2_1_RELEASE.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_expression_5_2_1_RELEASE.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_jcl_5_2_1_RELEASE.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_web_5_2_1_RELEASE.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_springframework_spring_webmvc_5_2_1_RELEASE.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_thymeleaf_thymeleaf_3_0_11_RELEASE.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_thymeleaf_thymeleaf_spring5_3_0_11_RELEASE.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_unbescape_unbescape_1_1_6_RELEASE.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_3_17_2023_5_32_PM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_3_17_2023_5_32_PM__Changes_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_3_17_2023_5_35_PM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_3_17_2023_5_35_PM__Changes_.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Spring_MVC_Class_Config.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Spring_MVC_Class_Config.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/epam/project/config/SpringConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/epam/project/config/SpringConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/epam/project/dao/NewsDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/epam/project/dao/NewsDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/epam/project/models/News.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/epam/project/models/News.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/editNews.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/editNews.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/newNews.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/newNews.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/viewNews.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/viewNews.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/Spring_MVC_Class_Config.war" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/Spring_MVC_Class_Config/WEB-INF/classes/com/epam/project/config/SpringConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/Spring_MVC_Class_Config/WEB-INF/classes/com/epam/project/config/SpringConfig.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/Spring_MVC_Class_Config/WEB-INF/classes/com/epam/project/dao/NewsDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/Spring_MVC_Class_Config/WEB-INF/classes/com/epam/project/dao/NewsDAO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/Spring_MVC_Class_Config/WEB-INF/classes/com/epam/project/models/News.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/Spring_MVC_Class_Config/WEB-INF/classes/com/epam/project/models/News.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/epam/project/config/SpringConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/epam/project/config/SpringConfig.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/epam/project/dao/NewsDAO.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/epam/project/dao/NewsDAO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/epam/project/models/News.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/epam/project/models/News.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Spring_MVC_Class_Config/META-INF/MANIFEST.MF" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Spring_MVC_Class_Config/WEB-INF/classes/com/epam/project/config/SpringConfig.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Spring_MVC_Class_Config/WEB-INF/classes/com/epam/project/config/SpringMVCDispatcherServletInitializer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Spring_MVC_Class_Config/WEB-INF/classes/com/epam/project/controllers/NewsController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Spring_MVC_Class_Config/WEB-INF/classes/com/epam/project/dao/NewsDAO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Spring_MVC_Class_Config/WEB-INF/classes/com/epam/project/models/News.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Spring_MVC_Class_Config/WEB-INF/classes/hibernate.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Spring_MVC_Class_Config/WEB-INF/lib/FastInfoset-1.2.15.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Spring_MVC_Class_Config/WEB-INF/lib/antlr-2.7.7.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Spring_MVC_Class_Config/WEB-INF/lib/attoparser-2.0.5.RELEASE.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Spring_MVC_Class_Config/WEB-INF/lib/byte-buddy-1.10.17.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Spring_MVC_Class_Config/WEB-INF/lib/checker-qual-3.5.0.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Spring_MVC_Class_Config/WEB-INF/lib/classmate-1.3.4.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Spring_MVC_Class_Config/WEB-INF/lib/dom4j-2.1.3.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Spring_MVC_Class_Config/WEB-INF/lib/hibernate-commons-annotations-5.1.2.Final.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Spring_MVC_Class_Config/WEB-INF/lib/hibernate-core-5.4.28.Final.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Spring_MVC_Class_Config/WEB-INF/lib/hibernate-validator-6.1.6.Final.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Spring_MVC_Class_Config/WEB-INF/lib/istack-commons-runtime-3.0.7.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Spring_MVC_Class_Config/WEB-INF/lib/jakarta.validation-api-2.0.2.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Spring_MVC_Class_Config/WEB-INF/lib/jandex-2.2.3.Final.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Spring_MVC_Class_Config/WEB-INF/lib/javassist-3.27.0-GA.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Spring_MVC_Class_Config/WEB-INF/lib/javax.activation-api-1.2.0.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Spring_MVC_Class_Config/WEB-INF/lib/javax.persistence-api-2.2.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Spring_MVC_Class_Config/WEB-INF/lib/jaxb-api-2.3.1.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Spring_MVC_Class_Config/WEB-INF/lib/jaxb-runtime-2.3.1.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Spring_MVC_Class_Config/WEB-INF/lib/jboss-logging-3.3.2.Final.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Spring_MVC_Class_Config/WEB-INF/lib/jboss-transaction-api_1.2_spec-1.1.1.Final.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Spring_MVC_Class_Config/WEB-INF/lib/postgresql-42.2.18.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Spring_MVC_Class_Config/WEB-INF/lib/slf4j-api-1.7.25.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Spring_MVC_Class_Config/WEB-INF/lib/spring-aop-5.2.1.RELEASE.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Spring_MVC_Class_Config/WEB-INF/lib/spring-beans-5.2.1.RELEASE.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Spring_MVC_Class_Config/WEB-INF/lib/spring-context-5.2.1.RELEASE.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Spring_MVC_Class_Config/WEB-INF/lib/spring-core-5.2.1.RELEASE.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Spring_MVC_Class_Config/WEB-INF/lib/spring-expression-5.2.1.RELEASE.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Spring_MVC_Class_Config/WEB-INF/lib/spring-jcl-5.2.1.RELEASE.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Spring_MVC_Class_Config/WEB-INF/lib/spring-jdbc-5.2.1.RELEASE.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Spring_MVC_Class_Config/WEB-INF/lib/spring-orm-5.2.1.RELEASE.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Spring_MVC_Class_Config/WEB-INF/lib/spring-tx-5.2.1.RELEASE.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Spring_MVC_Class_Config/WEB-INF/lib/spring-web-5.2.1.RELEASE.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Spring_MVC_Class_Config/WEB-INF/lib/spring-webmvc-5.2.1.RELEASE.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Spring_MVC_Class_Config/WEB-INF/lib/stax-ex-1.8.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Spring_MVC_Class_Config/WEB-INF/lib/thymeleaf-3.0.11.RELEASE.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Spring_MVC_Class_Config/WEB-INF/lib/thymeleaf-spring5-3.0.11.RELEASE.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Spring_MVC_Class_Config/WEB-INF/lib/txw2-2.3.1.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Spring_MVC_Class_Config/WEB-INF/lib/unbescape-1.1.6.RELEASE.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Spring_MVC_Class_Config/WEB-INF/views/editNews.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Spring_MVC_Class_Config/WEB-INF/views/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Spring_MVC_Class_Config/WEB-INF/views/newNews.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Spring_MVC_Class_Config/WEB-INF/views/viewNews.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/epam/project/config/SpringConfig.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/epam/project/config/SpringMVCDispatcherServletInitializer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/epam/project/controllers/NewsController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/epam/project/dao/NewsDAO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/epam/project/models/News.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" />
@@ -97,38 +144,38 @@
   <component name="ProjectViewState">
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "DefaultHtmlFileTemplate": "HTML File",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "D:/EPAM_LAB/GitHub_resource/News_Portal/News_Portal_SpringMVC_XML_CLASS_Config/src/main/resources",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "project.structure.last.edited": "Artifacts",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.3218391",
-    "settings.editor.selected.configurable": "preferences.lookFeel",
-    "spring.configuration.checksum": "831c09b6972220f7cbb85219b71c0316",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/EPAM_LAB/GitHub_resource/News_Portal/News_Portal_SpringMVC_XML_CLASS_Config/src/main/webapp/WEB-INF/old&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Artifacts&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.3218391&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,
+    &quot;spring.configuration.checksum&quot;: &quot;831c09b6972220f7cbb85219b71c0316&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "postgresql"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;postgresql&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\EPAM_LAB\GitHub_resource\News_Portal\News_Portal_SpringMVC_XML_CLASS_Config\src\main\webapp\WEB-INF\old" />
       <recent name="D:\EPAM_LAB\GitHub_resource\News_Portal\News_Portal_SpringMVC_XML_CLASS_Config\src\main\resources" />
       <recent name="D:\EPAM_LAB\GitHub_resource\News_Portal\News_Portal_SpringMVC_XML_CLASS_Config\src\main\webapp\WEB-INF" />
       <recent name="D:\EPAM_LAB\GitHub_resource\News_Portal\News_Portal_SpringMVC_XML_CLASS_Config\src\main\webapp\WEB-INF\views" />
       <recent name="D:\EPAM_LAB\GitHub_resource\News_Portal\News_Portal_SpringMVC_XML_CLASS_Config\src\main\java\com\epam\project" />
-      <recent name="D:\EPAM_LAB\GitHub_resource\News_Portal\News_Portal_SpringMVC_XML_CLASS_Config\src\main" />
     </key>
   </component>
   <component name="RunManager">
@@ -223,7 +270,7 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="e34d4f6a-8112-4341-8847-9aef8adcf705" name="Changes" comment="" />
+      <changelist id="27bb97ab-c273-40b1-b82b-6c7d81e6f9eb" name="Changes" comment="Added Hibernate configuration" />
       <created>1679041834742</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
@@ -231,6 +278,7 @@
       <workItem from="1679041835973" duration="316000" />
       <workItem from="1679042171655" duration="9058000" />
       <workItem from="1679217488370" duration="6981000" />
+      <workItem from="1679315827535" duration="668000" />
     </task>
     <task id="LOCAL-00001" summary="Added XML configuration">
       <created>1679042596034</created>
@@ -260,7 +308,14 @@
       <option name="project" value="LOCAL" />
       <updated>1679050768218</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Added Hibernate configuration">
+      <created>1679249778483</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1679249778483</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -270,6 +325,7 @@
     <MESSAGE value="Added XML configuration" />
     <MESSAGE value="Added class configuration" />
     <MESSAGE value="Added CRUD with List" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added CRUD with List" />
+    <MESSAGE value="Added Hibernate configuration" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added Hibernate configuration" />
   </component>
 </project>
