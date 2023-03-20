@@ -1,0 +1,3 @@
+com\epam\project\models\News.class
+com\epam\project\controllers\NewsController.class
+com\epam\project\dao\NewsDAO.class
