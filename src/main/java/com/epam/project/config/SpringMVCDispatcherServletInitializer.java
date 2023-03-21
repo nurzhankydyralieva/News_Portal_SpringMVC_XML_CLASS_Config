@@ -10,7 +10,7 @@ import javax.servlet.ServletException;
 public class SpringMVCDispatcherServletInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
     @Override
     protected Class<?>[] getRootConfigClasses() {
-        return null;
+        return new Class[]{MessageConfig.class};
     }
 
     @Override
