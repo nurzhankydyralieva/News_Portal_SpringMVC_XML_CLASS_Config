@@ -1,0 +1,750 @@
+Index: target/Spring_MVC_Class_Config/WEB-INF/views/viewNews.html
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><!DOCTYPE html>\r\n<html lang=\"en\" xmlns:th=\"http://thymeleaf.org\">\r\n<head>\r\n    <meta charset=\"UTF-8\">\r\n    <title>News</title>\r\n    <link href=\"https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css\" rel=\"stylesheet\"\r\n          integrity=\"sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC\" crossorigin=\"anonymous\">\r\n</head>\r\n<body>\r\n<div class=\"container border border-dark border-3 border-bottom-0\">\r\n    <nav class=\"row\">\r\n        <div class=\"col-6\">\r\n            <h1>News Management</h1>\r\n        </div>\r\n        <div class=\"col-6 d-flex justify-content-end\">\r\n            <a href=\"/?language=en\">English</a>&nbsp;\r\n            <a href=\"/?language=ru\">Russian</a>\r\n        </div>\r\n    </nav>\r\n</div>\r\n<div class=\"container border border-dark border-3\">\r\n    <div class=\"row p-1\">\r\n        <div class=\"col-2  border border-light border-2 mx-2 bg-light\">\r\n            <h5 align=\"center\" class=\"bg-secondary text-white\">News</h5>\r\n            <div class=\"bg-white pt-2 pb-2\">\r\n                <ul>\r\n                    <li><a href=\"/\">News List</a></li>\r\n                    <li><a href=\"/news/new\">Add News</a></li>\r\n                </ul>\r\n            </div>\r\n        </div>\r\n        <div class=\"col\">\r\n            <div style=\"--bs-breadcrumb-divider: '>>';\" aria-label=\"breadcrumb\">\r\n                <ol class=\"breadcrumb\">\r\n                    <li class=\"breadcrumb-item\"><a>News</a></li>\r\n                    <li class=\"breadcrumb-item active\" aria-current=\"page\">News View</li>\r\n                </ol>\r\n            </div>\r\n            <div class=\"row\">\r\n                <div class=\"col-2\">\r\n                    <label for=\"newsTitle\">News Title</label>\r\n                </div>\r\n                <div class=\"col\">\r\n                    <p type=\"text\" th:text=\"${newsPage.getNewsTitle()}\" id=\"newsTitle\">News Title</p>\r\n                </div>\r\n            </div>\r\n            <br>\r\n            <div class=\"row\">\r\n                <div class=\" col-2\">\r\n                    <label for=\"newsDate\">News Date</label>\r\n                </div>\r\n                <div class=\"col-3\">\r\n                    <p type=\"text\" id=\"newsDate\" th:text=\"${newsPage.getNewsDate()}\">News Date</p>\r\n                </div>\r\n            </div>\r\n            <br>\r\n            <div class=\"row\">\r\n                <div class=\"col-2\">\r\n                    <label for=\"brief\">Brief</label>\r\n                </div>\r\n                <div class=\"col-9\">\r\n                    <p type=\"text\" id=\"brief\" th:text=\"${newsPage.getBrief()}\"></p>\r\n                </div>\r\n            </div>\r\n            <br>\r\n            <div class=\"row\">\r\n                <div class=\"col-2\">\r\n                    <label for=\"content\">Content</label>\r\n                </div>\r\n                <div class=\"col-9\">\r\n                    <p type=\"text\" id=\"content\" th:text=\"${newsPage.getContent()}\"></p>\r\n                </div>\r\n            </div>\r\n            <div class=\"row pb-5 pt-5 mb-5\">\r\n                <div class=\"col-10 d-flex justify-content-end\">\r\n                    <a type=\"button\" class=\"btn btn-outline-primary\"\r\n                       th:href=\"@{/news/{id}/edit(id=${newsPage.getId()})}\">EDIT</a>\r\n                </div>\r\n                <div class=\"col\">\r\n                    <form th:method=\"DELETE\" th:action=\"@{/news/{id}(id=${newsPage.getId()})}\">\r\n                        <input type=\"submit\" class=\"btn btn-outline-primary\" value=\"DELETE\">\r\n                    </form>\r\n                </div>\r\n            </div>\r\n        </div>\r\n    </div>\r\n</div>\r\n<div class=\"container border border-dark border-3 border-top-0 d-flex justify-content-center\">\r\n    <p class=\"m-0 p-0\">Copyright EPAM 2008. All rights reserved.</p>\r\n</div>\r\n</body>\r\n</html>
+===================================================================
+diff --git a/target/Spring_MVC_Class_Config/WEB-INF/views/viewNews.html b/target/Spring_MVC_Class_Config/WEB-INF/views/viewNews.html
+--- a/target/Spring_MVC_Class_Config/WEB-INF/views/viewNews.html	
++++ b/target/Spring_MVC_Class_Config/WEB-INF/views/viewNews.html	
+@@ -2,7 +2,7 @@
+ <html lang="en" xmlns:th="http://thymeleaf.org">
+ <head>
+     <meta charset="UTF-8">
+-    <title>News</title>
++    <title data-th-text="#{label.news}">News</title>
+     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+           integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+ </head>
+@@ -10,35 +10,36 @@
+ <div class="container border border-dark border-3 border-bottom-0">
+     <nav class="row">
+         <div class="col-6">
+-            <h1>News Management</h1>
++            <h1 data-th-text="#{label.header}">News Management</h1>
+         </div>
+         <div class="col-6 d-flex justify-content-end">
+-            <a href="/?language=en">English</a>&nbsp;
+-            <a href="/?language=ru">Russian</a>
++            <a href="/?language=en" data-th-text="#{label.lang.en}">English</a>&nbsp;
++            <a href="/?language=ru" data-th-text="#{label.lang.ru}">Russian</a>
+         </div>
+     </nav>
+ </div>
++
+ <div class="container border border-dark border-3">
+     <div class="row p-1">
+         <div class="col-2  border border-light border-2 mx-2 bg-light">
+-            <h5 align="center" class="bg-secondary text-white">News</h5>
++            <h5 align="center" class="bg-secondary text-white" data-th-text="#{label.news}">News</h5>
+             <div class="bg-white pt-2 pb-2">
+                 <ul>
+-                    <li><a href="/">News List</a></li>
+-                    <li><a href="/news/new">Add News</a></li>
++                    <li><a href="/" data-th-text="#{label.news.list}">News List</a></li>
++                    <li><a href="/news/new" data-th-text="#{label.add.news}">Add News</a></li>
+                 </ul>
+             </div>
+         </div>
+         <div class="col">
+             <div style="--bs-breadcrumb-divider: '>>';" aria-label="breadcrumb">
+                 <ol class="breadcrumb">
+-                    <li class="breadcrumb-item"><a>News</a></li>
+-                    <li class="breadcrumb-item active" aria-current="page">News View</li>
++                    <li class="breadcrumb-item"><a href="#" data-th-text="#{label.news}">News</a></li>
++                    <li class="breadcrumb-item active" aria-current="page" data-th-text="#{label.news.view}">News View</li>
+                 </ol>
+             </div>
+             <div class="row">
+                 <div class="col-2">
+-                    <label for="newsTitle">News Title</label>
++                    <label for="newsTitle" data-th-text="#{label.news.title}">News Title</label>
+                 </div>
+                 <div class="col">
+                     <p type="text" th:text="${newsPage.getNewsTitle()}" id="newsTitle">News Title</p>
+@@ -47,7 +48,7 @@
+             <br>
+             <div class="row">
+                 <div class=" col-2">
+-                    <label for="newsDate">News Date</label>
++                    <label for="newsDate" data-th-text="#{label.news.date}">News Date</label>
+                 </div>
+                 <div class="col-3">
+                     <p type="text" id="newsDate" th:text="${newsPage.getNewsDate()}">News Date</p>
+@@ -56,7 +57,7 @@
+             <br>
+             <div class="row">
+                 <div class="col-2">
+-                    <label for="brief">Brief</label>
++                    <label for="brief" data-th-text="#{label.brief}">Brief</label>
+                 </div>
+                 <div class="col-9">
+                     <p type="text" id="brief" th:text="${newsPage.getBrief()}"></p>
+@@ -65,28 +66,17 @@
+             <br>
+             <div class="row">
+                 <div class="col-2">
+-                    <label for="content">Content</label>
++                    <label for="content" data-th-text="#{label.content}">Content</label>
+                 </div>
+                 <div class="col-9">
+                     <p type="text" id="content" th:text="${newsPage.getContent()}"></p>
+                 </div>
+             </div>
++
+             <div class="row pb-5 pt-5 mb-5">
+                 <div class="col-10 d-flex justify-content-end">
+                     <a type="button" class="btn btn-outline-primary"
+-                       th:href="@{/news/{id}/edit(id=${newsPage.getId()})}">EDIT</a>
++                       th:href="@{/news/{id}/edit(id=${newsPage.getId()})}" data-th-text="#{label.edit}">EDIT</a>
+                 </div>
+                 <div class="col">
+-                    <form th:method="DELETE" th:action="@{/news/{id}(id=${newsPage.getId()})}">
+-                        <input type="submit" class="btn btn-outline-primary" value="DELETE">
+-                    </form>
+-                </div>
+-            </div>
+-        </div>
+-    </div>
+-</div>
+-<div class="container border border-dark border-3 border-top-0 d-flex justify-content-center">
+-    <p class="m-0 p-0">Copyright EPAM 2008. All rights reserved.</p>
+-</div>
+-</body>
+-</html>
+\ No newline at end of file
++                    <form th:metho
+\ No newline at end of file
+Index: target/Spring_MVC_Class_Config/WEB-INF/views/index.html
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><!DOCTYPE html>\r\n<html lang=\"en\" xmlns:th=\"http://thymeleaf.org\" xmlns=\"http://www.w3.org/1999/xhtml\">\r\n<head>\r\n    <meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\"/>\r\n    <title>All news</title>\r\n    <link href=\"https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css\" rel=\"stylesheet\"\r\n          integrity=\"sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC\" crossorigin=\"anonymous\">\r\n</head>\r\n<body>\r\n<div class=\"container border border-dark border-3 border-bottom-0\">\r\n    <nav class=\"row\">\r\n        <div class=\"col-6\">\r\n            <h1>News Management</h1>\r\n        </div>\r\n        <div class=\"col-6 d-flex justify-content-end\">\r\n            <a href=\"/?language=en\">English</a>&nbsp;\r\n            <a href=\"/?language=ru\">Russian</a>\r\n        </div>\r\n    </nav>\r\n</div>\r\n<div class=\"container border border-dark border-3\">\r\n    <div class=\"row p-1\">\r\n        <div class=\"col-2  border border-light border-2 mx-2 bg-light\">\r\n            <h5 align=\"center\" class=\"bg-secondary text-white\">News</h5>\r\n            <div class=\"bg-white pt-2 pb-2\">\r\n                <ul>\r\n                    <li><a href=\"#\">News List</a></li>\r\n                    <li><a href=\"/news/new\">Add News</a></li>\r\n                </ul>\r\n            </div>\r\n        </div>\r\n        <div class=\"col-9  border border-light border-2\">\r\n            <nav style=\"--bs-breadcrumb-divider: '>>';\" aria-label=\"breadcrumb\">\r\n                <ol class=\"breadcrumb\">\r\n                    <li class=\"breadcrumb-item\"><a href=\"#\">News</a></li>\r\n                    <li class=\"breadcrumb-item active\" aria-current=\"page\">News List\r\n                    </li>\r\n                </ol>\r\n            </nav>\r\n            <div class=\"row pb-5\" th:each=\"newsPage : ${news}\">\r\n                <div class=\"col-10\">\r\n                    <h6 class=\"pb-1\">News Title</h6>\r\n                    <p class=\"pb-2\" th:text=\"${newsPage.getNewsTitle()}\">News title</p>\r\n                    <h6 class=\"pb-1\">Brief</h6>\r\n                    <p th:text=\"${newsPage.getBrief()}\">Brief</p>\r\n                </div>\r\n                <div class=\"col\">\r\n                    <p th:text=\"${newsPage.getNewsDate()}\">News date</p>\r\n                    <div class=\"row\">\r\n                        <div class=\"col\">\r\n                            <a th:href=\"@{/news/{id}(id=${newsPage.getId()})}\">View</a>\r\n                        </div>\r\n                        <div class=\"col\">\r\n                            <a th:href=\"@{/news/{id}(id=${newsPage.getId()})}\">Edit</a>\r\n                        </div>\r\n                        <div class=\"col\">\r\n                            <label class=\"form-check-label\" for=\"flexCheckDefault\"></label>\r\n                            <input class=\"form-check-input\" type=\"checkbox\" value=\"\" id=\"flexCheckDefault\">\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n                <div class=\"d-flex justify-content-end\">\r\n                    <form th:method=\"DELETE\" th:action=\"@{/news/{id}(id=${newsPage.getId()})}\">\r\n                        <input type=\"submit\" class=\"btn btn-outline-primary\" value=\"DELETE\">\r\n                    </form>\r\n                </div>\r\n            </div>\r\n\r\n        </div>\r\n    </div>\r\n</div>\r\n</div>\r\n<div class=\"container border border-dark border-3 border-top-0 d-flex justify-content-center\">\r\n    <p class=\"m-0 p-0\">Copyright EPAM 2008. All rights reserved.</p>\r\n</div>\r\n</body>\r\n</html>\r\n
+===================================================================
+diff --git a/target/Spring_MVC_Class_Config/WEB-INF/views/index.html b/target/Spring_MVC_Class_Config/WEB-INF/views/index.html
+--- a/target/Spring_MVC_Class_Config/WEB-INF/views/index.html	
++++ b/target/Spring_MVC_Class_Config/WEB-INF/views/index.html	
+@@ -2,7 +2,7 @@
+ <html lang="en" xmlns:th="http://thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+-    <title>All news</title>
++    <title data-th-text="#{label.title}">All news</title>
+     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+           integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+ </head>
+@@ -10,48 +10,55 @@
+ <div class="container border border-dark border-3 border-bottom-0">
+     <nav class="row">
+         <div class="col-6">
+-            <h1>News Management</h1>
++            <h1 data-th-text="#{label.header}">News Management</h1>
+         </div>
+         <div class="col-6 d-flex justify-content-end">
+-            <a href="/?language=en">English</a>&nbsp;
+-            <a href="/?language=ru">Russian</a>
++            <a href="/?language=en" data-th-text="#{label.lang.en}">English</a>&nbsp;
++            <a href="/?language=ru" data-th-text="#{label.lang.ru}">Russian</a>
+         </div>
+     </nav>
+ </div>
+ <div class="container border border-dark border-3">
+     <div class="row p-1">
++
+         <div class="col-2  border border-light border-2 mx-2 bg-light">
+             <h5 align="center" class="bg-secondary text-white">News</h5>
+             <div class="bg-white pt-2 pb-2">
+                 <ul>
+-                    <li><a href="#">News List</a></li>
+-                    <li><a href="/news/new">Add News</a></li>
++                    <li><a href="#" data-th-text="#{label.news.list}">News List</a></li>
++                    <li><a href="/news/new" data-th-text="#{label.add.news}">Add News</a></li>
+                 </ul>
+             </div>
+         </div>
++
+         <div class="col-9  border border-light border-2">
++
+             <nav style="--bs-breadcrumb-divider: '>>';" aria-label="breadcrumb">
+                 <ol class="breadcrumb">
+-                    <li class="breadcrumb-item"><a href="#">News</a></li>
+-                    <li class="breadcrumb-item active" aria-current="page">News List
++                    <li class="breadcrumb-item"><a href="#" data-th-text="#{label.news}">News</a></li>
++                    <li class="breadcrumb-item active" aria-current="page" data-th-text="#{label.news.list}">News List
+                     </li>
+                 </ol>
+             </nav>
++
+             <div class="row pb-5" th:each="newsPage : ${news}">
+                 <div class="col-10">
+-                    <h6 class="pb-1">News Title</h6>
++                    <h6 class="pb-1" data-th-text="#{label.news.title}">News Title</h6>
+                     <p class="pb-2" th:text="${newsPage.getNewsTitle()}">News title</p>
+-                    <h6 class="pb-1">Brief</h6>
++                    <h6 class="pb-1" data-th-text="#{label.brief}">Brief</h6>
+                     <p th:text="${newsPage.getBrief()}">Brief</p>
+                 </div>
++
++
+                 <div class="col">
+                     <p th:text="${newsPage.getNewsDate()}">News date</p>
++
+                     <div class="row">
+                         <div class="col">
+-                            <a th:href="@{/news/{id}(id=${newsPage.getId()})}">View</a>
++                            <a th:href="@{/news/{id}(id=${newsPage.getId()})}" data-th-text="#{label.view}">View</a>
+                         </div>
+                         <div class="col">
+-                            <a th:href="@{/news/{id}(id=${newsPage.getId()})}">Edit</a>
++                            <a th:href="@{/news/{id}(id=${newsPage.getId()})}" data-th-text="#{label.edit}">Edit</a>
+                         </div>
+                         <div class="col">
+                             <label class="form-check-label" for="flexCheckDefault"></label>
+@@ -61,17 +68,4 @@
+                 </div>
+                 <div class="d-flex justify-content-end">
+                     <form th:method="DELETE" th:action="@{/news/{id}(id=${newsPage.getId()})}">
+-                        <input type="submit" class="btn btn-outline-primary" value="DELETE">
+-                    </form>
+-                </div>
+-            </div>
+-
+-        </div>
+-    </div>
+-</div>
+-</div>
+-<div class="container border border-dark border-3 border-top-0 d-flex justify-content-center">
+-    <p class="m-0 p-0">Copyright EPAM 2008. All rights reserved.</p>
+-</div>
+-</body>
+-</html>
++             
+\ No newline at end of file
+Index: .idea/dataSources/1d48e715-3a5b-4533-b917-bb2372c18483.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<dataSource name=\"newsdb@localhost\">\r\n  <database-model serializer=\"dbm\" dbms=\"POSTGRES\" family-id=\"POSTGRES\" format-version=\"4.45\">\r\n    <root id=\"1\">\r\n      <DateStyle>mdy</DateStyle>\r\n      <IntrospectionStateNumber>168592</IntrospectionStateNumber>\r\n      <ServerVersion>14.2</ServerVersion>\r\n      <StartupTime>1679216603</StartupTime>\r\n      <TimeZones>true ACDT\r\ntrue ACSST\r\nfalse ACST\r\nfalse ACT\r\nfalse ACWST\r\ntrue ADT\r\ntrue AEDT\r\ntrue AESST\r\nfalse AEST\r\nfalse AFT\r\ntrue AKDT\r\nfalse AKST\r\ntrue ALMST\r\nfalse ALMT\r\nfalse AMST\r\nfalse AMT\r\nfalse ANAST\r\nfalse ANAT\r\nfalse ARST\r\nfalse ART\r\nfalse AST\r\ntrue AWSST\r\nfalse AWST\r\ntrue AZOST\r\nfalse AZOT\r\nfalse AZST\r\nfalse AZT\r\nfalse Africa/Abidjan\r\nfalse Africa/Accra\r\nfalse Africa/Addis_Ababa\r\nfalse Africa/Algiers\r\nfalse Africa/Asmara\r\nfalse Africa/Asmera\r\nfalse Africa/Bamako\r\nfalse Africa/Bangui\r\nfalse Africa/Banjul\r\nfalse Africa/Bissau\r\nfalse Africa/Blantyre\r\nfalse Africa/Brazzaville\r\nfalse Africa/Bujumbura\r\nfalse Africa/Cairo\r\ntrue Africa/Casablanca\r\nfalse Africa/Ceuta\r\nfalse Africa/Conakry\r\nfalse Africa/Dakar\r\nfalse Africa/Dar_es_Salaam\r\nfalse Africa/Djibouti\r\nfalse Africa/Douala\r\ntrue Africa/El_Aaiun\r\nfalse Africa/Freetown\r\nfalse Africa/Gaborone\r\nfalse Africa/Harare\r\nfalse Africa/Johannesburg\r\nfalse Africa/Juba\r\nfalse Africa/Kampala\r\nfalse Africa/Khartoum\r\nfalse Africa/Kigali\r\nfalse Africa/Kinshasa\r\nfalse Africa/Lagos\r\nfalse Africa/Libreville\r\nfalse Africa/Lome\r\nfalse Africa/Luanda\r\nfalse Africa/Lubumbashi\r\nfalse Africa/Lusaka\r\nfalse Africa/Malabo\r\nfalse Africa/Maputo\r\nfalse Africa/Maseru\r\nfalse Africa/Mbabane\r\nfalse Africa/Mogadishu\r\nfalse Africa/Monrovia\r\nfalse Africa/Nairobi\r\nfalse Africa/Ndjamena\r\nfalse Africa/Niamey\r\nfalse Africa/Nouakchott\r\nfalse Africa/Ouagadougou\r\nfalse Africa/Porto-Novo\r\nfalse Africa/Sao_Tome\r\nfalse Africa/Timbuktu\r\nfalse Africa/Tripoli\r\nfalse Africa/Tunis\r\nfalse Africa/Windhoek\r\ntrue America/Adak\r\ntrue America/Anchorage\r\nfalse America/Anguilla\r\nfalse America/Antigua\r\nfalse America/Araguaina\r\nfalse America/Argentina/Buenos_Aires\r\nfalse America/Argentina/Catamarca\r\nfalse America/Argentina/ComodRivadavia\r\nfalse America/Argentina/Cordoba\r\nfalse America/Argentina/Jujuy\r\nfalse America/Argentina/La_Rioja\r\nfalse America/Argentina/Mendoza\r\nfalse America/Argentina/Rio_Gallegos\r\nfalse America/Argentina/Salta\r\nfalse America/Argentina/San_Juan\r\nfalse America/Argentina/San_Luis\r\nfalse America/Argentina/Tucuman\r\nfalse America/Argentina/Ushuaia\r\nfalse America/Aruba\r\ntrue America/Asuncion\r\nfalse America/Atikokan\r\ntrue America/Atka\r\nfalse America/Bahia\r\nfalse America/Bahia_Banderas\r\nfalse America/Barbados\r\nfalse America/Belem\r\nfalse America/Belize\r\nfalse America/Blanc-Sablon\r\nfalse America/Boa_Vista\r\nfalse America/Bogota\r\ntrue America/Boise\r\nfalse America/Buenos_Aires\r\ntrue America/Cambridge_Bay\r\nfalse America/Campo_Grande\r\nfalse America/Cancun\r\nfalse America/Caracas\r\nfalse America/Catamarca\r\nfalse America/Cayenne\r\nfalse America/Cayman\r\ntrue America/Chicago\r\nfalse America/Chihuahua\r\nfalse America/Coral_Harbour\r\nfalse America/Cordoba\r\nfalse America/Costa_Rica\r\nfalse America/Creston\r\nfalse America/Cuiaba\r\nfalse America/Curacao\r\nfalse America/Danmarkshavn\r\nfalse America/Dawson\r\nfalse America/Dawson_Creek\r\ntrue America/Denver\r\ntrue America/Detroit\r\nfalse America/Dominica\r\ntrue America/Edmonton\r\nfalse America/Eirunepe\r\nfalse America/El_Salvador\r\ntrue America/Ensenada\r\nfalse America/Fort_Nelson\r\ntrue America/Fort_Wayne\r\nfalse America/Fortaleza\r\ntrue America/Glace_Bay\r\nfalse America/Godthab\r\ntrue America/Goose_Bay\r\ntrue America/Grand_Turk\r\nfalse America/Grenada\r\nfalse America/Guadeloupe\r\nfalse America/Guatemala\r\nfalse America/Guayaquil\r\nfalse America/Guyana\r\ntrue America/Halifax\r\ntrue America/Havana\r\nfalse America/Hermosillo\r\ntrue America/Indiana/Indianapolis\r\ntrue America/Indiana/Knox\r\ntrue America/Indiana/Marengo\r\ntrue America/Indiana/Petersburg\r\ntrue America/Indiana/Tell_City\r\ntrue America/Indiana/Vevay\r\ntrue America/Indiana/Vincennes\r\ntrue America/Indiana/Winamac\r\ntrue America/Indianapolis\r\ntrue America/Inuvik\r\ntrue America/Iqaluit\r\nfalse America/Jamaica\r\nfalse America/Jujuy\r\ntrue America/Juneau\r\ntrue America/Kentucky/Louisville\r\ntrue America/Kentucky/Monticello\r\ntrue America/Knox_IN\r\nfalse America/Kralendijk\r\nfalse America/La_Paz\r\nfalse America/Lima\r\ntrue America/Los_Angeles\r\ntrue America/Louisville\r\nfalse America/Lower_Princes\r\nfalse America/Maceio\r\nfalse America/Managua\r\nfalse America/Manaus\r\nfalse America/Marigot\r\nfalse America/Martinique\r\ntrue America/Matamoros\r\nfalse America/Mazatlan\r\nfalse America/Mendoza\r\ntrue America/Menominee\r\nfalse America/Merida\r\ntrue America/Metlakatla\r\nfalse America/Mexico_City\r\ntrue America/Miquelon\r\ntrue America/Moncton\r\nfalse America/Monterrey\r\nfalse America/Montevideo\r\ntrue America/Montreal\r\nfalse America/Montserrat\r\ntrue America/Nassau\r\ntrue America/New_York\r\ntrue America/Nipigon\r\ntrue America/Nome\r\nfalse America/Noronha\r\ntrue America/North_Dakota/Beulah\r\ntrue America/North_Dakota/Center\r\ntrue America/North_Dakota/New_Salem\r\nfalse America/Nuuk\r\ntrue America/Ojinaga\r\nfalse America/Panama\r\ntrue America/Pangnirtung\r\nfalse America/Paramaribo\r\nfalse America/Phoenix\r\ntrue America/Port-au-Prince\r\nfalse America/Port_of_Spain\r\nfalse America/Porto_Acre\r\nfalse America/Porto_Velho\r\nfalse America/Puerto_Rico\r\nfalse America/Punta_Arenas\r\ntrue America/Rainy_River\r\ntrue America/Rankin_Inlet\r\nfalse America/Recife\r\nfalse America/Regina\r\ntrue America/Resolute\r\nfalse America/Rio_Branco\r\nfalse America/Rosario\r\ntrue America/Santa_Isabel\r\nfalse America/Santarem\r\ntrue America/Santiago\r\nfalse America/Santo_Domingo\r\nfalse America/Sao_Paulo\r\nfalse America/Scoresbysund\r\ntrue America/Shiprock\r\ntrue America/Sitka\r\nfalse America/St_Barthelemy\r\ntrue America/St_Johns\r\nfalse America/St_Kitts\r\nfalse America/St_Lucia\r\nfalse America/St_Thomas\r\nfalse America/St_Vincent\r\nfalse America/Swift_Current\r\nfalse America/Tegucigalpa\r\ntrue America/Thule\r\ntrue America/Thunder_Bay\r\ntrue America/Tijuana\r\ntrue America/Toronto\r\nfalse America/Tortola\r\ntrue America/Vancouver\r\nfalse America/Virgin\r\nfalse America/Whitehorse\r\ntrue America/Winnipeg\r\ntrue America/Yakutat\r\ntrue America/Yellowknife\r\nfalse Antarctica/Casey\r\nfalse Antarctica/Davis\r\nfalse Antarctica/DumontDUrville\r\ntrue Antarctica/Macquarie\r\nfalse Antarctica/Mawson\r\ntrue Antarctica/McMurdo\r\nfalse Antarctica/Palmer\r\nfalse Antarctica/Rothera\r\ntrue Antarctica/South_Pole\r\nfalse Antarctica/Syowa\r\nfalse Antarctica/Troll\r\nfalse Antarctica/Vostok\r\nfalse Arctic/Longyearbyen\r\nfalse Asia/Aden\r\nfalse Asia/Almaty\r\ntrue Asia/Amman\r\nfalse Asia/Anadyr\r\nfalse Asia/Aqtau\r\nfalse Asia/Aqtobe\r\nfalse Asia/Ashgabat\r\nfalse Asia/Ashkhabad\r\nfalse Asia/Atyrau\r\nfalse Asia/Baghdad\r\nfalse Asia/Bahrain\r\nfalse Asia/Baku\r\nfalse Asia/Bangkok\r\nfalse Asia/Barnaul\r\nfalse Asia/Beirut\r\nfalse Asia/Bishkek\r\nfalse Asia/Brunei\r\nfalse Asia/Calcutta\r\nfalse Asia/Chita\r\nfalse Asia/Choibalsan\r\nfalse Asia/Chongqing\r\nfalse Asia/Chungking\r\nfalse Asia/Colombo\r\nfalse Asia/Dacca\r\nfalse Asia/Damascus\r\nfalse Asia/Dhaka\r\nfalse Asia/Dili\r\nfalse Asia/Dubai\r\nfalse Asia/Dushanbe\r\nfalse Asia/Famagusta\r\nfalse Asia/Gaza\r\nfalse Asia/Harbin\r\nfalse Asia/Hebron\r\nfalse Asia/Ho_Chi_Minh\r\nfalse Asia/Hong_Kong\r\nfalse Asia/Hovd\r\nfalse Asia/Irkutsk\r\nfalse Asia/Istanbul\r\nfalse Asia/Jakarta\r\nfalse Asia/Jayapura\r\nfalse Asia/Jerusalem\r\nfalse Asia/Kabul\r\nfalse Asia/Kamchatka\r\nfalse Asia/Karachi\r\nfalse Asia/Kashgar\r\nfalse Asia/Kathmandu\r\nfalse Asia/Katmandu\r\nfalse Asia/Khandyga\r\nfalse Asia/Kolkata\r\nfalse Asia/Krasnoyarsk\r\nfalse Asia/Kuala_Lumpur\r\nfalse Asia/Kuching\r\nfalse Asia/Kuwait\r\nfalse Asia/Macao\r\nfalse Asia/Macau\r\nfalse Asia/Magadan\r\nfalse Asia/Makassar\r\nfalse Asia/Manila\r\nfalse Asia/Muscat\r\nfalse Asia/Nicosia\r\nfalse Asia/Novokuznetsk\r\nfalse Asia/Novosibirsk\r\nfalse Asia/Omsk\r\nfalse Asia/Oral\r\nfalse Asia/Phnom_Penh\r\nfalse Asia/Pontianak\r\nfalse Asia/Pyongyang\r\nfalse Asia/Qatar\r\nfalse Asia/Qostanay\r\nfalse Asia/Qyzylorda\r\nfalse Asia/Rangoon\r\nfalse Asia/Riyadh\r\nfalse Asia/Saigon\r\nfalse Asia/Sakhalin\r\nfalse Asia/Samarkand\r\nfalse Asia/Seoul\r\nfalse Asia/Shanghai\r\nfalse Asia/Singapore\r\nfalse Asia/Srednekolymsk\r\nfalse Asia/Taipei\r\nfalse Asia/Tashkent\r\nfalse Asia/Tbilisi\r\nfalse Asia/Tehran\r\nfalse Asia/Tel_Aviv\r\nfalse Asia/Thimbu\r\nfalse Asia/Thimphu\r\nfalse Asia/Tokyo\r\nfalse Asia/Tomsk\r\nfalse Asia/Ujung_Pandang\r\nfalse Asia/Ulaanbaatar\r\nfalse Asia/Ulan_Bator\r\nfalse Asia/Urumqi\r\nfalse Asia/Ust-Nera\r\nfalse Asia/Vientiane\r\nfalse Asia/Vladivostok\r\nfalse Asia/Yakutsk\r\nfalse Asia/Yangon\r\nfalse Asia/Yekaterinburg\r\nfalse Asia/Yerevan\r\nfalse Atlantic/Azores\r\ntrue Atlantic/Bermuda\r\nfalse Atlantic/Canary\r\nfalse Atlantic/Cape_Verde\r\nfalse Atlantic/Faeroe\r\nfalse Atlantic/Faroe\r\nfalse Atlantic/Jan_Mayen\r\nfalse Atlantic/Madeira\r\nfalse Atlantic/Reykjavik\r\nfalse Atlantic/South_Georgia\r\nfalse Atlantic/St_Helena\r\nfalse Atlantic/Stanley\r\ntrue Australia/ACT\r\ntrue Australia/Adelaide\r\nfalse Australia/Brisbane\r\ntrue Australia/Broken_Hill\r\ntrue Australia/Canberra\r\ntrue Australia/Currie\r\nfalse Australia/Darwin\r\nfalse Australia/Eucla\r\ntrue Australia/Hobart\r\ntrue Australia/LHI\r\nfalse Australia/Lindeman\r\ntrue Australia/Lord_Howe\r\ntrue Australia/Melbourne\r\ntrue Australia/NSW\r\nfalse Australia/North\r\nfalse Australia/Perth\r\nfalse Australia/Queensland\r\ntrue Australia/South\r\ntrue Australia/Sydney\r\ntrue Australia/Tasmania\r\ntrue Australia/Victoria\r\nfalse Australia/West\r\ntrue Australia/Yancowinna\r\ntrue BDST\r\nfalse BDT\r\nfalse BNT\r\nfalse BORT\r\nfalse BOT\r\nfalse BRA\r\ntrue BRST\r\nfalse BRT\r\ntrue BST\r\nfalse BTT\r\nfalse Brazil/Acre\r\nfalse Brazil/DeNoronha\r\nfalse Brazil/East\r\nfalse Brazil/West\r\ntrue CADT\r\nfalse CAST\r\nfalse CCT\r\ntrue CDT\r\ntrue CEST\r\nfalse CET\r\ntrue CETDST\r\ntrue CHADT\r\nfalse CHAST\r\nfalse CHUT\r\nfalse CKT\r\ntrue CLST\r\ntrue CLT\r\nfalse COT\r\nfalse CST\r\ntrue CST6CDT\r\nfalse CXT\r\ntrue Canada/Atlantic\r\ntrue Canada/Central\r\ntrue Canada/Eastern\r\ntrue Canada/Mountain\r\ntrue Canada/Newfoundland\r\ntrue Canada/Pacific\r\nfalse Canada/Saskatchewan\r\nfalse Canada/Yukon\r\ntrue Chile/Continental\r\ntrue Chile/EasterIsland\r\ntrue Cuba\r\nfalse DAVT\r\nfalse DDUT\r\ntrue EASST\r\ntrue EAST\r\nfalse EAT\r\ntrue EDT\r\ntrue EEST\r\nfalse EET\r\ntrue EETDST\r\ntrue EGST\r\nfalse EGT\r\nfalse EST\r\ntrue EST5EDT\r\nfalse Egypt\r\ntrue Eire\r\nfalse Etc/GMT\r\nfalse Etc/GMT+0\r\nfalse Etc/GMT+1\r\nfalse Etc/GMT+10\r\nfalse Etc/GMT+11\r\nfalse Etc/GMT+12\r\nfalse Etc/GMT+2\r\nfalse Etc/GMT+3\r\nfalse Etc/GMT+4\r\nfalse Etc/GMT+5\r\nfalse Etc/GMT+6\r\nfalse Etc/GMT+7\r\nfalse Etc/GMT+8\r\nfalse Etc/GMT+9\r\nfalse Etc/GMT-0\r\nfalse Etc/GMT-1\r\nfalse Etc/GMT-10\r\nfalse Etc/GMT-11\r\nfalse Etc/GMT-12\r\nfalse Etc/GMT-13\r\nfalse Etc/GMT-14\r\nfalse Etc/GMT-2\r\nfalse Etc/GMT-3\r\nfalse Etc/GMT-4\r\nfalse Etc/GMT-5\r\nfalse Etc/GMT-6\r\nfalse Etc/GMT-7\r\nfalse Etc/GMT-8\r\nfalse Etc/GMT-9\r\nfalse Etc/GMT0\r\nfalse Etc/Greenwich\r\nfalse Etc/UCT\r\nfalse Etc/UTC\r\nfalse Etc/Universal\r\nfalse Etc/Zulu\r\nfalse Europe/Amsterdam\r\nfalse Europe/Andorra\r\nfalse Europe/Astrakhan\r\nfalse Europe/Athens\r\nfalse Europe/Belfast\r\nfalse Europe/Belgrade\r\nfalse Europe/Berlin\r\nfalse Europe/Bratislava\r\nfalse Europe/Brussels\r\nfalse Europe/Bucharest\r\nfalse Europe/Budapest\r\nfalse Europe/Busingen\r\nfalse Europe/Chisinau\r\nfalse Europe/Copenhagen\r\ntrue Europe/Dublin\r\nfalse Europe/Gibraltar\r\nfalse Europe/Guernsey\r\nfalse Europe/Helsinki\r\nfalse Europe/Isle_of_Man\r\nfalse Europe/Istanbul\r\nfalse Europe/Jersey\r\nfalse Europe/Kaliningrad\r\nfalse Europe/Kiev\r\nfalse Europe/Kirov\r\nfalse Europe/Lisbon\r\nfalse Europe/Ljubljana\r\nfalse Europe/London\r\nfalse Europe/Luxembourg\r\nfalse Europe/Madrid\r\nfalse Europe/Malta\r\nfalse Europe/Mariehamn\r\nfalse Europe/Minsk\r\nfalse Europe/Monaco\r\nfalse Europe/Moscow\r\nfalse Europe/Nicosia\r\nfalse Europe/Oslo\r\nfalse Europe/Paris\r\nfalse Europe/Podgorica\r\nfalse Europe/Prague\r\nfalse Europe/Riga\r\nfalse Europe/Rome\r\nfalse Europe/Samara\r\nfalse Europe/San_Marino\r\nfalse Europe/Sarajevo\r\nfalse Europe/Saratov\r\nfalse Europe/Simferopol\r\nfalse Europe/Skopje\r\nfalse Europe/Sofia\r\nfalse Europe/Stockholm\r\nfalse Europe/Tallinn\r\nfalse Europe/Tirane\r\nfalse Europe/Tiraspol\r\nfalse Europe/Ulyanovsk\r\nfalse Europe/Uzhgorod\r\nfalse Europe/Vaduz\r\nfalse Europe/Vatican\r\nfalse Europe/Vienna\r\nfalse Europe/Vilnius\r\nfalse Europe/Volgograd\r\nfalse Europe/Warsaw\r\nfalse Europe/Zagreb\r\nfalse Europe/Zaporozhye\r\nfalse Europe/Zurich\r\nfalse FET\r\ntrue FJST\r\nfalse FJT\r\nfalse FKST\r\nfalse FKT\r\ntrue FNST\r\nfalse FNT\r\nfalse Factory\r\nfalse GALT\r\nfalse GAMT\r\nfalse GB\r\nfalse GB-Eire\r\nfalse GEST\r\nfalse GET\r\nfalse GFT\r\nfalse GILT\r\nfalse GMT\r\nfalse GMT+0\r\nfalse GMT-0\r\nfalse GMT0\r\nfalse GYT\r\nfalse Greenwich\r\nfalse HKT\r\nfalse HST\r\nfalse Hongkong\r\nfalse ICT\r\ntrue IDT\r\nfalse IOT\r\nfalse IRKST\r\nfalse IRKT\r\nfalse IRT\r\nfalse IST\r\nfalse Iceland\r\nfalse Indian/Antananarivo\r\nfalse Indian/Chagos\r\nfalse Indian/Christmas\r\nfalse Indian/Cocos\r\nfalse Indian/Comoro\r\nfalse Indian/Kerguelen\r\nfalse Indian/Mahe\r\nfalse Indian/Maldives\r\nfalse Indian/Mauritius\r\nfalse Indian/Mayotte\r\nfalse Indian/Reunion\r\nfalse Iran\r\nfalse Israel\r\nfalse JAYT\r\nfalse JST\r\nfalse Jamaica\r\nfalse Japan\r\ntrue KDT\r\ntrue KGST\r\nfalse KGT\r\nfalse KOST\r\nfalse KRAST\r\nfalse KRAT\r\nfalse KST\r\nfalse Kwajalein\r\ntrue LHDT\r\nfalse LHST\r\nfalse LIGT\r\nfalse LINT\r\nfalse LKT\r\nfalse Libya\r\nfalse MAGST\r\nfalse MAGT\r\nfalse MART\r\nfalse MAWT\r\ntrue MDT\r\ntrue MEST\r\ntrue MESZ\r\nfalse MET\r\ntrue METDST\r\nfalse MEZ\r\nfalse MHT\r\nfalse MMT\r\nfalse MPT\r\ntrue MSD\r\nfalse MSK\r\nfalse MST\r\ntrue MST7MDT\r\ntrue MUST\r\nfalse MUT\r\nfalse MVT\r\nfalse MYT\r\ntrue Mexico/BajaNorte\r\nfalse Mexico/BajaSur\r\nfalse Mexico/General\r\ntrue NDT\r\nfalse NFT\r\nfalse NOVST\r\nfalse NOVT\r\nfalse NPT\r\nfalse NST\r\nfalse NUT\r\ntrue NZ\r\ntrue NZ-CHAT\r\ntrue NZDT\r\nfalse NZST\r\nfalse NZT\r\ntrue Navajo\r\nfalse OMSST\r\nfalse OMST\r\ntrue PDT\r\nfalse PET\r\nfalse PETST\r\nfalse PETT\r\nfalse PGT\r\nfalse PHOT\r\nfalse PHT\r\ntrue PKST\r\nfalse PKT\r\ntrue PMDT\r\nfalse PMST\r\nfalse PONT\r\nfalse PRC\r\nfalse PST\r\ntrue PST8PDT\r\nfalse PWT\r\ntrue PYST\r\ntrue PYT\r\nfalse Pacific/Apia\r\ntrue Pacific/Auckland\r\nfalse Pacific/Bougainville\r\ntrue Pacific/Chatham\r\nfalse Pacific/Chuuk\r\ntrue Pacific/Easter\r\nfalse Pacific/Efate\r\nfalse Pacific/Enderbury\r\nfalse Pacific/Fakaofo\r\nfalse Pacific/Fiji\r\nfalse Pacific/Funafuti\r\nfalse Pacific/Galapagos\r\nfalse Pacific/Gambier\r\nfalse Pacific/Guadalcanal\r\nfalse Pacific/Guam\r\nfalse Pacific/Honolulu\r\nfalse Pacific/Johnston\r\nfalse Pacific/Kanton\r\nfalse Pacific/Kiritimati\r\nfalse Pacific/Kosrae\r\nfalse Pacific/Kwajalein\r\nfalse Pacific/Majuro\r\nfalse Pacific/Marquesas\r\nfalse Pacific/Midway\r\nfalse Pacific/Nauru\r\nfalse Pacific/Niue\r\ntrue Pacific/Norfolk\r\nfalse Pacific/Noumea\r\nfalse Pacific/Pago_Pago\r\nfalse Pacific/Palau\r\nfalse Pacific/Pitcairn\r\nfalse Pacific/Pohnpei\r\nfalse Pacific/Ponape\r\nfalse Pacific/Port_Moresby\r\nfalse Pacific/Rarotonga\r\nfalse Pacific/Saipan\r\nfalse Pacific/Samoa\r\nfalse Pacific/Tahiti\r\nfalse Pacific/Tarawa\r\nfalse Pacific/Tongatapu\r\nfalse Pacific/Truk\r\nfalse Pacific/Wake\r\nfalse Pacific/Wallis\r\nfalse Pacific/Yap\r\nfalse Poland\r\nfalse Portugal\r\nfalse RET\r\nfalse ROC\r\nfalse ROK\r\ntrue SADT\r\nfalse SAST\r\nfalse SCT\r\nfalse SGT\r\nfalse Singapore\r\nfalse TAHT\r\nfalse TFT\r\nfalse TJT\r\nfalse TKT\r\nfalse TMT\r\nfalse TOT\r\nfalse TRUT\r\nfalse TVT\r\nfalse Turkey\r\nfalse UCT\r\ntrue ULAST\r\nfalse ULAT\r\ntrue US/Alaska\r\ntrue US/Aleutian\r\nfalse US/Arizona\r\ntrue US/Central\r\ntrue US/East-Indiana\r\ntrue US/Eastern\r\nfalse US/Hawaii\r\ntrue US/Indiana-Starke\r\ntrue US/Michigan\r\ntrue US/Mountain\r\ntrue US/Pacific\r\nfalse US/Samoa\r\nfalse UT\r\nfalse UTC\r\ntrue UYST\r\nfalse UYT\r\ntrue UZST\r\nfalse UZT\r\nfalse Universal\r\nfalse VET\r\nfalse VLAST\r\nfalse VLAT\r\nfalse VOLT\r\nfalse VUT\r\nfalse W-SU\r\ntrue WADT\r\nfalse WAKT\r\nfalse WAST\r\nfalse WAT\r\ntrue WDT\r\nfalse WET\r\ntrue WETDST\r\nfalse WFT\r\ntrue WGST\r\nfalse WGT\r\nfalse XJT\r\nfalse YAKST\r\nfalse YAKT\r\nfalse YAPT\r\ntrue YEKST\r\nfalse YEKT\r\nfalse Z\r\nfalse Zulu\r\n</TimeZones>\r\n    </root>\r\n    <database id=\"2\" parent=\"1\" name=\"news_xml_db\">\r\n      <ObjectId>353462</ObjectId>\r\n      <OwnerName>postgres</OwnerName>\r\n    </database>\r\n    <database id=\"3\" parent=\"1\" name=\"newsdb\">\r\n      <Current>1</Current>\r\n      <Grants>11||10|C|G\r\n11||-9223372036854775808|U|G\r\n11||10|U|G\r\n2200||-9223372036854775808|C|G\r\n2200||10|C|G\r\n2200||-9223372036854775808|U|G\r\n2200||10|U|G\r\n13388||10|C|G\r\n13388||-9223372036854775808|U|G\r\n13388||10|U|G</Grants>\r\n      <IntrospectionStateNumber>168588</IntrospectionStateNumber>\r\n      <ObjectId>353447</ObjectId>\r\n      <OwnerName>postgres</OwnerName>\r\n    </database>\r\n    <database id=\"4\" parent=\"1\" name=\"postgres\">\r\n      <Comment>default administrative connection database</Comment>\r\n      <ObjectId>13754</ObjectId>\r\n      <OwnerName>postgres</OwnerName>\r\n    </database>\r\n    <database id=\"5\" parent=\"1\" name=\"test_i18n\">\r\n      <ObjectId>353431</ObjectId>\r\n      <OwnerName>postgres</OwnerName>\r\n    </database>\r\n    <role id=\"6\" parent=\"1\" name=\"pg_database_owner\">\r\n      <ObjectId>6171</ObjectId>\r\n    </role>\r\n    <role id=\"7\" parent=\"1\" name=\"pg_execute_server_program\">\r\n      <ObjectId>4571</ObjectId>\r\n    </role>\r\n    <role id=\"8\" parent=\"1\" name=\"pg_monitor\">\r\n      <ObjectId>3373</ObjectId>\r\n      <RoleGrants>3374\r\n3375\r\n3377</RoleGrants>\r\n    </role>\r\n    <role id=\"9\" parent=\"1\" name=\"pg_read_all_data\">\r\n      <ObjectId>6181</ObjectId>\r\n    </role>\r\n    <role id=\"10\" parent=\"1\" name=\"pg_read_all_settings\">\r\n      <ObjectId>3374</ObjectId>\r\n    </role>\r\n    <role id=\"11\" parent=\"1\" name=\"pg_read_all_stats\">\r\n      <ObjectId>3375</ObjectId>\r\n    </role>\r\n    <role id=\"12\" parent=\"1\" name=\"pg_read_server_files\">\r\n      <ObjectId>4569</ObjectId>\r\n    </role>\r\n    <role id=\"13\" parent=\"1\" name=\"pg_signal_backend\">\r\n      <ObjectId>4200</ObjectId>\r\n    </role>\r\n    <role id=\"14\" parent=\"1\" name=\"pg_stat_scan_tables\">\r\n      <ObjectId>3377</ObjectId>\r\n    </role>\r\n    <role id=\"15\" parent=\"1\" name=\"pg_write_all_data\">\r\n      <ObjectId>6182</ObjectId>\r\n    </role>\r\n    <role id=\"16\" parent=\"1\" name=\"pg_write_server_files\">\r\n      <ObjectId>4570</ObjectId>\r\n    </role>\r\n    <role id=\"17\" parent=\"1\" name=\"postgres\">\r\n      <BypassRls>1</BypassRls>\r\n      <CanLogin>1</CanLogin>\r\n      <CreateDb>1</CreateDb>\r\n      <CreateRole>1</CreateRole>\r\n      <ObjectId>10</ObjectId>\r\n      <Replication>1</Replication>\r\n      <SuperRole>1</SuperRole>\r\n    </role>\r\n    <tablespace id=\"18\" parent=\"1\" name=\"pg_default\">\r\n      <ObjectId>1663</ObjectId>\r\n      <StateNumber>1</StateNumber>\r\n      <OwnerName>postgres</OwnerName>\r\n    </tablespace>\r\n    <tablespace id=\"19\" parent=\"1\" name=\"pg_global\">\r\n      <ObjectId>1664</ObjectId>\r\n      <StateNumber>1</StateNumber>\r\n      <OwnerName>postgres</OwnerName>\r\n    </tablespace>\r\n  </database-model>\r\n</dataSource>
+===================================================================
+diff --git a/.idea/dataSources/1d48e715-3a5b-4533-b917-bb2372c18483.xml b/.idea/dataSources/1d48e715-3a5b-4533-b917-bb2372c18483.xml
+--- a/.idea/dataSources/1d48e715-3a5b-4533-b917-bb2372c18483.xml	
++++ b/.idea/dataSources/1d48e715-3a5b-4533-b917-bb2372c18483.xml	
+@@ -813,47 +813,49 @@
+       <ObjectId>13754</ObjectId>
+       <OwnerName>postgres</OwnerName>
+     </database>
+-    <database id="5" parent="1" name="test_i18n">
++    <database id="5" parent="1" name="template0"/>
++    <database id="6" parent="1" name="template1"/>
++    <database id="7" parent="1" name="test_i18n">
+       <ObjectId>353431</ObjectId>
+       <OwnerName>postgres</OwnerName>
+     </database>
+-    <role id="6" parent="1" name="pg_database_owner">
++    <role id="8" parent="1" name="pg_database_owner">
+       <ObjectId>6171</ObjectId>
+     </role>
+-    <role id="7" parent="1" name="pg_execute_server_program">
+-      <ObjectId>4571</ObjectId>
++    <role id="9" parent="1" name="pg_read_all_data">
++      <ObjectId>6181</ObjectId>
++    </role>
++    <role id="10" parent="1" name="pg_write_all_data">
++      <ObjectId>6182</ObjectId>
+     </role>
+-    <role id="8" parent="1" name="pg_monitor">
++    <role id="11" parent="1" name="pg_monitor">
+       <ObjectId>3373</ObjectId>
+       <RoleGrants>3374
+ 3375
+ 3377</RoleGrants>
+     </role>
+-    <role id="9" parent="1" name="pg_read_all_data">
+-      <ObjectId>6181</ObjectId>
+-    </role>
+-    <role id="10" parent="1" name="pg_read_all_settings">
++    <role id="12" parent="1" name="pg_read_all_settings">
+       <ObjectId>3374</ObjectId>
+     </role>
+-    <role id="11" parent="1" name="pg_read_all_stats">
++    <role id="13" parent="1" name="pg_read_all_stats">
+       <ObjectId>3375</ObjectId>
+     </role>
+-    <role id="12" parent="1" name="pg_read_server_files">
+-      <ObjectId>4569</ObjectId>
+-    </role>
+-    <role id="13" parent="1" name="pg_signal_backend">
+-      <ObjectId>4200</ObjectId>
+-    </role>
+     <role id="14" parent="1" name="pg_stat_scan_tables">
+       <ObjectId>3377</ObjectId>
+     </role>
+-    <role id="15" parent="1" name="pg_write_all_data">
+-      <ObjectId>6182</ObjectId>
++    <role id="15" parent="1" name="pg_read_server_files">
++      <ObjectId>4569</ObjectId>
+     </role>
+     <role id="16" parent="1" name="pg_write_server_files">
+       <ObjectId>4570</ObjectId>
+     </role>
+-    <role id="17" parent="1" name="postgres">
++    <role id="17" parent="1" name="pg_execute_server_program">
++      <ObjectId>4571</ObjectId>
++    </role>
++    <role id="18" parent="1" name="pg_signal_backend">
++      <ObjectId>4200</ObjectId>
++    </role>
++    <role id="19" parent="1" name="postgres">
+       <BypassRls>1</BypassRls>
+       <CanLogin>1</CanLogin>
+       <CreateDb>1</CreateDb>
+@@ -862,12 +864,12 @@
+       <Replication>1</Replication>
+       <SuperRole>1</SuperRole>
+     </role>
+-    <tablespace id="18" parent="1" name="pg_default">
++    <tablespace id="20" parent="1" name="pg_default">
+       <ObjectId>1663</ObjectId>
+       <StateNumber>1</StateNumber>
+       <OwnerName>postgres</OwnerName>
+     </tablespace>
+-    <tablespace id="19" parent="1" name="pg_global">
++    <tablespace id="21" parent="1" name="pg_global">
+       <ObjectId>1664</ObjectId>
+       <StateNumber>1</StateNumber>
+       <OwnerName>postgres</OwnerName>
+Index: target/Spring_MVC_Class_Config/WEB-INF/views/newNews.html
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><!DOCTYPE html>\r\n<html lang=\"en\" xmlns:th=\"http://thymeleaf.org\">\r\n<head>\r\n    <meta charset=\"UTF-8\">\r\n    <title>New news</title>\r\n    <link href=\"https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css\" rel=\"stylesheet\"\r\n          integrity=\"sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC\" crossorigin=\"anonymous\">\r\n</head>\r\n<body>\r\n<div class=\"container border border-dark border-3 border-bottom-0\">\r\n    <nav class=\"row\">\r\n        <div class=\"col-6\">\r\n            <h1>News Management</h1>\r\n        </div>\r\n        <div class=\"col-6 d-flex justify-content-end\">\r\n            <a href=\"/?language=en\">English</a>&nbsp;\r\n            <a href=\"/?language=ru\">Russian</a>\r\n        </div>\r\n    </nav>\r\n</div>\r\n<div class=\"container border border-dark border-3\">\r\n    <div class=\"row p-1\">\r\n        <div class=\"col-2  border border-light border-2 mx-2 bg-light\">\r\n            <h5 align=\"center\" class=\"bg-secondary text-white\">News</h5>\r\n            <div class=\"bg-white pt-2 pb-2\">\r\n                <ul>\r\n                    <li><a href=\"/\">News List</a></li>\r\n                    <li><a href=\"/news/new\">Add News</a></li>\r\n                </ul>\r\n            </div>\r\n        </div>\r\n        <div class=\"col\">\r\n            <nav style=\"--bs-breadcrumb-divider: '>>';\" aria-label=\"breadcrumb\">\r\n                <ol class=\"breadcrumb\">\r\n                    <li class=\"breadcrumb-item\"><a href=\"#\">News</a></li>\r\n                    <li class=\"breadcrumb-item active\" aria-current=\"page\">Add News</li>\r\n                </ol>\r\n            </nav>\r\n            <form th:method=\"POST\" th:action=\"@{/news}\" th:object=\"${newsPage}\">\r\n                <div class=\"row\">\r\n                    <div class=\"col-2\">\r\n                        <label for=\"newsTitle\" >News Title</label>\r\n                    </div>\r\n                    <div class=\"input-group mb-3 col\">\r\n                        <input type=\"text\" class=\"form-control\" th:field=\"*{newsTitle}\" id=\"newsTitle\">\r\n                        <div style=\"color: red\" th:if=\"${#fields.hasErrors('newsTitle')}\" th:errors=\"*{newsTitle}\">News\r\n                            date\r\n                            error\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n                <br>\r\n                <div class=\"row\">\r\n                    <div class=\" col-2\">\r\n                        <label for=\"newsDate\" >News Date</label>\r\n                    </div>\r\n                    <div class=\"col-3\">\r\n                        <input class=\"form-control\" type=\"text\" th:field=\"*{newsDate}\" id=\"newsDate\">\r\n                        <div style=\"color: red\" th:if=\"${#fields.hasErrors('newsDate')}\" th:errors=\"*{newsDate}\">News\r\n                            title\r\n                            error\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n                <br>\r\n                <div class=\"row\">\r\n                    <div class=\"col-2\">\r\n                        <label for=\"content\" >Brief</label>\r\n                    </div>\r\n                    <div class=\"form-floating col\">\r\n                            <textarea class=\"form-control\" type=\"text\" th:field=\"*{brief}\" id=\"brief\"\r\n                                      rows=\"6\"></textarea>\r\n                        <div style=\"color: red\" th:if=\"${#fields.hasErrors('brief')}\" th:errors=\"*{brief}\">\r\n                            Content error\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n                <br>\r\n                <div class=\"row\">\r\n                    <div class=\"col-2\">\r\n                        <label for=\"content\">Content</label>\r\n                    </div>\r\n                    <div class=\"form-floating col\">\r\n                            <textarea class=\"form-control\" type=\"text\" th:field=\"*{content}\" id=\"content\"\r\n                                      rows=\"6\"></textarea>\r\n                        <div style=\"color: red\" th:if=\"${#fields.hasErrors('content')}\" th:errors=\"*{content}\">\r\n                            Content error\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n                <br>\r\n                <div class=\"d-flex justify-content-center pb-5 pt-3\">\r\n                    <div class=\"px-2\">\r\n                        <input type=\"submit\" class=\"btn btn-outline-primary\" value=\"SAVE\">\r\n                    </div>\r\n                    <div>\r\n                        <input type=\"submit\" class=\"btn btn-outline-primary\" href=\"index\" value=\"CANCEL\">\r\n                    </div>\r\n                </div>\r\n            </form>\r\n        </div>\r\n    </div>\r\n</div>\r\n<div class=\"container border border-dark border-3 border-top-0 d-flex justify-content-center\">\r\n    <p class=\"m-0 p-0\">Copyright EPAM 2008. All rights reserved.</p>\r\n</div>\r\n</body>\r\n</html>
+===================================================================
+diff --git a/target/Spring_MVC_Class_Config/WEB-INF/views/newNews.html b/target/Spring_MVC_Class_Config/WEB-INF/views/newNews.html
+--- a/target/Spring_MVC_Class_Config/WEB-INF/views/newNews.html	
++++ b/target/Spring_MVC_Class_Config/WEB-INF/views/newNews.html	
+@@ -2,7 +2,7 @@
+ <html lang="en" xmlns:th="http://thymeleaf.org">
+ <head>
+     <meta charset="UTF-8">
+-    <title>New news</title>
++    <title data-th-text="#{label.new.news}">New news</title>
+     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+           integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+ </head>
+@@ -10,36 +10,38 @@
+ <div class="container border border-dark border-3 border-bottom-0">
+     <nav class="row">
+         <div class="col-6">
+-            <h1>News Management</h1>
++            <h1 data-th-text="#{label.header}">News Management</h1>
+         </div>
+         <div class="col-6 d-flex justify-content-end">
+-            <a href="/?language=en">English</a>&nbsp;
+-            <a href="/?language=ru">Russian</a>
++            <a href="/?language=en" data-th-text="#{label.lang.en}">English</a>&nbsp;
++            <a href="/?language=ru" data-th-text="#{label.lang.ru}">Russian</a>
+         </div>
+     </nav>
+ </div>
++
+ <div class="container border border-dark border-3">
+     <div class="row p-1">
+         <div class="col-2  border border-light border-2 mx-2 bg-light">
+-            <h5 align="center" class="bg-secondary text-white">News</h5>
++            <h5 align="center" class="bg-secondary text-white" data-th-text="#{label.news}">News</h5>
+             <div class="bg-white pt-2 pb-2">
+                 <ul>
+-                    <li><a href="/">News List</a></li>
+-                    <li><a href="/news/new">Add News</a></li>
++                    <li><a href="/" data-th-text="#{label.news.list}">News List</a></li>
++                    <li><a href="/news/new" data-th-text="#{label.add.news}">Add News</a></li>
+                 </ul>
+             </div>
+         </div>
+         <div class="col">
+             <nav style="--bs-breadcrumb-divider: '>>';" aria-label="breadcrumb">
+                 <ol class="breadcrumb">
+-                    <li class="breadcrumb-item"><a href="#">News</a></li>
+-                    <li class="breadcrumb-item active" aria-current="page">Add News</li>
++                    <li class="breadcrumb-item"><a href="#" data-th-text="#{label.news}">News</a></li>
++                    <li class="breadcrumb-item active" aria-current="page" data-th-text="#{label.add.news}">Add News</li>
+                 </ol>
+             </nav>
++
+             <form th:method="POST" th:action="@{/news}" th:object="${newsPage}">
+                 <div class="row">
+                     <div class="col-2">
+-                        <label for="newsTitle" >News Title</label>
++                        <label for="newsTitle" data-th-text="#{label.news.title}">News Title</label>
+                     </div>
+                     <div class="input-group mb-3 col">
+                         <input type="text" class="form-control" th:field="*{newsTitle}" id="newsTitle">
+@@ -50,9 +52,10 @@
+                     </div>
+                 </div>
+                 <br>
++
+                 <div class="row">
+                     <div class=" col-2">
+-                        <label for="newsDate" >News Date</label>
++                        <label for="newsDate" data-th-text="#{label.news.date}">News Date</label>
+                     </div>
+                     <div class="col-3">
+                         <input class="form-control" type="text" th:field="*{newsDate}" id="newsDate">
+@@ -62,10 +65,11 @@
+                         </div>
+                     </div>
+                 </div>
++
+                 <br>
+                 <div class="row">
+                     <div class="col-2">
+-                        <label for="content" >Brief</label>
++                        <label for="content" data-th-text="#{label.brief}">Brief</label>
+                     </div>
+                     <div class="form-floating col">
+                             <textarea class="form-control" type="text" th:field="*{brief}" id="brief"
+@@ -76,9 +80,10 @@
+                     </div>
+                 </div>
+                 <br>
++
+                 <div class="row">
+                     <div class="col-2">
+-                        <label for="content">Content</label>
++                        <label for="content" data-th-text="#{label.content}">Content</label>
+                     </div>
+                     <div class="form-floating col">
+                             <textarea class="form-control" type="text" th:field="*{content}" id="content"
+@@ -93,16 +98,4 @@
+                     <div class="px-2">
+                         <input type="submit" class="btn btn-outline-primary" value="SAVE">
+                     </div>
+-                    <div>
+-                        <input type="submit" class="btn btn-outline-primary" href="index" value="CANCEL">
+-                    </div>
+-                </div>
+-            </form>
+-        </div>
+-    </div>
+-</div>
+-<div class="container border border-dark border-3 border-top-0 d-flex justify-content-center">
+-    <p class="m-0 p-0">Copyright EPAM 2008. All rights reserved.</p>
+-</div>
+-</body>
+-</html>
+\ No newline at end of file
++         
+\ No newline at end of file
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<project version=\"4\">\r\n  <component name=\"ArtifactsWorkspaceSettings\">\r\n    <artifacts-to-build>\r\n      <artifact name=\"Spring_MVC_Class_Config:war exploded\" />\r\n    </artifacts-to-build>\r\n  </component>\r\n  <component name=\"AutoImportSettings\">\r\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\r\n  </component>\r\n  <component name=\"ChangeListManager\">\r\n    <list default=\"true\" id=\"27bb97ab-c273-40b1-b82b-6c7d81e6f9eb\" name=\"Changes\" comment=\"Untracked Files\">\r\n      <change afterPath=\"$PROJECT_DIR$/.idea/artifacts/Spring_MVC_XML_Config_war.xml\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/.idea/artifacts/Spring_MVC_XML_Config_war_exploded.xml\" afterDir=\"false\" />\r\n      <change afterPath=\"$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase_[Changes]/shelved.patch\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/dataSources.local.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/dataSources.local.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/dataSources/19e6e345-d929-4ed3-bd73-e19ccf1f7508.xml\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/dataSources/19e6e345-d929-4ed3-bd73-e19ccf1f7508/storage_v2/_src_/database/newsdb.kS58wQ.meta\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/dataSources/19e6e345-d929-4ed3-bd73-e19ccf1f7508/storage_v2/_src_/database/newsdb.kS58wQ/schema/information_schema.FNRwLQ.meta\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/dataSources/19e6e345-d929-4ed3-bd73-e19ccf1f7508/storage_v2/_src_/database/newsdb.kS58wQ/schema/pg_catalog.0S1ZNQ.meta\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/dataSources/1d48e715-3a5b-4533-b917-bb2372c18483.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/dataSources/1d48e715-3a5b-4533-b917-bb2372c18483.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_3_17_2023_5_32_PM__Changes_.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_3_17_2023_5_32_PM__Changes_.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_3_17_2023_5_35_PM__Changes_.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_3_17_2023_5_35_PM__Changes_.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase__Changes_.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase__Changes_.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/com/epam/project/config/SpringConfig.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/com/epam/project/config/SpringConfig.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/java/com/epam/project/config/SpringMVCDispatcherServletInitializer.java\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/java/com/epam/project/config/SpringMVCDispatcherServletInitializer.java\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/webapp/WEB-INF/views/editNews.html\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/webapp/WEB-INF/views/editNews.html\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/webapp/WEB-INF/views/index.html\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/webapp/WEB-INF/views/index.html\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/webapp/WEB-INF/views/newNews.html\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/webapp/WEB-INF/views/newNews.html\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/src/main/webapp/WEB-INF/views/viewNews.html\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/webapp/WEB-INF/views/viewNews.html\" afterDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/target/Spring_MVC_Class_Config.war\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/target/Spring_MVC_Class_Config/META-INF/MANIFEST.MF\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/target/Spring_MVC_Class_Config/WEB-INF/classes/com/epam/project/config/SpringConfig.class\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/target/Spring_MVC_Class_Config/WEB-INF/classes/com/epam/project/config/SpringMVCDispatcherServletInitializer.class\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/target/Spring_MVC_Class_Config/WEB-INF/classes/com/epam/project/controllers/NewsController.class\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/target/Spring_MVC_Class_Config/WEB-INF/classes/com/epam/project/dao/NewsDAO.class\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/target/Spring_MVC_Class_Config/WEB-INF/classes/com/epam/project/models/News.class\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/target/Spring_MVC_Class_Config/WEB-INF/classes/hibernate.properties\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/target/Spring_MVC_Class_Config/WEB-INF/lib/FastInfoset-1.2.15.jar\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/target/Spring_MVC_Class_Config/WEB-INF/lib/antlr-2.7.7.jar\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/target/Spring_MVC_Class_Config/WEB-INF/lib/attoparser-2.0.5.RELEASE.jar\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/target/Spring_MVC_Class_Config/WEB-INF/lib/byte-buddy-1.10.17.jar\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/target/Spring_MVC_Class_Config/WEB-INF/lib/checker-qual-3.5.0.jar\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/target/Spring_MVC_Class_Config/WEB-INF/lib/classmate-1.3.4.jar\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/target/Spring_MVC_Class_Config/WEB-INF/lib/dom4j-2.1.3.jar\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/target/Spring_MVC_Class_Config/WEB-INF/lib/hibernate-commons-annotations-5.1.2.Final.jar\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/target/Spring_MVC_Class_Config/WEB-INF/lib/hibernate-core-5.4.28.Final.jar\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/target/Spring_MVC_Class_Config/WEB-INF/lib/hibernate-validator-6.1.6.Final.jar\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/target/Spring_MVC_Class_Config/WEB-INF/lib/istack-commons-runtime-3.0.7.jar\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/target/Spring_MVC_Class_Config/WEB-INF/lib/jakarta.validation-api-2.0.2.jar\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/target/Spring_MVC_Class_Config/WEB-INF/lib/jandex-2.2.3.Final.jar\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/target/Spring_MVC_Class_Config/WEB-INF/lib/javassist-3.27.0-GA.jar\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/target/Spring_MVC_Class_Config/WEB-INF/lib/javax.activation-api-1.2.0.jar\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/target/Spring_MVC_Class_Config/WEB-INF/lib/javax.persistence-api-2.2.jar\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/target/Spring_MVC_Class_Config/WEB-INF/lib/jaxb-api-2.3.1.jar\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/target/Spring_MVC_Class_Config/WEB-INF/lib/jaxb-runtime-2.3.1.jar\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/target/Spring_MVC_Class_Config/WEB-INF/lib/jboss-logging-3.3.2.Final.jar\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/target/Spring_MVC_Class_Config/WEB-INF/lib/jboss-transaction-api_1.2_spec-1.1.1.Final.jar\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/target/Spring_MVC_Class_Config/WEB-INF/lib/postgresql-42.2.18.jar\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/target/Spring_MVC_Class_Config/WEB-INF/lib/slf4j-api-1.7.25.jar\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/target/Spring_MVC_Class_Config/WEB-INF/lib/spring-aop-5.2.1.RELEASE.jar\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/target/Spring_MVC_Class_Config/WEB-INF/lib/spring-beans-5.2.1.RELEASE.jar\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/target/Spring_MVC_Class_Config/WEB-INF/lib/spring-context-5.2.1.RELEASE.jar\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/target/Spring_MVC_Class_Config/WEB-INF/lib/spring-core-5.2.1.RELEASE.jar\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/target/Spring_MVC_Class_Config/WEB-INF/lib/spring-expression-5.2.1.RELEASE.jar\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/target/Spring_MVC_Class_Config/WEB-INF/lib/spring-jcl-5.2.1.RELEASE.jar\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/target/Spring_MVC_Class_Config/WEB-INF/lib/spring-jdbc-5.2.1.RELEASE.jar\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/target/Spring_MVC_Class_Config/WEB-INF/lib/spring-orm-5.2.1.RELEASE.jar\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/target/Spring_MVC_Class_Config/WEB-INF/lib/spring-tx-5.2.1.RELEASE.jar\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/target/Spring_MVC_Class_Config/WEB-INF/lib/spring-web-5.2.1.RELEASE.jar\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/target/Spring_MVC_Class_Config/WEB-INF/lib/spring-webmvc-5.2.1.RELEASE.jar\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/target/Spring_MVC_Class_Config/WEB-INF/lib/stax-ex-1.8.jar\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/target/Spring_MVC_Class_Config/WEB-INF/lib/thymeleaf-3.0.11.RELEASE.jar\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/target/Spring_MVC_Class_Config/WEB-INF/lib/thymeleaf-spring5-3.0.11.RELEASE.jar\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/target/Spring_MVC_Class_Config/WEB-INF/lib/txw2-2.3.1.jar\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/target/Spring_MVC_Class_Config/WEB-INF/lib/unbescape-1.1.6.RELEASE.jar\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/target/Spring_MVC_Class_Config/WEB-INF/views/editNews.html\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/target/Spring_MVC_Class_Config/WEB-INF/views/index.html\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/target/Spring_MVC_Class_Config/WEB-INF/views/newNews.html\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/target/Spring_MVC_Class_Config/WEB-INF/views/viewNews.html\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/target/classes/com/epam/project/config/SpringConfig.class\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/target/classes/com/epam/project/config/SpringMVCDispatcherServletInitializer.class\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/target/classes/com/epam/project/controllers/NewsController.class\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/target/classes/com/epam/project/dao/NewsDAO.class\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/target/classes/com/epam/project/models/News.class\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/target/maven-archiver/pom.properties\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst\" beforeDir=\"false\" />\r\n      <change beforePath=\"$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst\" beforeDir=\"false\" />\r\n    </list>\r\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\r\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\r\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\r\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\r\n  </component>\r\n  <component name=\"FileTemplateManagerImpl\">\r\n    <option name=\"RECENT_TEMPLATES\">\r\n      <list>\r\n        <option value=\"Class\" />\r\n        <option value=\"HTML File\" />\r\n      </list>\r\n    </option>\r\n  </component>\r\n  <component name=\"Git.Settings\">\r\n    <option name=\"RECENT_BRANCH_BY_REPOSITORY\">\r\n      <map>\r\n        <entry key=\"$PROJECT_DIR$\" value=\"Spring_MVC_XML_Config\" />\r\n      </map>\r\n    </option>\r\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\r\n  </component>\r\n  <component name=\"LogFilters\">\r\n    <option name=\"FILTER_ERRORS\" value=\"false\" />\r\n    <option name=\"FILTER_WARNINGS\" value=\"false\" />\r\n    <option name=\"FILTER_INFO\" value=\"true\" />\r\n    <option name=\"FILTER_DEBUG\" value=\"true\" />\r\n    <option name=\"CUSTOM_FILTER\" />\r\n  </component>\r\n  <component name=\"MarkdownSettingsMigration\">\r\n    <option name=\"stateVersion\" value=\"1\" />\r\n  </component>\r\n  <component name=\"MavenImportPreferences\">\r\n    <option name=\"generalSettings\">\r\n      <MavenGeneralSettings>\r\n        <option name=\"useMavenConfig\" value=\"true\" />\r\n      </MavenGeneralSettings>\r\n    </option>\r\n  </component>\r\n  <component name=\"ProjectId\" id=\"2N8NdHUksnReFCJN5xD7toSQ4kn\" />\r\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\" />\r\n  <component name=\"ProjectViewState\">\r\n    <option name=\"showLibraryContents\" value=\"true\" />\r\n  </component>\r\n  <component name=\"PropertiesComponent\"><![CDATA[{\r\n  \"keyToString\": {\r\n    \"DefaultHtmlFileTemplate\": \"HTML File\",\r\n    \"RunOnceActivity.OpenProjectViewOnStart\": \"true\",\r\n    \"RunOnceActivity.ShowReadmeOnStart\": \"true\",\r\n    \"SHARE_PROJECT_CONFIGURATION_FILES\": \"true\",\r\n    \"WebServerToolWindowFactoryState\": \"false\",\r\n    \"last_opened_file_path\": \"D:/EPAM_LAB/GitHub_resource/News_Portal/News_Portal_SpringMVC_XML_CLASS_Config/src/main/resources\",\r\n    \"node.js.detected.package.eslint\": \"true\",\r\n    \"node.js.detected.package.tslint\": \"true\",\r\n    \"node.js.selected.package.eslint\": \"(autodetect)\",\r\n    \"node.js.selected.package.tslint\": \"(autodetect)\",\r\n    \"project.structure.last.edited\": \"Artifacts\",\r\n    \"project.structure.proportion\": \"0.15\",\r\n    \"project.structure.side.proportion\": \"0.3218391\",\r\n    \"settings.editor.selected.configurable\": \"preferences.lookFeel\",\r\n    \"spring.configuration.checksum\": \"831c09b6972220f7cbb85219b71c0316\",\r\n    \"vue.rearranger.settings.migration\": \"true\"\r\n  },\r\n  \"keyToStringList\": {\r\n    \"DatabaseDriversLRU\": [\r\n      \"postgresql\"\r\n    ]\r\n  }\r\n}]]></component>\r\n  <component name=\"RecentsManager\">\r\n    <key name=\"CopyFile.RECENT_KEYS\">\r\n      <recent name=\"D:\\EPAM_LAB\\GitHub_resource\\News_Portal\\News_Portal_SpringMVC_XML_CLASS_Config\\src\\main\\resources\" />\r\n      <recent name=\"D:\\EPAM_LAB\\GitHub_resource\\News_Portal\\News_Portal_SpringMVC_XML_CLASS_Config\\src\\main\\webapp\\WEB-INF\\old\" />\r\n      <recent name=\"D:\\EPAM_LAB\\GitHub_resource\\News_Portal\\News_Portal_SpringMVC_XML_CLASS_Config\\src\\main\\webapp\\WEB-INF\" />\r\n      <recent name=\"D:\\EPAM_LAB\\GitHub_resource\\News_Portal\\News_Portal_SpringMVC_XML_CLASS_Config\\src\\main\\webapp\\WEB-INF\\views\" />\r\n      <recent name=\"D:\\EPAM_LAB\\GitHub_resource\\News_Portal\\News_Portal_SpringMVC_XML_CLASS_Config\\src\\main\\java\\com\\epam\\project\" />\r\n    </key>\r\n    <key name=\"CopyClassDialog.RECENTS_KEY\">\r\n      <recent name=\"com.epam.project.config\" />\r\n    </key>\r\n  </component>\r\n  <component name=\"RunManager\">\r\n    <configuration default=\"true\" type=\"JetRunConfigurationType\">\r\n      <module name=\"Spring_MVC_XML_Config\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration default=\"true\" type=\"KotlinStandaloneScriptRunConfigurationType\">\r\n      <module name=\"Spring_MVC_XML_Config\" />\r\n      <option name=\"filePath\" />\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n      </method>\r\n    </configuration>\r\n    <configuration name=\"Tomcat 8.5.85\" type=\"#com.intellij.j2ee.web.tomcat.TomcatRunConfigurationFactory\" factoryName=\"Local\" APPLICATION_SERVER_NAME=\"Tomcat 8.5.85\" ALTERNATIVE_JRE_ENABLED=\"false\" nameIsGenerated=\"true\">\r\n      <option name=\"UPDATING_POLICY\" value=\"restart-server\" />\r\n      <deployment>\r\n        <artifact name=\"Spring_MVC_Class_Config:war exploded\">\r\n          <settings>\r\n            <option name=\"CONTEXT_PATH\" value=\"\" />\r\n          </settings>\r\n        </artifact>\r\n      </deployment>\r\n      <server-settings>\r\n        <option name=\"BASE_DIRECTORY_NAME\" value=\"16c1dd6b-4d8e-4d91-8d38-93e970c361d4\" />\r\n      </server-settings>\r\n      <predefined_log_file enabled=\"true\" id=\"Tomcat\" />\r\n      <predefined_log_file enabled=\"true\" id=\"Tomcat Catalina\" />\r\n      <predefined_log_file id=\"Tomcat Manager\" />\r\n      <predefined_log_file id=\"Tomcat Host Manager\" />\r\n      <predefined_log_file id=\"Tomcat Localhost Access\" />\r\n      <RunnerSettings RunnerId=\"Debug\">\r\n        <option name=\"DEBUG_PORT\" value=\"52386\" />\r\n      </RunnerSettings>\r\n      <ConfigurationWrapper VM_VAR=\"JAVA_OPTS\" RunnerId=\"Cover\">\r\n        <option name=\"USE_ENV_VARIABLES\" value=\"true\" />\r\n        <STARTUP>\r\n          <option name=\"USE_DEFAULT\" value=\"true\" />\r\n          <option name=\"SCRIPT\" value=\"\" />\r\n          <option name=\"VM_PARAMETERS\" value=\"\" />\r\n          <option name=\"PROGRAM_PARAMETERS\" value=\"\" />\r\n        </STARTUP>\r\n        <SHUTDOWN>\r\n          <option name=\"USE_DEFAULT\" value=\"true\" />\r\n          <option name=\"SCRIPT\" value=\"\" />\r\n          <option name=\"VM_PARAMETERS\" value=\"\" />\r\n          <option name=\"PROGRAM_PARAMETERS\" value=\"\" />\r\n        </SHUTDOWN>\r\n      </ConfigurationWrapper>\r\n      <ConfigurationWrapper VM_VAR=\"JAVA_OPTS\" RunnerId=\"Debug\">\r\n        <option name=\"USE_ENV_VARIABLES\" value=\"true\" />\r\n        <STARTUP>\r\n          <option name=\"USE_DEFAULT\" value=\"true\" />\r\n          <option name=\"SCRIPT\" value=\"\" />\r\n          <option name=\"VM_PARAMETERS\" value=\"\" />\r\n          <option name=\"PROGRAM_PARAMETERS\" value=\"\" />\r\n        </STARTUP>\r\n        <SHUTDOWN>\r\n          <option name=\"USE_DEFAULT\" value=\"true\" />\r\n          <option name=\"SCRIPT\" value=\"\" />\r\n          <option name=\"VM_PARAMETERS\" value=\"\" />\r\n          <option name=\"PROGRAM_PARAMETERS\" value=\"\" />\r\n        </SHUTDOWN>\r\n      </ConfigurationWrapper>\r\n      <ConfigurationWrapper VM_VAR=\"JAVA_OPTS\" RunnerId=\"Profile\">\r\n        <option name=\"USE_ENV_VARIABLES\" value=\"true\" />\r\n        <STARTUP>\r\n          <option name=\"USE_DEFAULT\" value=\"true\" />\r\n          <option name=\"SCRIPT\" value=\"\" />\r\n          <option name=\"VM_PARAMETERS\" value=\"\" />\r\n          <option name=\"PROGRAM_PARAMETERS\" value=\"\" />\r\n        </STARTUP>\r\n        <SHUTDOWN>\r\n          <option name=\"USE_DEFAULT\" value=\"true\" />\r\n          <option name=\"SCRIPT\" value=\"\" />\r\n          <option name=\"VM_PARAMETERS\" value=\"\" />\r\n          <option name=\"PROGRAM_PARAMETERS\" value=\"\" />\r\n        </SHUTDOWN>\r\n      </ConfigurationWrapper>\r\n      <ConfigurationWrapper VM_VAR=\"JAVA_OPTS\" RunnerId=\"Run\">\r\n        <option name=\"USE_ENV_VARIABLES\" value=\"true\" />\r\n        <STARTUP>\r\n          <option name=\"USE_DEFAULT\" value=\"true\" />\r\n          <option name=\"SCRIPT\" value=\"\" />\r\n          <option name=\"VM_PARAMETERS\" value=\"\" />\r\n          <option name=\"PROGRAM_PARAMETERS\" value=\"\" />\r\n        </STARTUP>\r\n        <SHUTDOWN>\r\n          <option name=\"USE_DEFAULT\" value=\"true\" />\r\n          <option name=\"SCRIPT\" value=\"\" />\r\n          <option name=\"VM_PARAMETERS\" value=\"\" />\r\n          <option name=\"PROGRAM_PARAMETERS\" value=\"\" />\r\n        </SHUTDOWN>\r\n      </ConfigurationWrapper>\r\n      <method v=\"2\">\r\n        <option name=\"Make\" enabled=\"true\" />\r\n        <option name=\"BuildArtifacts\" enabled=\"true\">\r\n          <artifact name=\"Spring_MVC_Class_Config:war exploded\" />\r\n        </option>\r\n      </method>\r\n    </configuration>\r\n  </component>\r\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\r\n  <component name=\"TaskManager\">\r\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\r\n      <changelist id=\"27bb97ab-c273-40b1-b82b-6c7d81e6f9eb\" name=\"Changes\" comment=\"Added Hibernate configuration\" />\r\n      <created>1679041834742</created>\r\n      <option name=\"number\" value=\"Default\" />\r\n      <option name=\"presentableId\" value=\"Default\" />\r\n      <updated>1679041834742</updated>\r\n      <workItem from=\"1679041835973\" duration=\"316000\" />\r\n      <workItem from=\"1679042171655\" duration=\"9058000\" />\r\n      <workItem from=\"1679217488370\" duration=\"6981000\" />\r\n      <workItem from=\"1679315827535\" duration=\"668000\" />\r\n    </task>\r\n    <task id=\"LOCAL-00001\" summary=\"Added XML configuration\">\r\n      <created>1679042596034</created>\r\n      <option name=\"number\" value=\"00001\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1679042596034</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00002\" summary=\"Added class configuration\">\r\n      <created>1679042855254</created>\r\n      <option name=\"number\" value=\"00002\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00002\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1679042855254</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00003\" summary=\"Added class configuration\">\r\n      <created>1679042980492</created>\r\n      <option name=\"number\" value=\"00003\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00003\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1679042980492</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00004\" summary=\"Added CRUD with List\">\r\n      <created>1679050768218</created>\r\n      <option name=\"number\" value=\"00004\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00004\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1679050768218</updated>\r\n    </task>\r\n    <task id=\"LOCAL-00005\" summary=\"Added Hibernate configuration\">\r\n      <created>1679249778483</created>\r\n      <option name=\"number\" value=\"00005\" />\r\n      <option name=\"presentableId\" value=\"LOCAL-00005\" />\r\n      <option name=\"project\" value=\"LOCAL\" />\r\n      <updated>1679249778483</updated>\r\n    </task>\r\n    <option name=\"localTasksCounter\" value=\"6\" />\r\n    <servers />\r\n  </component>\r\n  <component name=\"TypeScriptGeneratedFilesManager\">\r\n    <option name=\"version\" value=\"3\" />\r\n  </component>\r\n  <component name=\"VcsManagerConfiguration\">\r\n    <MESSAGE value=\"Added XML configuration\" />\r\n    <MESSAGE value=\"Added class configuration\" />\r\n    <MESSAGE value=\"Added CRUD with List\" />\r\n    <MESSAGE value=\"Added Hibernate configuration\" />\r\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"Added Hibernate configuration\" />\r\n  </component>\r\n</project>
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	
++++ b/.idea/workspace.xml	
+@@ -9,84 +9,17 @@
+     <option name="autoReloadType" value="SELECTIVE" />
+   </component>
+   <component name="ChangeListManager">
+-    <list default="true" id="27bb97ab-c273-40b1-b82b-6c7d81e6f9eb" name="Changes" comment="Untracked Files">
+-      <change afterPath="$PROJECT_DIR$/.idea/artifacts/Spring_MVC_XML_Config_war.xml" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/.idea/artifacts/Spring_MVC_XML_Config_war_exploded.xml" afterDir="false" />
+-      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase_[Changes]/shelved.patch" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/19e6e345-d929-4ed3-bd73-e19ccf1f7508.xml" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/19e6e345-d929-4ed3-bd73-e19ccf1f7508/storage_v2/_src_/database/newsdb.kS58wQ.meta" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/19e6e345-d929-4ed3-bd73-e19ccf1f7508/storage_v2/_src_/database/newsdb.kS58wQ/schema/information_schema.FNRwLQ.meta" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/19e6e345-d929-4ed3-bd73-e19ccf1f7508/storage_v2/_src_/database/newsdb.kS58wQ/schema/pg_catalog.0S1ZNQ.meta" beforeDir="false" />
++    <list default="true" id="27bb97ab-c273-40b1-b82b-6c7d81e6f9eb" name="Changes" comment="Added i18n and i10n for Russian language">
+       <change beforePath="$PROJECT_DIR$/.idea/dataSources/1d48e715-3a5b-4533-b917-bb2372c18483.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/1d48e715-3a5b-4533-b917-bb2372c18483.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_3_17_2023_5_32_PM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_3_17_2023_5_32_PM__Changes_.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_3_17_2023_5_35_PM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_3_17_2023_5_35_PM__Changes_.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase__Changes_.xml" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/com/epam/project/config/SpringConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/epam/project/config/SpringConfig.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/java/com/epam/project/config/SpringMVCDispatcherServletInitializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/epam/project/config/SpringMVCDispatcherServletInitializer.java" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/editNews.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/editNews.html" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/index.html" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/newNews.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/newNews.html" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/viewNews.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/viewNews.html" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/target/Spring_MVC_Class_Config.war" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/target/Spring_MVC_Class_Config/META-INF/MANIFEST.MF" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/target/Spring_MVC_Class_Config/WEB-INF/classes/com/epam/project/config/SpringConfig.class" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/target/Spring_MVC_Class_Config/WEB-INF/classes/com/epam/project/config/SpringMVCDispatcherServletInitializer.class" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/target/Spring_MVC_Class_Config/WEB-INF/classes/com/epam/project/controllers/NewsController.class" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/target/Spring_MVC_Class_Config/WEB-INF/classes/com/epam/project/dao/NewsDAO.class" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/target/Spring_MVC_Class_Config/WEB-INF/classes/com/epam/project/models/News.class" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/target/Spring_MVC_Class_Config/WEB-INF/classes/hibernate.properties" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/target/Spring_MVC_Class_Config/WEB-INF/lib/FastInfoset-1.2.15.jar" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/target/Spring_MVC_Class_Config/WEB-INF/lib/antlr-2.7.7.jar" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/target/Spring_MVC_Class_Config/WEB-INF/lib/attoparser-2.0.5.RELEASE.jar" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/target/Spring_MVC_Class_Config/WEB-INF/lib/byte-buddy-1.10.17.jar" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/target/Spring_MVC_Class_Config/WEB-INF/lib/checker-qual-3.5.0.jar" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/target/Spring_MVC_Class_Config/WEB-INF/lib/classmate-1.3.4.jar" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/target/Spring_MVC_Class_Config/WEB-INF/lib/dom4j-2.1.3.jar" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/target/Spring_MVC_Class_Config/WEB-INF/lib/hibernate-commons-annotations-5.1.2.Final.jar" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/target/Spring_MVC_Class_Config/WEB-INF/lib/hibernate-core-5.4.28.Final.jar" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/target/Spring_MVC_Class_Config/WEB-INF/lib/hibernate-validator-6.1.6.Final.jar" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/target/Spring_MVC_Class_Config/WEB-INF/lib/istack-commons-runtime-3.0.7.jar" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/target/Spring_MVC_Class_Config/WEB-INF/lib/jakarta.validation-api-2.0.2.jar" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/target/Spring_MVC_Class_Config/WEB-INF/lib/jandex-2.2.3.Final.jar" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/target/Spring_MVC_Class_Config/WEB-INF/lib/javassist-3.27.0-GA.jar" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/target/Spring_MVC_Class_Config/WEB-INF/lib/javax.activation-api-1.2.0.jar" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/target/Spring_MVC_Class_Config/WEB-INF/lib/javax.persistence-api-2.2.jar" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/target/Spring_MVC_Class_Config/WEB-INF/lib/jaxb-api-2.3.1.jar" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/target/Spring_MVC_Class_Config/WEB-INF/lib/jaxb-runtime-2.3.1.jar" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/target/Spring_MVC_Class_Config/WEB-INF/lib/jboss-logging-3.3.2.Final.jar" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/target/Spring_MVC_Class_Config/WEB-INF/lib/jboss-transaction-api_1.2_spec-1.1.1.Final.jar" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/target/Spring_MVC_Class_Config/WEB-INF/lib/postgresql-42.2.18.jar" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/target/Spring_MVC_Class_Config/WEB-INF/lib/slf4j-api-1.7.25.jar" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/target/Spring_MVC_Class_Config/WEB-INF/lib/spring-aop-5.2.1.RELEASE.jar" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/target/Spring_MVC_Class_Config/WEB-INF/lib/spring-beans-5.2.1.RELEASE.jar" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/target/Spring_MVC_Class_Config/WEB-INF/lib/spring-context-5.2.1.RELEASE.jar" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/target/Spring_MVC_Class_Config/WEB-INF/lib/spring-core-5.2.1.RELEASE.jar" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/target/Spring_MVC_Class_Config/WEB-INF/lib/spring-expression-5.2.1.RELEASE.jar" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/target/Spring_MVC_Class_Config/WEB-INF/lib/spring-jcl-5.2.1.RELEASE.jar" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/target/Spring_MVC_Class_Config/WEB-INF/lib/spring-jdbc-5.2.1.RELEASE.jar" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/target/Spring_MVC_Class_Config/WEB-INF/lib/spring-orm-5.2.1.RELEASE.jar" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/target/Spring_MVC_Class_Config/WEB-INF/lib/spring-tx-5.2.1.RELEASE.jar" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/target/Spring_MVC_Class_Config/WEB-INF/lib/spring-web-5.2.1.RELEASE.jar" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/target/Spring_MVC_Class_Config/WEB-INF/lib/spring-webmvc-5.2.1.RELEASE.jar" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/target/Spring_MVC_Class_Config/WEB-INF/lib/stax-ex-1.8.jar" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/target/Spring_MVC_Class_Config/WEB-INF/lib/thymeleaf-3.0.11.RELEASE.jar" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/target/Spring_MVC_Class_Config/WEB-INF/lib/thymeleaf-spring5-3.0.11.RELEASE.jar" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/target/Spring_MVC_Class_Config/WEB-INF/lib/txw2-2.3.1.jar" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/target/Spring_MVC_Class_Config/WEB-INF/lib/unbescape-1.1.6.RELEASE.jar" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/target/Spring_MVC_Class_Config/WEB-INF/views/editNews.html" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/target/Spring_MVC_Class_Config/WEB-INF/views/index.html" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/target/Spring_MVC_Class_Config/WEB-INF/views/newNews.html" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/target/Spring_MVC_Class_Config/WEB-INF/views/viewNews.html" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/target/classes/com/epam/project/config/SpringConfig.class" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/target/classes/com/epam/project/config/SpringMVCDispatcherServletInitializer.class" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/target/classes/com/epam/project/controllers/NewsController.class" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/target/classes/com/epam/project/dao/NewsDAO.class" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/target/classes/com/epam/project/models/News.class" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" />
+-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" />
++      <change beforePath="$PROJECT_DIR$/target/Spring_MVC_Class_Config/WEB-INF/classes/com/epam/project/config/SpringConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/Spring_MVC_Class_Config/WEB-INF/classes/com/epam/project/config/SpringConfig.class" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/target/Spring_MVC_Class_Config/WEB-INF/classes/com/epam/project/config/SpringMVCDispatcherServletInitializer.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/Spring_MVC_Class_Config/WEB-INF/classes/com/epam/project/config/SpringMVCDispatcherServletInitializer.class" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/target/Spring_MVC_Class_Config/WEB-INF/views/editNews.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/Spring_MVC_Class_Config/WEB-INF/views/editNews.html" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/target/Spring_MVC_Class_Config/WEB-INF/views/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/Spring_MVC_Class_Config/WEB-INF/views/index.html" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/target/Spring_MVC_Class_Config/WEB-INF/views/newNews.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/Spring_MVC_Class_Config/WEB-INF/views/newNews.html" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/target/Spring_MVC_Class_Config/WEB-INF/views/viewNews.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/Spring_MVC_Class_Config/WEB-INF/views/viewNews.html" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/target/classes/com/epam/project/config/SpringConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/epam/project/config/SpringConfig.class" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/target/classes/com/epam/project/config/SpringMVCDispatcherServletInitializer.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/epam/project/config/SpringMVCDispatcherServletInitializer.class" afterDir="false" />
+     </list>
+     <option name="SHOW_DIALOG" value="false" />
+     <option name="HIGHLIGHT_CONFLICTS" value="true" />
+@@ -131,31 +64,31 @@
+   <component name="ProjectViewState">
+     <option name="showLibraryContents" value="true" />
+   </component>
+-  <component name="PropertiesComponent"><![CDATA[{
+-  "keyToString": {
+-    "DefaultHtmlFileTemplate": "HTML File",
+-    "RunOnceActivity.OpenProjectViewOnStart": "true",
+-    "RunOnceActivity.ShowReadmeOnStart": "true",
+-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+-    "WebServerToolWindowFactoryState": "false",
+-    "last_opened_file_path": "D:/EPAM_LAB/GitHub_resource/News_Portal/News_Portal_SpringMVC_XML_CLASS_Config/src/main/resources",
+-    "node.js.detected.package.eslint": "true",
+-    "node.js.detected.package.tslint": "true",
+-    "node.js.selected.package.eslint": "(autodetect)",
+-    "node.js.selected.package.tslint": "(autodetect)",
+-    "project.structure.last.edited": "Artifacts",
+-    "project.structure.proportion": "0.15",
+-    "project.structure.side.proportion": "0.3218391",
+-    "settings.editor.selected.configurable": "preferences.lookFeel",
+-    "spring.configuration.checksum": "831c09b6972220f7cbb85219b71c0316",
+-    "vue.rearranger.settings.migration": "true"
++  <component name="PropertiesComponent">{
++  &quot;keyToString&quot;: {
++    &quot;DefaultHtmlFileTemplate&quot;: &quot;HTML File&quot;,
++    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
++    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
++    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
++    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
++    &quot;last_opened_file_path&quot;: &quot;D:/EPAM_LAB/GitHub_resource/News_Portal/News_Portal_SpringMVC_XML_CLASS_Config/src/main/resources&quot;,
++    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
++    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
++    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
++    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
++    &quot;project.structure.last.edited&quot;: &quot;Artifacts&quot;,
++    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
++    &quot;project.structure.side.proportion&quot;: &quot;0.3218391&quot;,
++    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;,
++    &quot;spring.configuration.checksum&quot;: &quot;831c09b6972220f7cbb85219b71c0316&quot;,
++    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+   },
+-  "keyToStringList": {
+-    "DatabaseDriversLRU": [
+-      "postgresql"
++  &quot;keyToStringList&quot;: {
++    &quot;DatabaseDriversLRU&quot;: [
++      &quot;postgresql&quot;
+     ]
+   }
+-}]]></component>
++}</component>
+   <component name="RecentsManager">
+     <key name="CopyFile.RECENT_KEYS">
+       <recent name="D:\EPAM_LAB\GitHub_resource\News_Portal\News_Portal_SpringMVC_XML_CLASS_Config\src\main\resources" />
+@@ -282,6 +215,7 @@
+       <workItem from="1679042171655" duration="9058000" />
+       <workItem from="1679217488370" duration="6981000" />
+       <workItem from="1679315827535" duration="668000" />
++      <workItem from="1679424927590" duration="47000" />
+     </task>
+     <task id="LOCAL-00001" summary="Added XML configuration">
+       <created>1679042596034</created>
+@@ -318,7 +252,14 @@
+       <option name="project" value="LOCAL" />
+       <updated>1679249778483</updated>
+     </task>
+-    <option name="localTasksCounter" value="6" />
++    <task id="LOCAL-00006" summary="Added i18n and i10n for Russian language">
++      <created>1679424872170</created>
++      <option name="number" value="00006" />
++      <option name="presentableId" value="LOCAL-00006" />
++      <option name="project" value="LOCAL" />
++      <updated>1679424872170</updated>
++    </task>
++    <option name="localTasksCounter" value="7" />
+     <servers />
+   </component>
+   <component name="TypeScriptGeneratedFilesManager">
+@@ -329,6 +270,7 @@
+     <MESSAGE value="Added class configuration" />
+     <MESSAGE value="Added CRUD with List" />
+     <MESSAGE value="Added Hibernate configuration" />
+-    <option name="LAST_COMMIT_MESSAGE" value="Added Hibernate configuration" />
++    <MESSAGE value="Added i18n and i10n for Russian language" />
++    <option name="LAST_COMMIT_MESSAGE" value="Added i18n and i10n for Russian language" />
+   </component>
+ </project>
+\ No newline at end of file
+Index: target/Spring_MVC_Class_Config/WEB-INF/views/editNews.html
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><!DOCTYPE html>\r\n<html lang=\"en\" xmlns:th=\"http://thymeleaf.org\">\r\n<head>\r\n    <meta charset=\"UTF-8\">\r\n    <title>Edit News</title>\r\n    <link href=\"https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css\" rel=\"stylesheet\"\r\n          integrity=\"sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC\" crossorigin=\"anonymous\">\r\n</head>\r\n<body>\r\n<div class=\"container border border-dark border-3 border-bottom-0\">\r\n    <nav class=\"row\">\r\n        <div class=\"col-6\">\r\n            <h1>News Management</h1>\r\n        </div>\r\n        <div class=\"col-6 d-flex justify-content-end\">\r\n            <a href=\"/?language=en\">English</a>&nbsp;\r\n            <a href=\"/?language=ru\">Russian</a>\r\n        </div>\r\n    </nav>\r\n</div>\r\n<div class=\"container border border-dark border-3\">\r\n    <div class=\"row p-1\">\r\n        <div class=\"col-2  border border-light border-2 mx-2 bg-light\">\r\n            <h5 align=\"center\" class=\"bg-secondary text-white\">News</h5>\r\n            <div class=\"bg-white pt-2 pb-2\">\r\n                <ul>\r\n                    <li><a href=\"/\">News List</a></li>\r\n                    <li><a href=\"/news/new\">Add News</a></li>\r\n                </ul>\r\n            </div>\r\n        </div>\r\n        <div class=\"col\">\r\n            <nav style=\"--bs-breadcrumb-divider: '>>';\" aria-label=\"breadcrumb\">\r\n                <ol class=\"breadcrumb\">\r\n                    <li class=\"breadcrumb-item\"><a href=\"#\">News</a></li>\r\n                    <li class=\"breadcrumb-item active\" aria-current=\"page\">Add News</li>\r\n                </ol>\r\n            </nav>\r\n            <form th:method=\"PATCH\" th:action=\"@{/news/{id}(id=${newsPage.getId()})}\" th:object=\"${newsPage}\">\r\n                <div class=\"row\">\r\n                    <div class=\"col-2\">\r\n                        <label for=\"newsTitle\">News Title</label>\r\n                    </div>\r\n                    <div class=\"input-group mb-3 col\">\r\n                        <input type=\"text\" class=\"form-control\" th:field=\"*{newsTitle}\" id=\"newsTitle\">\r\n                        <div style=\"color: red\" th:if=\"${#fields.hasErrors('newsTitle')}\" th:errors=\"*{newsTitle}\">News\r\n                            date\r\n                            error\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n                <br>\r\n                <div class=\"row\">\r\n                    <div class=\" col-2\">\r\n                        <label for=\"newsDate\">News Date</label>\r\n                    </div>\r\n                    <div class=\"col-3\">\r\n                        <input class=\"form-control\" type=\"text\" th:field=\"*{newsDate}\" id=\"newsDate\">\r\n                        <div style=\"color: red\" th:if=\"${#fields.hasErrors('newsDate')}\" th:errors=\"*{newsDate}\">News\r\n                            title\r\n                            error\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n                <br>\r\n                <div class=\"row\">\r\n                    <div class=\"col-2\">\r\n                        <label for=\"content\">Brief</label>\r\n                    </div>\r\n                    <div class=\"form-floating col\">\r\n                            <textarea class=\"form-control\" type=\"text\" th:field=\"*{brief}\" id=\"brief\"\r\n                                      rows=\"6\"></textarea>\r\n                        <div style=\"color: red\" th:if=\"${#fields.hasErrors('brief')}\" th:errors=\"*{brief}\">\r\n                            Content error\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n                <br>\r\n                <div class=\"row\">\r\n                    <div class=\"col-2\">\r\n                        <label for=\"content\">Content</label>\r\n                    </div>\r\n                    <div class=\"form-floating col\">\r\n                            <textarea class=\"form-control\" type=\"text\" th:field=\"*{content}\" id=\"content\"\r\n                                      rows=\"6\"></textarea>\r\n                        <div style=\"color: red\" th:if=\"${#fields.hasErrors('content')}\" th:errors=\"*{content}\">\r\n                            Content error\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n                <br>\r\n                <input type=\"submit\" class=\"btn btn-outline-primary\" value=\"SAVE\">\r\n                <input type=\"submit\" class=\"btn btn-outline-primary\" href=\"index\" value=\"CANCEL\">\r\n            </form>\r\n        </div>\r\n    </div>\r\n</div>\r\n<div class=\"container border border-dark border-3 border-top-0 d-flex justify-content-center\">\r\n    <p class=\"m-0 p-0\">Copyright EPAM 2008. All rights reserved.</p>\r\n</div>\r\n</body>\r\n</html>
+===================================================================
+diff --git a/target/Spring_MVC_Class_Config/WEB-INF/views/editNews.html b/target/Spring_MVC_Class_Config/WEB-INF/views/editNews.html
+--- a/target/Spring_MVC_Class_Config/WEB-INF/views/editNews.html	
++++ b/target/Spring_MVC_Class_Config/WEB-INF/views/editNews.html	
+@@ -2,7 +2,7 @@
+ <html lang="en" xmlns:th="http://thymeleaf.org">
+ <head>
+     <meta charset="UTF-8">
+-    <title>Edit News</title>
++    <title data-th-text="#{label.edit.news}">Edit News</title>
+     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+           integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+ </head>
+@@ -10,36 +10,40 @@
+ <div class="container border border-dark border-3 border-bottom-0">
+     <nav class="row">
+         <div class="col-6">
+-            <h1>News Management</h1>
++            <h1 data-th-text="#{label.header}">News Management</h1>
+         </div>
+         <div class="col-6 d-flex justify-content-end">
+-            <a href="/?language=en">English</a>&nbsp;
+-            <a href="/?language=ru">Russian</a>
++            <a href="/?language=en" data-th-text="#{label.lang.en}">English</a>&nbsp;
++            <a href="/?language=ru" data-th-text="#{label.lang.ru}">Russian</a>
+         </div>
+     </nav>
+ </div>
++
+ <div class="container border border-dark border-3">
+     <div class="row p-1">
+         <div class="col-2  border border-light border-2 mx-2 bg-light">
+-            <h5 align="center" class="bg-secondary text-white">News</h5>
++            <h5  align="center" class="bg-secondary text-white" data-th-text="#{label.news}">News</h5>
+             <div class="bg-white pt-2 pb-2">
+                 <ul>
+-                    <li><a href="/">News List</a></li>
+-                    <li><a href="/news/new">Add News</a></li>
++                    <li><a href="/" data-th-text="#{label.news.list}">News List</a></li>
++                    <li><a href="/news/new" data-th-text="#{label.add.news}">Add News</a></li>
+                 </ul>
+             </div>
+         </div>
++
+         <div class="col">
+             <nav style="--bs-breadcrumb-divider: '>>';" aria-label="breadcrumb">
+                 <ol class="breadcrumb">
+-                    <li class="breadcrumb-item"><a href="#">News</a></li>
+-                    <li class="breadcrumb-item active" aria-current="page">Add News</li>
++                    <li class="breadcrumb-item"><a href="#" data-th-text="#{label.news}">News</a></li>
++                    <li class="breadcrumb-item active" aria-current="page" data-th-text="#{label.add.news}">Add News</li>
+                 </ol>
+             </nav>
++
+             <form th:method="PATCH" th:action="@{/news/{id}(id=${newsPage.getId()})}" th:object="${newsPage}">
++
+                 <div class="row">
+                     <div class="col-2">
+-                        <label for="newsTitle">News Title</label>
++                        <label for="newsTitle" data-th-text="#{label.news.title}">News Title</label>
+                     </div>
+                     <div class="input-group mb-3 col">
+                         <input type="text" class="form-control" th:field="*{newsTitle}" id="newsTitle">
+@@ -49,10 +53,11 @@
+                         </div>
+                     </div>
+                 </div>
++
+                 <br>
+                 <div class="row">
+                     <div class=" col-2">
+-                        <label for="newsDate">News Date</label>
++                        <label for="newsDate" data-th-text="#{label.news.date}">News Date</label>
+                     </div>
+                     <div class="col-3">
+                         <input class="form-control" type="text" th:field="*{newsDate}" id="newsDate">
+@@ -62,10 +67,11 @@
+                         </div>
+                     </div>
+                 </div>
++
+                 <br>
+                 <div class="row">
+                     <div class="col-2">
+-                        <label for="content">Brief</label>
++                        <label for="content" data-th-text="#{label.brief}">Brief</label>
+                     </div>
+                     <div class="form-floating col">
+                             <textarea class="form-control" type="text" th:field="*{brief}" id="brief"
+@@ -75,10 +81,11 @@
+                         </div>
+                     </div>
+                 </div>
++
+                 <br>
+                 <div class="row">
+                     <div class="col-2">
+-                        <label for="content">Content</label>
++                        <label for="content" data-th-text="#{label.content}">Content</label>
+                     </div>
+                     <div class="form-floating col">
+                             <textarea class="form-control" type="text" th:field="*{content}" id="content"
+@@ -88,15 +95,5 @@
+                         </div>
+                     </div>
+                 </div>
+-                <br>
+-                <input type="submit" class="btn btn-outline-primary" value="SAVE">
+-                <input type="submit" class="btn btn-outline-primary" href="index" value="CANCEL">
+-            </form>
+-        </div>
+-    </div>
+-</div>
+-<div class="container border border-dark border-3 border-top-0 d-flex justify-content-center">
+-    <p class="m-0 p-0">Copyright EPAM 2008. All rights reserved.</p>
+-</div>
+-</body>
+-</html>
+\ No newline at end of file
++
++                <
+\ No newline at end of file

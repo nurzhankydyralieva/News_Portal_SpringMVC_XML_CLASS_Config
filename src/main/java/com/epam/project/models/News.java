@@ -16,13 +16,13 @@ public class News {
     private int id;
     @NotEmpty(message = "News Title should not be empty")
     @Size(min = 10, max = 50, message = "News Title should be between 10 to 200 characters")
-    @Column(name = "news_title")
+    @Column(name = "newsTitle")
     private String newsTitle;
     @Temporal(TemporalType.DATE)
     @DateTimeFormat(pattern = "dd/MM/yyyy")
-    @Column(name = "news_date")
+    @Column(name = "newsDate")
     private Date newsDate;
-    @Column(name = "created_at")
+    @Column(name = "createdAt")
     @Temporal(TemporalType.TIMESTAMP)
     private Date createdAt;
     @NotEmpty(message = "Brief should not be empty")

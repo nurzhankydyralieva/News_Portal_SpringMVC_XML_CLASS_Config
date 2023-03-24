@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>New news</title>
+    <title data-th-text="#{label.new.news}">New news</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 </head>
@@ -10,36 +10,38 @@
 <div class="container border border-dark border-3 border-bottom-0">
     <nav class="row">
         <div class="col-6">
-            <h1>News Management</h1>
+            <h1 data-th-text="#{label.header}">News Management</h1>
         </div>
         <div class="col-6 d-flex justify-content-end">
-            <a href="/?language=en">English</a>&nbsp;
-            <a href="/?language=ru">Russian</a>
+            <a href="/?language=en" data-th-text="#{label.lang.en}">English</a>&nbsp;
+            <a href="/?language=ru" data-th-text="#{label.lang.ru}">Russian</a>
         </div>
     </nav>
 </div>
+
 <div class="container border border-dark border-3">
     <div class="row p-1">
         <div class="col-2  border border-light border-2 mx-2 bg-light">
-            <h5 align="center" class="bg-secondary text-white">News</h5>
+            <h5 align="center" class="bg-secondary text-white" data-th-text="#{label.news}">News</h5>
             <div class="bg-white pt-2 pb-2">
                 <ul>
-                    <li><a href="/">News List</a></li>
-                    <li><a href="/news/new">Add News</a></li>
+                    <li><a href="/" data-th-text="#{label.news.list}">News List</a></li>
+                    <li><a href="/news/new" data-th-text="#{label.add.news}">Add News</a></li>
                 </ul>
             </div>
         </div>
         <div class="col">
             <nav style="--bs-breadcrumb-divider: '>>';" aria-label="breadcrumb">
                 <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="#">News</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Add News</li>
+                    <li class="breadcrumb-item"><a href="#" data-th-text="#{label.news}">News</a></li>
+                    <li class="breadcrumb-item active" aria-current="page" data-th-text="#{label.add.news}">Add News</li>
                 </ol>
             </nav>
+
             <form th:method="POST" th:action="@{/news}" th:object="${newsPage}">
                 <div class="row">
                     <div class="col-2">
-                        <label for="newsTitle" >News Title</label>
+                        <label for="newsTitle" data-th-text="#{label.news.title}">News Title</label>
                     </div>
                     <div class="input-group mb-3 col">
                         <input type="text" class="form-control" th:field="*{newsTitle}" id="newsTitle">
@@ -50,9 +52,10 @@
                     </div>
                 </div>
                 <br>
+
                 <div class="row">
                     <div class=" col-2">
-                        <label for="newsDate" >News Date</label>
+                        <label for="newsDate" data-th-text="#{label.news.date}">News Date</label>
                     </div>
                     <div class="col-3">
                         <input class="form-control" type="text" th:field="*{newsDate}" id="newsDate">
@@ -62,10 +65,11 @@
                         </div>
                     </div>
                 </div>
+
                 <br>
                 <div class="row">
                     <div class="col-2">
-                        <label for="content" >Brief</label>
+                        <label for="content" data-th-text="#{label.brief}">Brief</label>
                     </div>
                     <div class="form-floating col">
                             <textarea class="form-control" type="text" th:field="*{brief}" id="brief"
@@ -76,9 +80,10 @@
                     </div>
                 </div>
                 <br>
+
                 <div class="row">
                     <div class="col-2">
-                        <label for="content">Content</label>
+                        <label for="content" data-th-text="#{label.content}">Content</label>
                     </div>
                     <div class="form-floating col">
                             <textarea class="form-control" type="text" th:field="*{content}" id="content"
@@ -93,16 +98,17 @@
                     <div class="px-2">
                         <input type="submit" class="btn btn-outline-primary" value="SAVE">
                     </div>
-                    <div>
-                        <input type="submit" class="btn btn-outline-primary" href="index" value="CANCEL">
-                    </div>
+                    <a href="/">
+                        <input type="button" class="btn btn-outline-primary" value="CANCEL">
+                    </a>
                 </div>
             </form>
+
         </div>
     </div>
 </div>
 <div class="container border border-dark border-3 border-top-0 d-flex justify-content-center">
-    <p class="m-0 p-0">Copyright EPAM 2008. All rights reserved.</p>
+    <p class="m-0 p-0"  data-th-text="#{label.copyright}">Copyright EPAM 2008. All rights reserved.</p>
 </div>
 </body>
 </html>

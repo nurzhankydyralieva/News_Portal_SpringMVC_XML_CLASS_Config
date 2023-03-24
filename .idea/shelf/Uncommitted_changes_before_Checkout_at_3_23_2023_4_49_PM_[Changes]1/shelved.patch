@@ -1,0 +1,478 @@
+Index: target/Spring_MVC_Class_Config/META-INF/MANIFEST.MF
+===================================================================
+diff --git a/target/Spring_MVC_Class_Config/META-INF/MANIFEST.MF b/target/Spring_MVC_Class_Config/META-INF/MANIFEST.MF
+deleted file mode 100644
+--- a/target/Spring_MVC_Class_Config/META-INF/MANIFEST.MF	(revision 4fdeb9c292d729c2093f0a48e7eab66f7fbea936)
++++ /dev/null	(revision 4fdeb9c292d729c2093f0a48e7eab66f7fbea936)
+@@ -1,5 +0,0 @@
+-Manifest-Version: 1.0
+-Created-By: IntelliJ IDEA
+-Built-By: Nurzhan
+-Build-Jdk: 19.0.2
+-
+Index: target/Spring_MVC_Class_Config/WEB-INF/views/viewNews.html
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><!DOCTYPE html>\r\n<html lang=\"en\" xmlns:th=\"http://thymeleaf.org\">\r\n<head>\r\n    <meta charset=\"UTF-8\">\r\n    <title>News</title>\r\n    <link href=\"https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css\" rel=\"stylesheet\"\r\n          integrity=\"sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC\" crossorigin=\"anonymous\">\r\n</head>\r\n<body>\r\n<div class=\"container border border-dark border-3 border-bottom-0\">\r\n    <nav class=\"row\">\r\n        <div class=\"col-6\">\r\n            <h1>News Management</h1>\r\n        </div>\r\n        <div class=\"col-6 d-flex justify-content-end\">\r\n            <a href=\"/?language=en\">English</a>&nbsp;\r\n            <a href=\"/?language=ru\">Russian</a>\r\n        </div>\r\n    </nav>\r\n</div>\r\n<div class=\"container border border-dark border-3\">\r\n    <div class=\"row p-1\">\r\n        <div class=\"col-2  border border-light border-2 mx-2 bg-light\">\r\n            <h5 align=\"center\" class=\"bg-secondary text-white\">News</h5>\r\n            <div class=\"bg-white pt-2 pb-2\">\r\n                <ul>\r\n                    <li><a href=\"/\">News List</a></li>\r\n                    <li><a href=\"/news/new\">Add News</a></li>\r\n                </ul>\r\n            </div>\r\n        </div>\r\n        <div class=\"col\">\r\n            <div style=\"--bs-breadcrumb-divider: '>>';\" aria-label=\"breadcrumb\">\r\n                <ol class=\"breadcrumb\">\r\n                    <li class=\"breadcrumb-item\"><a>News</a></li>\r\n                    <li class=\"breadcrumb-item active\" aria-current=\"page\">News View</li>\r\n                </ol>\r\n            </div>\r\n            <div class=\"row\">\r\n                <div class=\"col-2\">\r\n                    <label for=\"newsTitle\">News Title</label>\r\n                </div>\r\n                <div class=\"col\">\r\n                    <p type=\"text\" th:text=\"${newsPage.getNewsTitle()}\" id=\"newsTitle\">News Title</p>\r\n                </div>\r\n            </div>\r\n            <br>\r\n            <div class=\"row\">\r\n                <div class=\" col-2\">\r\n                    <label for=\"newsDate\">News Date</label>\r\n                </div>\r\n                <div class=\"col-3\">\r\n                    <p type=\"text\" id=\"newsDate\" th:text=\"${newsPage.getNewsDate()}\">News Date</p>\r\n                </div>\r\n            </div>\r\n            <br>\r\n            <div class=\"row\">\r\n                <div class=\"col-2\">\r\n                    <label for=\"brief\">Brief</label>\r\n                </div>\r\n                <div class=\"col-9\">\r\n                    <p type=\"text\" id=\"brief\" th:text=\"${newsPage.getBrief()}\"></p>\r\n                </div>\r\n            </div>\r\n            <br>\r\n            <div class=\"row\">\r\n                <div class=\"col-2\">\r\n                    <label for=\"content\">Content</label>\r\n                </div>\r\n                <div class=\"col-9\">\r\n                    <p type=\"text\" id=\"content\" th:text=\"${newsPage.getContent()}\"></p>\r\n                </div>\r\n            </div>\r\n            <div class=\"row pb-5 pt-5 mb-5\">\r\n                <div class=\"col-10 d-flex justify-content-end\">\r\n                    <a type=\"button\" class=\"btn btn-outline-primary\"\r\n                       th:href=\"@{/news/{id}/edit(id=${newsPage.getId()})}\">EDIT</a>\r\n                </div>\r\n                <div class=\"col\">\r\n                    <form th:method=\"DELETE\" th:action=\"@{/news/{id}(id=${newsPage.getId()})}\">\r\n                        <input type=\"submit\" class=\"btn btn-outline-primary\" value=\"DELETE\">\r\n                    </form>\r\n                </div>\r\n            </div>\r\n        </div>\r\n    </div>\r\n</div>\r\n<div class=\"container border border-dark border-3 border-top-0 d-flex justify-content-center\">\r\n    <p class=\"m-0 p-0\">Copyright EPAM 2008. All rights reserved.</p>\r\n</div>\r\n</body>\r\n</html>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/target/Spring_MVC_Class_Config/WEB-INF/views/viewNews.html b/target/Spring_MVC_Class_Config/WEB-INF/views/viewNews.html
+--- a/target/Spring_MVC_Class_Config/WEB-INF/views/viewNews.html	(revision 4fdeb9c292d729c2093f0a48e7eab66f7fbea936)
++++ b/target/Spring_MVC_Class_Config/WEB-INF/views/viewNews.html	(date 1679568557256)
+@@ -2,7 +2,7 @@
+ <html lang="en" xmlns:th="http://thymeleaf.org">
+ <head>
+     <meta charset="UTF-8">
+-    <title>News</title>
++    <title data-th-text="#{label.news}">News</title>
+     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+           integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+ </head>
+@@ -10,35 +10,36 @@
+ <div class="container border border-dark border-3 border-bottom-0">
+     <nav class="row">
+         <div class="col-6">
+-            <h1>News Management</h1>
++            <h1 data-th-text="#{label.header}">News Management</h1>
+         </div>
+         <div class="col-6 d-flex justify-content-end">
+-            <a href="/?language=en">English</a>&nbsp;
+-            <a href="/?language=ru">Russian</a>
++            <a href="/?language=en" data-th-text="#{label.lang.en}">English</a>&nbsp;
++            <a href="/?language=ru" data-th-text="#{label.lang.ru}">Russian</a>
+         </div>
+     </nav>
+ </div>
++
+ <div class="container border border-dark border-3">
+     <div class="row p-1">
+         <div class="col-2  border border-light border-2 mx-2 bg-light">
+-            <h5 align="center" class="bg-secondary text-white">News</h5>
++            <h5 align="center" class="bg-secondary text-white" data-th-text="#{label.news}">News</h5>
+             <div class="bg-white pt-2 pb-2">
+                 <ul>
+-                    <li><a href="/">News List</a></li>
+-                    <li><a href="/news/new">Add News</a></li>
++                    <li><a href="/" data-th-text="#{label.news.list}">News List</a></li>
++                    <li><a href="/news/new" data-th-text="#{label.add.news}">Add News</a></li>
+                 </ul>
+             </div>
+         </div>
+         <div class="col">
+             <div style="--bs-breadcrumb-divider: '>>';" aria-label="breadcrumb">
+                 <ol class="breadcrumb">
+-                    <li class="breadcrumb-item"><a>News</a></li>
+-                    <li class="breadcrumb-item active" aria-current="page">News View</li>
++                    <li class="breadcrumb-item"><a href="#" data-th-text="#{label.news}">News</a></li>
++                    <li class="breadcrumb-item active" aria-current="page" data-th-text="#{label.news.view}">News View</li>
+                 </ol>
+             </div>
+             <div class="row">
+                 <div class="col-2">
+-                    <label for="newsTitle">News Title</label>
++                    <label for="newsTitle" data-th-text="#{label.news.title}">News Title</label>
+                 </div>
+                 <div class="col">
+                     <p type="text" th:text="${newsPage.getNewsTitle()}" id="newsTitle">News Title</p>
+@@ -47,7 +48,7 @@
+             <br>
+             <div class="row">
+                 <div class=" col-2">
+-                    <label for="newsDate">News Date</label>
++                    <label for="newsDate" data-th-text="#{label.news.date}">News Date</label>
+                 </div>
+                 <div class="col-3">
+                     <p type="text" id="newsDate" th:text="${newsPage.getNewsDate()}">News Date</p>
+@@ -56,7 +57,7 @@
+             <br>
+             <div class="row">
+                 <div class="col-2">
+-                    <label for="brief">Brief</label>
++                    <label for="brief" data-th-text="#{label.brief}">Brief</label>
+                 </div>
+                 <div class="col-9">
+                     <p type="text" id="brief" th:text="${newsPage.getBrief()}"></p>
+@@ -65,16 +66,17 @@
+             <br>
+             <div class="row">
+                 <div class="col-2">
+-                    <label for="content">Content</label>
++                    <label for="content" data-th-text="#{label.content}">Content</label>
+                 </div>
+                 <div class="col-9">
+                     <p type="text" id="content" th:text="${newsPage.getContent()}"></p>
+                 </div>
+             </div>
++
+             <div class="row pb-5 pt-5 mb-5">
+                 <div class="col-10 d-flex justify-content-end">
+                     <a type="button" class="btn btn-outline-primary"
+-                       th:href="@{/news/{id}/edit(id=${newsPage.getId()})}">EDIT</a>
++                       th:href="@{/news/{id}/edit(id=${newsPage.getId()})}" data-th-text="#{label.edit}">EDIT</a>
+                 </div>
+                 <div class="col">
+                     <form th:method="DELETE" th:action="@{/news/{id}(id=${newsPage.getId()})}">
+@@ -82,11 +84,12 @@
+                     </form>
+                 </div>
+             </div>
++
+         </div>
+     </div>
+ </div>
+ <div class="container border border-dark border-3 border-top-0 d-flex justify-content-center">
+-    <p class="m-0 p-0">Copyright EPAM 2008. All rights reserved.</p>
++    <p class="m-0 p-0"  data-th-text="#{label.copyright}">Copyright EPAM 2008. All rights reserved.</p>
+ </div>
+ </body>
+ </html>
+\ No newline at end of file
+Index: target/Spring_MVC_Class_Config/WEB-INF/views/index.html
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><!DOCTYPE html>\r\n<html lang=\"en\" xmlns:th=\"http://thymeleaf.org\" xmlns=\"http://www.w3.org/1999/xhtml\">\r\n<head>\r\n    <meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\"/>\r\n    <title>All news</title>\r\n    <link href=\"https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css\" rel=\"stylesheet\"\r\n          integrity=\"sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC\" crossorigin=\"anonymous\">\r\n</head>\r\n<body>\r\n<div class=\"container border border-dark border-3 border-bottom-0\">\r\n    <nav class=\"row\">\r\n        <div class=\"col-6\">\r\n            <h1>News Management</h1>\r\n        </div>\r\n        <div class=\"col-6 d-flex justify-content-end\">\r\n            <a href=\"/?language=en\">English</a>&nbsp;\r\n            <a href=\"/?language=ru\">Russian</a>\r\n        </div>\r\n    </nav>\r\n</div>\r\n<div class=\"container border border-dark border-3\">\r\n    <div class=\"row p-1\">\r\n        <div class=\"col-2  border border-light border-2 mx-2 bg-light\">\r\n            <h5 align=\"center\" class=\"bg-secondary text-white\">News</h5>\r\n            <div class=\"bg-white pt-2 pb-2\">\r\n                <ul>\r\n                    <li><a href=\"#\">News List</a></li>\r\n                    <li><a href=\"/news/new\">Add News</a></li>\r\n                </ul>\r\n            </div>\r\n        </div>\r\n        <div class=\"col-9  border border-light border-2\">\r\n            <nav style=\"--bs-breadcrumb-divider: '>>';\" aria-label=\"breadcrumb\">\r\n                <ol class=\"breadcrumb\">\r\n                    <li class=\"breadcrumb-item\"><a href=\"#\">News</a></li>\r\n                    <li class=\"breadcrumb-item active\" aria-current=\"page\">News List\r\n                    </li>\r\n                </ol>\r\n            </nav>\r\n            <div class=\"row pb-5\" th:each=\"newsPage : ${news}\">\r\n                <div class=\"col-10\">\r\n                    <h6 class=\"pb-1\">News Title</h6>\r\n                    <p class=\"pb-2\" th:text=\"${newsPage.getNewsTitle()}\">News title</p>\r\n                    <h6 class=\"pb-1\">Brief</h6>\r\n                    <p th:text=\"${newsPage.getBrief()}\">Brief</p>\r\n                </div>\r\n                <div class=\"col\">\r\n                    <p th:text=\"${newsPage.getNewsDate()}\">News date</p>\r\n                    <div class=\"row\">\r\n                        <div class=\"col\">\r\n                            <a th:href=\"@{/news/{id}(id=${newsPage.getId()})}\">View</a>\r\n                        </div>\r\n                        <div class=\"col\">\r\n                            <a th:href=\"@{/news/{id}(id=${newsPage.getId()})}\">Edit</a>\r\n                        </div>\r\n                        <div class=\"col\">\r\n                            <label class=\"form-check-label\" for=\"flexCheckDefault\"></label>\r\n                            <input class=\"form-check-input\" type=\"checkbox\" value=\"\" id=\"flexCheckDefault\">\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n                <div class=\"d-flex justify-content-end\">\r\n                    <form th:method=\"DELETE\" th:action=\"@{/news/{id}(id=${newsPage.getId()})}\">\r\n                        <input type=\"submit\" class=\"btn btn-outline-primary\" value=\"DELETE\">\r\n                    </form>\r\n                </div>\r\n            </div>\r\n\r\n        </div>\r\n    </div>\r\n</div>\r\n</div>\r\n<div class=\"container border border-dark border-3 border-top-0 d-flex justify-content-center\">\r\n    <p class=\"m-0 p-0\">Copyright EPAM 2008. All rights reserved.</p>\r\n</div>\r\n</body>\r\n</html>\r\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/target/Spring_MVC_Class_Config/WEB-INF/views/index.html b/target/Spring_MVC_Class_Config/WEB-INF/views/index.html
+--- a/target/Spring_MVC_Class_Config/WEB-INF/views/index.html	(revision 4fdeb9c292d729c2093f0a48e7eab66f7fbea936)
++++ b/target/Spring_MVC_Class_Config/WEB-INF/views/index.html	(date 1679568557284)
+@@ -2,7 +2,7 @@
+ <html lang="en" xmlns:th="http://thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml">
+ <head>
+     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+-    <title>All news</title>
++    <title data-th-text="#{label.title}">All news</title>
+     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+           integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+ </head>
+@@ -10,48 +10,55 @@
+ <div class="container border border-dark border-3 border-bottom-0">
+     <nav class="row">
+         <div class="col-6">
+-            <h1>News Management</h1>
++            <h1 data-th-text="#{label.header}">News Management</h1>
+         </div>
+         <div class="col-6 d-flex justify-content-end">
+-            <a href="/?language=en">English</a>&nbsp;
+-            <a href="/?language=ru">Russian</a>
++            <a href="/?language=en" data-th-text="#{label.lang.en}">English</a>&nbsp;
++            <a href="/?language=ru" data-th-text="#{label.lang.ru}">Russian</a>
+         </div>
+     </nav>
+ </div>
+ <div class="container border border-dark border-3">
+     <div class="row p-1">
++
+         <div class="col-2  border border-light border-2 mx-2 bg-light">
+             <h5 align="center" class="bg-secondary text-white">News</h5>
+             <div class="bg-white pt-2 pb-2">
+                 <ul>
+-                    <li><a href="#">News List</a></li>
+-                    <li><a href="/news/new">Add News</a></li>
++                    <li><a href="#" data-th-text="#{label.news.list}">News List</a></li>
++                    <li><a href="/news/new" data-th-text="#{label.add.news}">Add News</a></li>
+                 </ul>
+             </div>
+         </div>
++
+         <div class="col-9  border border-light border-2">
++
+             <nav style="--bs-breadcrumb-divider: '>>';" aria-label="breadcrumb">
+                 <ol class="breadcrumb">
+-                    <li class="breadcrumb-item"><a href="#">News</a></li>
+-                    <li class="breadcrumb-item active" aria-current="page">News List
++                    <li class="breadcrumb-item"><a href="#" data-th-text="#{label.news}">News</a></li>
++                    <li class="breadcrumb-item active" aria-current="page" data-th-text="#{label.news.list}">News List
+                     </li>
+                 </ol>
+             </nav>
++
+             <div class="row pb-5" th:each="newsPage : ${news}">
+                 <div class="col-10">
+-                    <h6 class="pb-1">News Title</h6>
++                    <h6 class="pb-1" data-th-text="#{label.news.title}">News Title</h6>
+                     <p class="pb-2" th:text="${newsPage.getNewsTitle()}">News title</p>
+-                    <h6 class="pb-1">Brief</h6>
++                    <h6 class="pb-1" data-th-text="#{label.brief}">Brief</h6>
+                     <p th:text="${newsPage.getBrief()}">Brief</p>
+                 </div>
++
++
+                 <div class="col">
+                     <p th:text="${newsPage.getNewsDate()}">News date</p>
++
+                     <div class="row">
+                         <div class="col">
+-                            <a th:href="@{/news/{id}(id=${newsPage.getId()})}">View</a>
++                            <a th:href="@{/news/{id}(id=${newsPage.getId()})}" data-th-text="#{label.view}">View</a>
+                         </div>
+                         <div class="col">
+-                            <a th:href="@{/news/{id}(id=${newsPage.getId()})}">Edit</a>
++                            <a th:href="@{/news/{id}(id=${newsPage.getId()})}" data-th-text="#{label.edit}">Edit</a>
+                         </div>
+                         <div class="col">
+                             <label class="form-check-label" for="flexCheckDefault"></label>
+@@ -62,6 +69,7 @@
+                 <div class="d-flex justify-content-end">
+                     <form th:method="DELETE" th:action="@{/news/{id}(id=${newsPage.getId()})}">
+                         <input type="submit" class="btn btn-outline-primary" value="DELETE">
++
+                     </form>
+                 </div>
+             </div>
+@@ -71,7 +79,7 @@
+ </div>
+ </div>
+ <div class="container border border-dark border-3 border-top-0 d-flex justify-content-center">
+-    <p class="m-0 p-0">Copyright EPAM 2008. All rights reserved.</p>
++    <p class="m-0 p-0" data-th-text="#{label.copyright}">Copyright EPAM 2008. All rights reserved.</p>
+ </div>
+ </body>
+ </html>
+Index: target/Spring_MVC_Class_Config/WEB-INF/views/newNews.html
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><!DOCTYPE html>\r\n<html lang=\"en\" xmlns:th=\"http://thymeleaf.org\">\r\n<head>\r\n    <meta charset=\"UTF-8\">\r\n    <title>New news</title>\r\n    <link href=\"https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css\" rel=\"stylesheet\"\r\n          integrity=\"sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC\" crossorigin=\"anonymous\">\r\n</head>\r\n<body>\r\n<div class=\"container border border-dark border-3 border-bottom-0\">\r\n    <nav class=\"row\">\r\n        <div class=\"col-6\">\r\n            <h1>News Management</h1>\r\n        </div>\r\n        <div class=\"col-6 d-flex justify-content-end\">\r\n            <a href=\"/?language=en\">English</a>&nbsp;\r\n            <a href=\"/?language=ru\">Russian</a>\r\n        </div>\r\n    </nav>\r\n</div>\r\n<div class=\"container border border-dark border-3\">\r\n    <div class=\"row p-1\">\r\n        <div class=\"col-2  border border-light border-2 mx-2 bg-light\">\r\n            <h5 align=\"center\" class=\"bg-secondary text-white\">News</h5>\r\n            <div class=\"bg-white pt-2 pb-2\">\r\n                <ul>\r\n                    <li><a href=\"/\">News List</a></li>\r\n                    <li><a href=\"/news/new\">Add News</a></li>\r\n                </ul>\r\n            </div>\r\n        </div>\r\n        <div class=\"col\">\r\n            <nav style=\"--bs-breadcrumb-divider: '>>';\" aria-label=\"breadcrumb\">\r\n                <ol class=\"breadcrumb\">\r\n                    <li class=\"breadcrumb-item\"><a href=\"#\">News</a></li>\r\n                    <li class=\"breadcrumb-item active\" aria-current=\"page\">Add News</li>\r\n                </ol>\r\n            </nav>\r\n            <form th:method=\"POST\" th:action=\"@{/news}\" th:object=\"${newsPage}\">\r\n                <div class=\"row\">\r\n                    <div class=\"col-2\">\r\n                        <label for=\"newsTitle\" >News Title</label>\r\n                    </div>\r\n                    <div class=\"input-group mb-3 col\">\r\n                        <input type=\"text\" class=\"form-control\" th:field=\"*{newsTitle}\" id=\"newsTitle\">\r\n                        <div style=\"color: red\" th:if=\"${#fields.hasErrors('newsTitle')}\" th:errors=\"*{newsTitle}\">News\r\n                            date\r\n                            error\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n                <br>\r\n                <div class=\"row\">\r\n                    <div class=\" col-2\">\r\n                        <label for=\"newsDate\" >News Date</label>\r\n                    </div>\r\n                    <div class=\"col-3\">\r\n                        <input class=\"form-control\" type=\"text\" th:field=\"*{newsDate}\" id=\"newsDate\">\r\n                        <div style=\"color: red\" th:if=\"${#fields.hasErrors('newsDate')}\" th:errors=\"*{newsDate}\">News\r\n                            title\r\n                            error\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n                <br>\r\n                <div class=\"row\">\r\n                    <div class=\"col-2\">\r\n                        <label for=\"content\" >Brief</label>\r\n                    </div>\r\n                    <div class=\"form-floating col\">\r\n                            <textarea class=\"form-control\" type=\"text\" th:field=\"*{brief}\" id=\"brief\"\r\n                                      rows=\"6\"></textarea>\r\n                        <div style=\"color: red\" th:if=\"${#fields.hasErrors('brief')}\" th:errors=\"*{brief}\">\r\n                            Content error\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n                <br>\r\n                <div class=\"row\">\r\n                    <div class=\"col-2\">\r\n                        <label for=\"content\">Content</label>\r\n                    </div>\r\n                    <div class=\"form-floating col\">\r\n                            <textarea class=\"form-control\" type=\"text\" th:field=\"*{content}\" id=\"content\"\r\n                                      rows=\"6\"></textarea>\r\n                        <div style=\"color: red\" th:if=\"${#fields.hasErrors('content')}\" th:errors=\"*{content}\">\r\n                            Content error\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n                <br>\r\n                <div class=\"d-flex justify-content-center pb-5 pt-3\">\r\n                    <div class=\"px-2\">\r\n                        <input type=\"submit\" class=\"btn btn-outline-primary\" value=\"SAVE\">\r\n                    </div>\r\n                    <div>\r\n                        <input type=\"submit\" class=\"btn btn-outline-primary\" href=\"index\" value=\"CANCEL\">\r\n                    </div>\r\n                </div>\r\n            </form>\r\n        </div>\r\n    </div>\r\n</div>\r\n<div class=\"container border border-dark border-3 border-top-0 d-flex justify-content-center\">\r\n    <p class=\"m-0 p-0\">Copyright EPAM 2008. All rights reserved.</p>\r\n</div>\r\n</body>\r\n</html>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/target/Spring_MVC_Class_Config/WEB-INF/views/newNews.html b/target/Spring_MVC_Class_Config/WEB-INF/views/newNews.html
+--- a/target/Spring_MVC_Class_Config/WEB-INF/views/newNews.html	(revision 4fdeb9c292d729c2093f0a48e7eab66f7fbea936)
++++ b/target/Spring_MVC_Class_Config/WEB-INF/views/newNews.html	(date 1679568557311)
+@@ -2,7 +2,7 @@
+ <html lang="en" xmlns:th="http://thymeleaf.org">
+ <head>
+     <meta charset="UTF-8">
+-    <title>New news</title>
++    <title data-th-text="#{label.new.news}">New news</title>
+     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+           integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+ </head>
+@@ -10,36 +10,38 @@
+ <div class="container border border-dark border-3 border-bottom-0">
+     <nav class="row">
+         <div class="col-6">
+-            <h1>News Management</h1>
++            <h1 data-th-text="#{label.header}">News Management</h1>
+         </div>
+         <div class="col-6 d-flex justify-content-end">
+-            <a href="/?language=en">English</a>&nbsp;
+-            <a href="/?language=ru">Russian</a>
++            <a href="/?language=en" data-th-text="#{label.lang.en}">English</a>&nbsp;
++            <a href="/?language=ru" data-th-text="#{label.lang.ru}">Russian</a>
+         </div>
+     </nav>
+ </div>
++
+ <div class="container border border-dark border-3">
+     <div class="row p-1">
+         <div class="col-2  border border-light border-2 mx-2 bg-light">
+-            <h5 align="center" class="bg-secondary text-white">News</h5>
++            <h5 align="center" class="bg-secondary text-white" data-th-text="#{label.news}">News</h5>
+             <div class="bg-white pt-2 pb-2">
+                 <ul>
+-                    <li><a href="/">News List</a></li>
+-                    <li><a href="/news/new">Add News</a></li>
++                    <li><a href="/" data-th-text="#{label.news.list}">News List</a></li>
++                    <li><a href="/news/new" data-th-text="#{label.add.news}">Add News</a></li>
+                 </ul>
+             </div>
+         </div>
+         <div class="col">
+             <nav style="--bs-breadcrumb-divider: '>>';" aria-label="breadcrumb">
+                 <ol class="breadcrumb">
+-                    <li class="breadcrumb-item"><a href="#">News</a></li>
+-                    <li class="breadcrumb-item active" aria-current="page">Add News</li>
++                    <li class="breadcrumb-item"><a href="#" data-th-text="#{label.news}">News</a></li>
++                    <li class="breadcrumb-item active" aria-current="page" data-th-text="#{label.add.news}">Add News</li>
+                 </ol>
+             </nav>
++
+             <form th:method="POST" th:action="@{/news}" th:object="${newsPage}">
+                 <div class="row">
+                     <div class="col-2">
+-                        <label for="newsTitle" >News Title</label>
++                        <label for="newsTitle" data-th-text="#{label.news.title}">News Title</label>
+                     </div>
+                     <div class="input-group mb-3 col">
+                         <input type="text" class="form-control" th:field="*{newsTitle}" id="newsTitle">
+@@ -50,9 +52,10 @@
+                     </div>
+                 </div>
+                 <br>
++
+                 <div class="row">
+                     <div class=" col-2">
+-                        <label for="newsDate" >News Date</label>
++                        <label for="newsDate" data-th-text="#{label.news.date}">News Date</label>
+                     </div>
+                     <div class="col-3">
+                         <input class="form-control" type="text" th:field="*{newsDate}" id="newsDate">
+@@ -62,10 +65,11 @@
+                         </div>
+                     </div>
+                 </div>
++
+                 <br>
+                 <div class="row">
+                     <div class="col-2">
+-                        <label for="content" >Brief</label>
++                        <label for="content" data-th-text="#{label.brief}">Brief</label>
+                     </div>
+                     <div class="form-floating col">
+                             <textarea class="form-control" type="text" th:field="*{brief}" id="brief"
+@@ -76,9 +80,10 @@
+                     </div>
+                 </div>
+                 <br>
++
+                 <div class="row">
+                     <div class="col-2">
+-                        <label for="content">Content</label>
++                        <label for="content" data-th-text="#{label.content}">Content</label>
+                     </div>
+                     <div class="form-floating col">
+                             <textarea class="form-control" type="text" th:field="*{content}" id="content"
+@@ -98,11 +103,12 @@
+                     </div>
+                 </div>
+             </form>
++
+         </div>
+     </div>
+ </div>
+ <div class="container border border-dark border-3 border-top-0 d-flex justify-content-center">
+-    <p class="m-0 p-0">Copyright EPAM 2008. All rights reserved.</p>
++    <p class="m-0 p-0"  data-th-text="#{label.copyright}">Copyright EPAM 2008. All rights reserved.</p>
+ </div>
+ </body>
+ </html>
+\ No newline at end of file
+Index: target/Spring_MVC_Class_Config/WEB-INF/views/editNews.html
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><!DOCTYPE html>\r\n<html lang=\"en\" xmlns:th=\"http://thymeleaf.org\">\r\n<head>\r\n    <meta charset=\"UTF-8\">\r\n    <title>Edit News</title>\r\n    <link href=\"https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css\" rel=\"stylesheet\"\r\n          integrity=\"sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC\" crossorigin=\"anonymous\">\r\n</head>\r\n<body>\r\n<div class=\"container border border-dark border-3 border-bottom-0\">\r\n    <nav class=\"row\">\r\n        <div class=\"col-6\">\r\n            <h1>News Management</h1>\r\n        </div>\r\n        <div class=\"col-6 d-flex justify-content-end\">\r\n            <a href=\"/?language=en\">English</a>&nbsp;\r\n            <a href=\"/?language=ru\">Russian</a>\r\n        </div>\r\n    </nav>\r\n</div>\r\n<div class=\"container border border-dark border-3\">\r\n    <div class=\"row p-1\">\r\n        <div class=\"col-2  border border-light border-2 mx-2 bg-light\">\r\n            <h5 align=\"center\" class=\"bg-secondary text-white\">News</h5>\r\n            <div class=\"bg-white pt-2 pb-2\">\r\n                <ul>\r\n                    <li><a href=\"/\">News List</a></li>\r\n                    <li><a href=\"/news/new\">Add News</a></li>\r\n                </ul>\r\n            </div>\r\n        </div>\r\n        <div class=\"col\">\r\n            <nav style=\"--bs-breadcrumb-divider: '>>';\" aria-label=\"breadcrumb\">\r\n                <ol class=\"breadcrumb\">\r\n                    <li class=\"breadcrumb-item\"><a href=\"#\">News</a></li>\r\n                    <li class=\"breadcrumb-item active\" aria-current=\"page\">Add News</li>\r\n                </ol>\r\n            </nav>\r\n            <form th:method=\"PATCH\" th:action=\"@{/news/{id}(id=${newsPage.getId()})}\" th:object=\"${newsPage}\">\r\n                <div class=\"row\">\r\n                    <div class=\"col-2\">\r\n                        <label for=\"newsTitle\">News Title</label>\r\n                    </div>\r\n                    <div class=\"input-group mb-3 col\">\r\n                        <input type=\"text\" class=\"form-control\" th:field=\"*{newsTitle}\" id=\"newsTitle\">\r\n                        <div style=\"color: red\" th:if=\"${#fields.hasErrors('newsTitle')}\" th:errors=\"*{newsTitle}\">News\r\n                            date\r\n                            error\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n                <br>\r\n                <div class=\"row\">\r\n                    <div class=\" col-2\">\r\n                        <label for=\"newsDate\">News Date</label>\r\n                    </div>\r\n                    <div class=\"col-3\">\r\n                        <input class=\"form-control\" type=\"text\" th:field=\"*{newsDate}\" id=\"newsDate\">\r\n                        <div style=\"color: red\" th:if=\"${#fields.hasErrors('newsDate')}\" th:errors=\"*{newsDate}\">News\r\n                            title\r\n                            error\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n                <br>\r\n                <div class=\"row\">\r\n                    <div class=\"col-2\">\r\n                        <label for=\"content\">Brief</label>\r\n                    </div>\r\n                    <div class=\"form-floating col\">\r\n                            <textarea class=\"form-control\" type=\"text\" th:field=\"*{brief}\" id=\"brief\"\r\n                                      rows=\"6\"></textarea>\r\n                        <div style=\"color: red\" th:if=\"${#fields.hasErrors('brief')}\" th:errors=\"*{brief}\">\r\n                            Content error\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n                <br>\r\n                <div class=\"row\">\r\n                    <div class=\"col-2\">\r\n                        <label for=\"content\">Content</label>\r\n                    </div>\r\n                    <div class=\"form-floating col\">\r\n                            <textarea class=\"form-control\" type=\"text\" th:field=\"*{content}\" id=\"content\"\r\n                                      rows=\"6\"></textarea>\r\n                        <div style=\"color: red\" th:if=\"${#fields.hasErrors('content')}\" th:errors=\"*{content}\">\r\n                            Content error\r\n                        </div>\r\n                    </div>\r\n                </div>\r\n                <br>\r\n                <input type=\"submit\" class=\"btn btn-outline-primary\" value=\"SAVE\">\r\n                <input type=\"submit\" class=\"btn btn-outline-primary\" href=\"index\" value=\"CANCEL\">\r\n            </form>\r\n        </div>\r\n    </div>\r\n</div>\r\n<div class=\"container border border-dark border-3 border-top-0 d-flex justify-content-center\">\r\n    <p class=\"m-0 p-0\">Copyright EPAM 2008. All rights reserved.</p>\r\n</div>\r\n</body>\r\n</html>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/target/Spring_MVC_Class_Config/WEB-INF/views/editNews.html b/target/Spring_MVC_Class_Config/WEB-INF/views/editNews.html
+--- a/target/Spring_MVC_Class_Config/WEB-INF/views/editNews.html	(revision 4fdeb9c292d729c2093f0a48e7eab66f7fbea936)
++++ b/target/Spring_MVC_Class_Config/WEB-INF/views/editNews.html	(date 1679568557337)
+@@ -2,7 +2,7 @@
+ <html lang="en" xmlns:th="http://thymeleaf.org">
+ <head>
+     <meta charset="UTF-8">
+-    <title>Edit News</title>
++    <title data-th-text="#{label.edit.news}">Edit News</title>
+     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+           integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+ </head>
+@@ -10,36 +10,40 @@
+ <div class="container border border-dark border-3 border-bottom-0">
+     <nav class="row">
+         <div class="col-6">
+-            <h1>News Management</h1>
++            <h1 data-th-text="#{label.header}">News Management</h1>
+         </div>
+         <div class="col-6 d-flex justify-content-end">
+-            <a href="/?language=en">English</a>&nbsp;
+-            <a href="/?language=ru">Russian</a>
++            <a href="/?language=en" data-th-text="#{label.lang.en}">English</a>&nbsp;
++            <a href="/?language=ru" data-th-text="#{label.lang.ru}">Russian</a>
+         </div>
+     </nav>
+ </div>
++
+ <div class="container border border-dark border-3">
+     <div class="row p-1">
+         <div class="col-2  border border-light border-2 mx-2 bg-light">
+-            <h5 align="center" class="bg-secondary text-white">News</h5>
++            <h5  align="center" class="bg-secondary text-white" data-th-text="#{label.news}">News</h5>
+             <div class="bg-white pt-2 pb-2">
+                 <ul>
+-                    <li><a href="/">News List</a></li>
+-                    <li><a href="/news/new">Add News</a></li>
++                    <li><a href="/" data-th-text="#{label.news.list}">News List</a></li>
++                    <li><a href="/news/new" data-th-text="#{label.add.news}">Add News</a></li>
+                 </ul>
+             </div>
+         </div>
++
+         <div class="col">
+             <nav style="--bs-breadcrumb-divider: '>>';" aria-label="breadcrumb">
+                 <ol class="breadcrumb">
+-                    <li class="breadcrumb-item"><a href="#">News</a></li>
+-                    <li class="breadcrumb-item active" aria-current="page">Add News</li>
++                    <li class="breadcrumb-item"><a href="#" data-th-text="#{label.news}">News</a></li>
++                    <li class="breadcrumb-item active" aria-current="page" data-th-text="#{label.add.news}">Add News</li>
+                 </ol>
+             </nav>
++
+             <form th:method="PATCH" th:action="@{/news/{id}(id=${newsPage.getId()})}" th:object="${newsPage}">
++
+                 <div class="row">
+                     <div class="col-2">
+-                        <label for="newsTitle">News Title</label>
++                        <label for="newsTitle" data-th-text="#{label.news.title}">News Title</label>
+                     </div>
+                     <div class="input-group mb-3 col">
+                         <input type="text" class="form-control" th:field="*{newsTitle}" id="newsTitle">
+@@ -49,10 +53,11 @@
+                         </div>
+                     </div>
+                 </div>
++
+                 <br>
+                 <div class="row">
+                     <div class=" col-2">
+-                        <label for="newsDate">News Date</label>
++                        <label for="newsDate" data-th-text="#{label.news.date}">News Date</label>
+                     </div>
+                     <div class="col-3">
+                         <input class="form-control" type="text" th:field="*{newsDate}" id="newsDate">
+@@ -62,10 +67,11 @@
+                         </div>
+                     </div>
+                 </div>
++
+                 <br>
+                 <div class="row">
+                     <div class="col-2">
+-                        <label for="content">Brief</label>
++                        <label for="content" data-th-text="#{label.brief}">Brief</label>
+                     </div>
+                     <div class="form-floating col">
+                             <textarea class="form-control" type="text" th:field="*{brief}" id="brief"
+@@ -75,10 +81,11 @@
+                         </div>
+                     </div>
+                 </div>
++
+                 <br>
+                 <div class="row">
+                     <div class="col-2">
+-                        <label for="content">Content</label>
++                        <label for="content" data-th-text="#{label.content}">Content</label>
+                     </div>
+                     <div class="form-floating col">
+                             <textarea class="form-control" type="text" th:field="*{content}" id="content"
+@@ -88,6 +95,7 @@
+                         </div>
+                     </div>
+                 </div>
++
+                 <br>
+                 <input type="submit" class="btn btn-outline-primary" value="SAVE">
+                 <input type="submit" class="btn btn-outline-primary" href="index" value="CANCEL">
+@@ -96,7 +104,7 @@
+     </div>
+ </div>
+ <div class="container border border-dark border-3 border-top-0 d-flex justify-content-center">
+-    <p class="m-0 p-0">Copyright EPAM 2008. All rights reserved.</p>
++    <p class="m-0 p-0"  data-th-text="#{label.copyright}">Copyright EPAM 2008. All rights reserved.</p>
+ </div>
+ </body>
+ </html>
+\ No newline at end of file
