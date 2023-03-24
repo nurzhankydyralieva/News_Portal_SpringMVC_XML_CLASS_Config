@@ -9,27 +9,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="27bb97ab-c273-40b1-b82b-6c7d81e6f9eb" name="Changes" comment="New changes">
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/1d48e715-3a5b-4533-b917-bb2372c18483.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/1d48e715-3a5b-4533-b917-bb2372c18483.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_3_17_2023_5_32_PM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_3_17_2023_5_32_PM__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_3_17_2023_5_35_PM__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Checkout_at_3_17_2023_5_35_PM__Changes_.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase__Changes_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_rebase__Changes_.xml" afterDir="false" />
+    <list default="true" id="27bb97ab-c273-40b1-b82b-6c7d81e6f9eb" name="Changes" comment="New changes in html">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/epam/project/config/SpringMVCDispatcherServletInitializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/epam/project/config/SpringMVCDispatcherServletInitializer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/epam/project/models/News.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/epam/project/models/News.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/editNews.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/editNews.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/newNews.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/newNews.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/Spring_MVC_Class_Config/WEB-INF/classes/com/epam/project/config/SpringConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/Spring_MVC_Class_Config/WEB-INF/classes/com/epam/project/config/SpringConfig.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/Spring_MVC_Class_Config/WEB-INF/classes/com/epam/project/config/SpringMVCDispatcherServletInitializer.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/Spring_MVC_Class_Config/WEB-INF/classes/com/epam/project/config/SpringMVCDispatcherServletInitializer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/Spring_MVC_Class_Config/WEB-INF/classes/com/epam/project/models/News.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/Spring_MVC_Class_Config/WEB-INF/classes/com/epam/project/models/News.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/Spring_MVC_Class_Config/WEB-INF/views/editNews.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/Spring_MVC_Class_Config/WEB-INF/views/editNews.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/Spring_MVC_Class_Config/WEB-INF/views/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/Spring_MVC_Class_Config/WEB-INF/views/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/Spring_MVC_Class_Config/WEB-INF/views/newNews.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/Spring_MVC_Class_Config/WEB-INF/views/newNews.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/Spring_MVC_Class_Config/WEB-INF/views/viewNews.html" beforeDir="false" afterPath="$PROJECT_DIR$/target/Spring_MVC_Class_Config/WEB-INF/views/viewNews.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/epam/project/config/SpringConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/epam/project/config/SpringConfig.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/epam/project/config/SpringMVCDispatcherServletInitializer.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/epam/project/config/SpringMVCDispatcherServletInitializer.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/epam/project/models/News.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/epam/project/models/News.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -261,7 +244,14 @@
       <option name="project" value="LOCAL" />
       <updated>1679249778483</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="New changes in html">
+      <created>1679658835170</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1679658835170</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -272,6 +262,7 @@
     <MESSAGE value="Added class configuration" />
     <MESSAGE value="Added CRUD with List" />
     <MESSAGE value="Added Hibernate configuration" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added Hibernate configuration" />
+    <MESSAGE value="New changes in html" />
+    <option name="LAST_COMMIT_MESSAGE" value="New changes in html" />
   </component>
 </project>
