@@ -13,7 +13,7 @@
         <setting name="validation-enabled" value="true" />
         <setting name="provider-name" value="Hibernate" />
         <datasource-mapping>
-          <factory-entry name="Spring_MVC_Class_Config" />
+          <factory-entry name="Spring_MVC_Class_Config" value="71fa8f8c-212d-4818-942c-91a3cb0c28df" />
         </datasource-mapping>
         <naming-strategy-map />
       </configuration>
