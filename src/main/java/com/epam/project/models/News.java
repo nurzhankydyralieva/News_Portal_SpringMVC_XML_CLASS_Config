@@ -5,7 +5,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
-import java.util.Date;
+import java.time.LocalDate;
 
 @Entity
 @Table(name = "News")
@@ -18,13 +18,10 @@ public class News {
     @Size(min = 10, max = 50, message = "News Title should be between 10 to 200 characters")
     @Column(name = "newsTitle")
     private String newsTitle;
-    @Temporal(TemporalType.DATE)
-    @DateTimeFormat(pattern = "dd/MM/yyyy")
+
+    @DateTimeFormat(pattern = "MM/dd/yyyy")
     @Column(name = "newsDate")
-    private Date newsDate;
-    @Column(name = "createdAt")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date createdAt;
+    private LocalDate newsDate;
     @NotEmpty(message = "Brief should not be empty")
     @Size(min = 10, max = 500, message = "Brief should be between 10 to 500 characters")
     @Column(name = "brief")
@@ -37,10 +34,9 @@ public class News {
     public News() {
     }
 
-    public News(String newsTitle, Date newsDate, Date createdAt, String brief, String content) {
+    public News(String newsTitle, LocalDate newsDate, String brief, String content) {
         this.newsTitle = newsTitle;
         this.newsDate = newsDate;
-        this.createdAt = createdAt;
         this.brief = brief;
         this.content = content;
     }
@@ -61,20 +57,12 @@ public class News {
         this.newsTitle = newsTitle;
     }
 
-    public Date getNewsDate() {
+    public LocalDate getNewsDate() {
         return newsDate;
     }
 
-    public void setNewsDate(Date newsDate) {
+    public void setNewsDate(LocalDate newsDate) {
         this.newsDate = newsDate;
-    }
-
-    public Date getCreatedAt() {
-        return createdAt;
-    }
-
-    public void setCreatedAt(Date createdAt) {
-        this.createdAt = createdAt;
     }
 
     public String getBrief() {

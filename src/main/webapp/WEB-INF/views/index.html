@@ -5,6 +5,15 @@
     <title data-th-text="#{label.title}">All news</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $(document).on("click", ".deleteRows", function () {
+                var deleterowsfromtable = $(".indexTable input:checked").parents("tr").remove();
+            })
+        })
+    </script>
 </head>
 <body>
 <div class="container border border-dark border-3 border-bottom-0">
@@ -32,7 +41,6 @@
         </div>
 
         <div class="col-9  border border-light border-2">
-
             <nav style="--bs-breadcrumb-divider: '>>';" aria-label="breadcrumb">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="#" data-th-text="#{label.news}">News</a></li>
@@ -41,36 +49,34 @@
                 </ol>
             </nav>
 
-            <div class="row pb-5" th:each="newsPage : ${news}">
-                <div class="col-10">
-                    <h6 class="pb-1" data-th-text="#{label.news.title}">News Title</h6>
-                    <p class="pb-2" th:text="${newsPage.getNewsTitle()}">News title</p>
-                    <h6 class="pb-1" data-th-text="#{label.brief}">Brief</h6>
-                    <p th:text="${newsPage.getBrief()}">Brief</p>
-                </div>
-                <div class="col">
-                    <p th:text="${newsPage.getNewsDate()}">News date</p>
+            <div class="row pb-5">
+                <form th:method="DELETE" th:action="@{/news/{id}}">
+                    <table cellpadding="2" cellspacing="2" border="1" class="indexTable">
+                        <div th:each="newsPage:${news}">
 
-                    <div class="row">
-                        <div class="col">
-                            <a th:href="@{/news/{id}(id=${newsPage.getId()})}" data-th-text="#{label.view}">View</a>
+                            <tr>
+
+                                <th>News Title</th>
+                                <td th:text="${newsPage.getNewsTitle()}"></td>
+
+                                <th>Brief</th>
+                                <td th:text="${newsPage.getBrief()}"></td>
+                                <td th:text="${newsPage.getNewsDate()}"></td>
+                                <td><a th:href="@{/news/{id}(id=${newsPage.getId()})}"
+                                       data-th-text="#{label.view}">View</a></td>
+                                <td><a th:href="@{/news/{id}(id=${newsPage.getId()})}"
+                                       data-th-text="#{label.edit}">Edit</a></td>
+
+                                <td><input type="checkbox" class="chkCheckBoxId" value="${newsPage.getId()}"
+                                           name="newsPage"/></td>
+                            </tr>
+
                         </div>
-                        <div class="col">
-                            <a th:href="@{/news/{id}(id=${newsPage.getId()})}" data-th-text="#{label.edit}">Edit</a>
-                        </div>
-                        <div class="col">
-                            <label class="form-check-label" for="flexCheckDefault"></label>
-                            <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                        </div>
-                    </div>
-                </div>
-                <div class="d-flex justify-content-end">
-                    <form th:method="DELETE" th:action="@{/news/{id}(id=${newsPage.getId()})}">
-                        <input type="submit" class="btn btn-outline-primary" value="DELETE">
-                    </form>
-                </div>
+                    </table>
+                    <br>
+                    <input type="button" value="Delete" class="deleteRows"/>
+                </form>
             </div>
-
         </div>
     </div>
 </div>
