@@ -1,1 +1,0 @@
-# News_Portal_SpringMVC_XML_CLASS_Config

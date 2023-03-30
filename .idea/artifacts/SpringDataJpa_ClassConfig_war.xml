@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="SpringDataJpa_ClassConfig:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>SpringDataJpa_ClassConfig</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="SpringDataJpa_ClassConfig.war">
+      <element id="artifact" artifact-name="SpringDataJpa_ClassConfig:war exploded" />
+    </root>
+  </artifact>
+</component>
