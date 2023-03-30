@@ -23,22 +23,28 @@ public class NewsService {
         return newsRepository.findAll();
     }
 
-    public News findNewsById(int id){
-       Optional<News> foundNews = newsRepository.findById(id);
-       return foundNews.orElse(null);
+    public News findById(int id) {
+        Optional<News> foundNews = newsRepository.findById(id);
+        return foundNews.orElse(null);
     }
 
     @Transactional
-    public void save(News news){
+    public void save(News news) {
         newsRepository.save(news);
     }
+
     @Transactional
-    public void updateNews(int id,News updatedNews){
+    public void updateNews(int id, News updatedNews) {
         updatedNews.setId(id);
         newsRepository.save(updatedNews);
     }
+
+    //    @Transactional
+//    public void delete(int id) {
+//        newsRepository.deleteById(id);
+//    }
     @Transactional
-    public void delete(int id){
-        newsRepository.deleteById(id);
+    public List<News> findByNewsId(int id) {
+        return newsRepository.findAllById(id);
     }
 }

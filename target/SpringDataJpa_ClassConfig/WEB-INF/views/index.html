@@ -50,7 +50,8 @@
             </nav>
 
             <div class="row pb-5">
-                <form th:method="DELETE" th:action="@{/news/{id}}">
+                <form th:method="DELETE" th:action="@{/news/{id}}" th:object="${newsPage}">
+<!--                <form th:method="DELETE" th:action="@{/news/{id}(id=${newsPage.getId()})}">-->
                     <table cellpadding="2" cellspacing="2" border="1" class="indexTable">
                         <div th:each="newsPage:${news}">
 
@@ -75,6 +76,9 @@
                     </table>
                     <br>
                     <input type="button" value="Delete" class="deleteRows"/>
+                    <!-- <form th:method="DELETE" th:action="@{/news/{id}(id=${newsPage.getId()})}">-->
+                    <!--        <input type="submit" class="btn btn-outline-primary" value="DELETE">-->
+                    <!-- </form>-->
                 </form>
             </div>
         </div>

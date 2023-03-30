@@ -28,7 +28,7 @@ public class NewsController {
 
     @GetMapping("/news/{id}")
     public String showNews(@PathVariable("id") int id, Model model) {
-        model.addAttribute("newsPage", newsService.findNewsById(id));
+        model.addAttribute("newsPage", newsService.findById(id));
         return "viewNews";
     }
 
@@ -50,7 +50,7 @@ public class NewsController {
 
     @GetMapping("/news/{id}/edit")
     public String editNews(Model model, @PathVariable("id") int id) {
-        model.addAttribute("newsPage", newsService.findNewsById(id));
+        model.addAttribute("newsPage", newsService.findById(id));
         return "editNews";
     }
 
@@ -65,9 +65,14 @@ public class NewsController {
     }
 
 
-    @DeleteMapping("/news/{id}")
-    public String deleteNews(@PathVariable("id") int id) {
-        newsService.delete(id);
-        return "redirect:/";
-    }
+//    @DeleteMapping("/news/{id}")
+//    public String deleteNews(@PathVariable("id") int id) {
+//        newsService.delete(id);
+//        return "redirect:/";
+//    }
+@DeleteMapping("/news/{id}")
+public String deleteNews(@PathVariable("id") int id) {
+    newsService.findByNewsId(id);
+    return "redirect:/";
+}
 }
