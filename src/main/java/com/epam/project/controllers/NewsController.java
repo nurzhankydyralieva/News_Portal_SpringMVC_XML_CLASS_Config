@@ -63,16 +63,14 @@ public class NewsController {
         newsService.updateNews(id, news);
         return "redirect:/";
     }
-
-
-//    @DeleteMapping("/news/{id}")
-//    public String deleteNews(@PathVariable("id") int id) {
-//        newsService.delete(id);
-//        return "redirect:/";
-//    }
-@DeleteMapping("/news/{id}")
-public String deleteNews(@PathVariable("id") int id) {
-    newsService.findByNewsId(id);
-    return "redirect:/";
-}
+    @DeleteMapping("/news/{id}")
+    public String deleteNews(@PathVariable("id") int id) {
+        newsService.delete(id);
+        return "redirect:/";
+    }
+    @RequestMapping(value = "/delete", method = RequestMethod.GET)
+    public String deleteNews(@RequestParam("active") Integer[] id){
+        newsService.deleteNewsById(id);
+        return "redirect:/";
+    }
 }

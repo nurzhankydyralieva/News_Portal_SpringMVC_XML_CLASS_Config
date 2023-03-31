@@ -1,0 +1,8 @@
+com\epam\project\controllers\NewsController.class
+com\epam\project\config\SpringConfig.class
+com\epam\project\config\SpringMVCDispatcherServletInitializer.class
+com\epam\project\dto\NewsDTO.class
+com\epam\project\models\News.class
+com\epam\project\config\MessageConfig.class
+com\epam\project\repositories\NewsRepository.class
+com\epam\project\services\NewsService.class

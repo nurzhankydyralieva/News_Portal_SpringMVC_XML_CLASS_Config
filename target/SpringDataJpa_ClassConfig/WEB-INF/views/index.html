@@ -5,15 +5,6 @@
     <title data-th-text="#{label.title}">All news</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/themes/smoothness/jquery-ui.css">
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
-    <script type="text/javascript">
-        $(function () {
-            $(document).on("click", ".deleteRows", function () {
-                var deleterowsfromtable = $(".indexTable input:checked").parents("tr").remove();
-            })
-        })
-    </script>
 </head>
 <body>
 <div class="container border border-dark border-3 border-bottom-0">
@@ -49,38 +40,46 @@
                 </ol>
             </nav>
 
-            <div class="row pb-5">
-                <form th:method="DELETE" th:action="@{/news/{id}}" th:object="${newsPage}">
-<!--                <form th:method="DELETE" th:action="@{/news/{id}(id=${newsPage.getId()})}">-->
-                    <table cellpadding="2" cellspacing="2" border="1" class="indexTable">
-                        <div th:each="newsPage:${news}">
 
-                            <tr>
-
-                                <th>News Title</th>
-                                <td th:text="${newsPage.getNewsTitle()}"></td>
-
-                                <th>Brief</th>
-                                <td th:text="${newsPage.getBrief()}"></td>
-                                <td th:text="${newsPage.getNewsDate()}"></td>
-                                <td><a th:href="@{/news/{id}(id=${newsPage.getId()})}"
-                                       data-th-text="#{label.view}">View</a></td>
-                                <td><a th:href="@{/news/{id}(id=${newsPage.getId()})}"
-                                       data-th-text="#{label.edit}">Edit</a></td>
-
-                                <td><input type="checkbox" class="chkCheckBoxId" value="${newsPage.getId()}"
-                                           name="newsPage"/></td>
-                            </tr>
-
+            <form th:action="@{/delete}" th:object="${newsPage}">
+                <div class="row" th:each="newsPage: ${news}">
+                    <div class="col-10">
+                        <div class="row">
+                            <div class="col-2">
+                                <h6>News Title</h6>
+                            </div>
+                            <div class="col-8">
+                                <p th:text="${newsPage.getNewsTitle()}"></p>
+                            </div>
                         </div>
-                    </table>
-                    <br>
-                    <input type="button" value="Delete" class="deleteRows"/>
-                    <!-- <form th:method="DELETE" th:action="@{/news/{id}(id=${newsPage.getId()})}">-->
-                    <!--        <input type="submit" class="btn btn-outline-primary" value="DELETE">-->
-                    <!-- </form>-->
-                </form>
-            </div>
+                        <div class="row">
+                            <div class="col-2">
+                                <h6>Brief</h6>
+                            </div>
+                            <div class="col-8">
+                                <p th:text="${newsPage.getBrief()}"></p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <p th:text="${newsPage.getNewsDate()}"></p>
+                        <div class="row">
+                            <div class="col">
+                                <a th:href="@{/news/{id}(id=${newsPage.getId()})}" data-th-text="#{label.view}">View</a>
+                            </div>
+                            <div class="col">
+                                <a th:href="@{/news/{id}(id=${newsPage.getId()})}" data-th-text="#{label.edit}">Edit</a>
+                            </div>
+                            <div class="col">
+                                <input type="checkbox" name="active" th:value="${newsPage.id}"/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="d-flex justify-content-end">
+                    <input type="submit" value="Delete"/>
+                </div>
+            </form>
         </div>
     </div>
 </div>

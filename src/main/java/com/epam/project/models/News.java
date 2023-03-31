@@ -1,5 +1,6 @@
 package com.epam.project.models;
 
+import lombok.Data;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
@@ -7,13 +8,14 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Size;
 import java.time.LocalDate;
 
+@Data
 @Entity
 @Table(name = "News")
 public class News {
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Integer id;
     @NotEmpty(message = "News Title should not be empty")
     @Size(min = 10, max = 50, message = "News Title should be between 10 to 200 characters")
     @Column(name = "newsTitle")
@@ -30,54 +32,4 @@ public class News {
     @Size(min = 10, max = 1000, message = "Content should be between 20 to 1000 characters")
     @Column(name = "content")
     private String content;
-
-    public News() {
-    }
-
-    public News(String newsTitle, LocalDate newsDate, String brief, String content) {
-        this.newsTitle = newsTitle;
-        this.newsDate = newsDate;
-        this.brief = brief;
-        this.content = content;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getNewsTitle() {
-        return newsTitle;
-    }
-
-    public void setNewsTitle(String newsTitle) {
-        this.newsTitle = newsTitle;
-    }
-
-    public LocalDate getNewsDate() {
-        return newsDate;
-    }
-
-    public void setNewsDate(LocalDate newsDate) {
-        this.newsDate = newsDate;
-    }
-
-    public String getBrief() {
-        return brief;
-    }
-
-    public void setBrief(String brief) {
-        this.brief = brief;
-    }
-
-    public String getContent() {
-        return content;
-    }
-
-    public void setContent(String content) {
-        this.content = content;
-    }
 }

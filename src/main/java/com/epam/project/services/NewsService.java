@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
@@ -23,7 +24,7 @@ public class NewsService {
         return newsRepository.findAll();
     }
 
-    public News findById(int id) {
+    public News findById(Integer id) {
         Optional<News> foundNews = newsRepository.findById(id);
         return foundNews.orElse(null);
     }
@@ -39,12 +40,13 @@ public class NewsService {
         newsRepository.save(updatedNews);
     }
 
-    //    @Transactional
-//    public void delete(int id) {
-//        newsRepository.deleteById(id);
-//    }
     @Transactional
-    public List<News> findByNewsId(int id) {
-        return newsRepository.findAllById(id);
+    public void delete(int id) {
+        newsRepository.deleteById(id);
+    }
+
+    @Transactional
+    public void deleteNewsById(Integer[] id) {
+        newsRepository.deleteNewsById(Arrays.asList(id));
     }
 }
