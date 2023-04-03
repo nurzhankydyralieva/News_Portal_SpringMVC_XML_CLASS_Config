@@ -2,22 +2,22 @@
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
         "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
-    <class name="com.epam.project.models.News" table="News">
+    <class name="com.epam.project.models.News" table="news">
         <id name="id" type="java.lang.Integer">
-            <column name="id" />
-            <generator class="identity" />
+            <column name="id"/>
+            <generator class="identity"/>
         </id>
         <property name="newsTitle" type="string">
-            <column name="newsTitle" length="255" not-null="true" />
+            <column name="news_title" length="255" not-null="true"/>
         </property>
-        <property name="newsDate" >
-            <column name="newsDate" length="255" not-null="true" />
+        <property name="newsDate">
+            <column name="news_date" length="255" not-null="true"/>
         </property>
         <property name="brief" type="string">
-            <column name="brief" length="500" not-null="true" />
+            <column name="brief" length="500" not-null="true"/>
         </property>
         <property name="content" type="string">
-            <column name="content" length="1000" not-null="true" />
+            <column name="content" length="1000" not-null="true"/>
         </property>
     </class>
 </hibernate-mapping>

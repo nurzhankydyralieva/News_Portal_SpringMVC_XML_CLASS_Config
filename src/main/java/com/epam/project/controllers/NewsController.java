@@ -70,4 +70,9 @@ public class NewsController {
         newsService.delete(id);
         return "redirect:/";
     }
+    @RequestMapping(value = "/delete", method = RequestMethod.GET)
+    public String deleteNews(@RequestParam("active") Integer[] id){
+        newsService.deleteNewsById(id);
+        return "redirect:/";
+    }
 }
