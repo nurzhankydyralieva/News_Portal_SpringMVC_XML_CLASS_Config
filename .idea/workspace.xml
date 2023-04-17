@@ -10,7 +10,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8987f295-60ba-4293-9a9e-0844eb5c5ad9" name="Changes" comment="Added Spring Security basic class configuration">
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/a65823f2-00af-4d47-b545-a13d7380ebd4.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/a65823f2-00af-4d47-b545-a13d7380ebd4.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/Spring_Security_Class_Config/WEB-INF/classes/com/epam/project/config/SecurityConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/Spring_Security_Class_Config/WEB-INF/classes/com/epam/project/config/SecurityConfig.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/epam/project/config/SecurityConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/epam/project/config/SecurityConfig.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -245,6 +249,7 @@
       <workItem from="1681374538661" duration="813000" />
       <workItem from="1681375371509" duration="7680000" />
       <workItem from="1681383837865" duration="1376000" />
+      <workItem from="1681498234817" duration="39000" />
     </task>
     <task id="LOCAL-00001" summary="Fixed table views">
       <created>1681369549324</created>
