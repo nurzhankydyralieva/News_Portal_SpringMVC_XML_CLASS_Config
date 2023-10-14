@@ -5,6 +5,7 @@
     <artifactId>Spring_MVC_Class_Config</artifactId>
     <packaging>war</packaging>
     <version>1.0-SNAPSHOT</version>
+       <packaging>war</packaging>
     <name>Spring_MVC_Class_Config</name>
     <url>http://maven.apache.org</url>
     <properties>
