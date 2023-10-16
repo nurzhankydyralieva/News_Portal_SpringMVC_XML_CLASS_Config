@@ -1,0 +1,12 @@
+GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
+Spring_Security_Class_Config,com.epam.project.services,UserService,56,0,2,0,10,0,7,0,6,0
+Spring_Security_Class_Config,com.epam.project.services,NewsService,48,0,0,0,15,0,7,0,7,0
+Spring_Security_Class_Config,com.epam.project.controllers,NewsController,74,0,4,0,22,0,11,0,9,0
+Spring_Security_Class_Config,com.epam.project.config,MessageConfig,50,0,0,0,15,0,5,0,5,0
+Spring_Security_Class_Config,com.epam.project.config,SpringMVCDispatcherServletInitializer,42,0,0,0,10,0,6,0,6,0
+Spring_Security_Class_Config,com.epam.project.config,SecurityConfig,92,0,0,0,15,0,5,0,5,0
+Spring_Security_Class_Config,com.epam.project.config,SecurityInit,3,0,0,0,1,0,1,0,1,0
+Spring_Security_Class_Config,com.epam.project.config,SpringConfig,148,0,0,0,39,0,8,0,8,0
+Spring_Security_Class_Config,com.epam.project.models,News,255,0,46,0,6,0,38,0,15,0
+Spring_Security_Class_Config,com.epam.project.models,Role,126,0,22,0,3,0,20,0,9,0
+Spring_Security_Class_Config,com.epam.project.models,User,255,0,46,0,6,0,38,0,15,0

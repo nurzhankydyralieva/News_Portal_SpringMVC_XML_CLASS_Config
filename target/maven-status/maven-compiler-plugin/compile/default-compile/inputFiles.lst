@@ -1,14 +1,14 @@
-D:\EPAM_LAB\GitHub_resource\News_Portal_SpringMVC_XML_CLASS_Config\src\main\java\com\epam\project\config\SpringConfig.java
-D:\EPAM_LAB\GitHub_resource\News_Portal_SpringMVC_XML_CLASS_Config\src\main\java\com\epam\project\repositories\UserRepository.java
-D:\EPAM_LAB\GitHub_resource\News_Portal_SpringMVC_XML_CLASS_Config\src\main\java\com\epam\project\repositories\RoleRepository.java
-D:\EPAM_LAB\GitHub_resource\News_Portal_SpringMVC_XML_CLASS_Config\src\main\java\com\epam\project\config\MessageConfig.java
-D:\EPAM_LAB\GitHub_resource\News_Portal_SpringMVC_XML_CLASS_Config\src\main\java\com\epam\project\config\SecurityInit.java
-D:\EPAM_LAB\GitHub_resource\News_Portal_SpringMVC_XML_CLASS_Config\src\main\java\com\epam\project\models\Role.java
-D:\EPAM_LAB\GitHub_resource\News_Portal_SpringMVC_XML_CLASS_Config\src\main\java\com\epam\project\config\SecurityConfig.java
-D:\EPAM_LAB\GitHub_resource\News_Portal_SpringMVC_XML_CLASS_Config\src\main\java\com\epam\project\models\User.java
-D:\EPAM_LAB\GitHub_resource\News_Portal_SpringMVC_XML_CLASS_Config\src\main\java\com\epam\project\controllers\NewsController.java
-D:\EPAM_LAB\GitHub_resource\News_Portal_SpringMVC_XML_CLASS_Config\src\main\java\com\epam\project\config\SpringMVCDispatcherServletInitializer.java
-D:\EPAM_LAB\GitHub_resource\News_Portal_SpringMVC_XML_CLASS_Config\src\main\java\com\epam\project\services\NewsService.java
-D:\EPAM_LAB\GitHub_resource\News_Portal_SpringMVC_XML_CLASS_Config\src\main\java\com\epam\project\repositories\NewsRepository.java
-D:\EPAM_LAB\GitHub_resource\News_Portal_SpringMVC_XML_CLASS_Config\src\main\java\com\epam\project\services\UserService.java
-D:\EPAM_LAB\GitHub_resource\News_Portal_SpringMVC_XML_CLASS_Config\src\main\java\com\epam\project\models\News.java
+D:\EPAM_AI-Driven XStack\News_Portal_SpringMVC_XML_CLASS_Config\src\main\java\com\epam\project\config\SecurityInit.java
+D:\EPAM_AI-Driven XStack\News_Portal_SpringMVC_XML_CLASS_Config\src\main\java\com\epam\project\repositories\NewsRepository.java
+D:\EPAM_AI-Driven XStack\News_Portal_SpringMVC_XML_CLASS_Config\src\main\java\com\epam\project\config\SpringMVCDispatcherServletInitializer.java
+D:\EPAM_AI-Driven XStack\News_Portal_SpringMVC_XML_CLASS_Config\src\main\java\com\epam\project\config\MessageConfig.java
+D:\EPAM_AI-Driven XStack\News_Portal_SpringMVC_XML_CLASS_Config\src\main\java\com\epam\project\models\News.java
+D:\EPAM_AI-Driven XStack\News_Portal_SpringMVC_XML_CLASS_Config\src\main\java\com\epam\project\models\Role.java
+D:\EPAM_AI-Driven XStack\News_Portal_SpringMVC_XML_CLASS_Config\src\main\java\com\epam\project\repositories\RoleRepository.java
+D:\EPAM_AI-Driven XStack\News_Portal_SpringMVC_XML_CLASS_Config\src\main\java\com\epam\project\services\NewsService.java
+D:\EPAM_AI-Driven XStack\News_Portal_SpringMVC_XML_CLASS_Config\src\main\java\com\epam\project\config\SecurityConfig.java
+D:\EPAM_AI-Driven XStack\News_Portal_SpringMVC_XML_CLASS_Config\src\main\java\com\epam\project\config\SpringConfig.java
+D:\EPAM_AI-Driven XStack\News_Portal_SpringMVC_XML_CLASS_Config\src\main\java\com\epam\project\models\User.java
+D:\EPAM_AI-Driven XStack\News_Portal_SpringMVC_XML_CLASS_Config\src\main\java\com\epam\project\repositories\UserRepository.java
+D:\EPAM_AI-Driven XStack\News_Portal_SpringMVC_XML_CLASS_Config\src\main\java\com\epam\project\controllers\NewsController.java
+D:\EPAM_AI-Driven XStack\News_Portal_SpringMVC_XML_CLASS_Config\src\main\java\com\epam\project\services\UserService.java

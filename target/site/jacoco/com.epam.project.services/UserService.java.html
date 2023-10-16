@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>UserService.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Spring_Security_Class_Config</a> &gt; <a href="index.source.html" class="el_package">com.epam.project.services</a> &gt; <span class="el_source">UserService.java</span></div><h1>UserService.java</h1><pre class="source lang-java linenums">package com.epam.project.services;
+
+import com.epam.project.models.Role;
+import com.epam.project.models.User;
+import com.epam.project.repositories.UserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.stereotype.Service;
+
+import java.util.Collection;
+import java.util.stream.Collectors;
+
+@Service
+<span class="nc" id="L18">public class UserService implements UserDetailsService {</span>
+
+    private UserRepository userRepository;
+
+    @Autowired
+    public void setUserRepository(UserRepository userRepository) {
+<span class="nc" id="L24">        this.userRepository = userRepository;</span>
+<span class="nc" id="L25">    }</span>
+
+    public User findByUsername(String username) {
+<span class="nc" id="L28">        return userRepository.findByUsername(username);</span>
+    }
+
+    @Override
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+<span class="nc" id="L33">        User user = findByUsername(username);</span>
+<span class="nc bnc" id="L34" title="All 2 branches missed.">        if (user == null) {</span>
+<span class="nc" id="L35">            throw new UsernameNotFoundException(String.format(&quot;User '%s' not found&quot;, username));</span>
+        }
+<span class="nc" id="L37">        return new org.springframework.security.core.userdetails.User(user.getUsername(), user.getPassword(),</span>
+<span class="nc" id="L38">                mapRolesToAuthorities(user.getRoles()));</span>
+    }
+
+    private Collection&lt;? extends GrantedAuthority&gt; mapRolesToAuthorities(Collection&lt;Role&gt; roles) {
+<span class="nc" id="L42">        return roles.stream().map(role -&gt; new SimpleGrantedAuthority(role.getName())).collect(Collectors.toList());</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.10.202304240956</span></div></body></html>

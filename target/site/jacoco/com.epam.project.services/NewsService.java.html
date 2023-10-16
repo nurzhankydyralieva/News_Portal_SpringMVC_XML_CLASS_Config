@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>NewsService.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Spring_Security_Class_Config</a> &gt; <a href="index.source.html" class="el_package">com.epam.project.services</a> &gt; <span class="el_source">NewsService.java</span></div><h1>NewsService.java</h1><pre class="source lang-java linenums">package com.epam.project.services;
+
+import com.epam.project.models.News;
+import com.epam.project.repositories.NewsRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.util.Arrays;
+import java.util.List;
+import java.util.Optional;
+
+@Service
+@Transactional(readOnly = true)
+public class NewsService {
+    private NewsRepository newsRepository;
+
+    @Autowired
+<span class="nc" id="L19">    public NewsService(NewsRepository newsRepository) {</span>
+<span class="nc" id="L20">        this.newsRepository = newsRepository;</span>
+<span class="nc" id="L21">    }</span>
+
+    public List&lt;News&gt; findAll() {
+<span class="nc" id="L24">        return newsRepository.findAll();</span>
+    }
+
+    public News findById(Integer id) {
+<span class="nc" id="L28">        Optional&lt;News&gt; foundNews = newsRepository.findById(id);</span>
+<span class="nc" id="L29">        return foundNews.orElse(null);</span>
+    }
+
+    @Transactional
+    public void save(News news) {
+<span class="nc" id="L34">        newsRepository.save(news);</span>
+<span class="nc" id="L35">    }</span>
+
+    @Transactional
+    public void updateNews(int id, News updatedNews) {
+<span class="nc" id="L39">        updatedNews.setId(id);</span>
+<span class="nc" id="L40">        newsRepository.save(updatedNews);</span>
+<span class="nc" id="L41">    }</span>
+
+    @Transactional
+    public void delete(int id) {
+<span class="nc" id="L45">        newsRepository.deleteById(id);</span>
+<span class="nc" id="L46">    }</span>
+
+    @Transactional
+    public void deleteNewsById(Integer[] id) {
+<span class="nc" id="L50">        newsRepository.deleteNewsById(Arrays.asList(id));</span>
+<span class="nc" id="L51">    }</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.10.202304240956</span></div></body></html>

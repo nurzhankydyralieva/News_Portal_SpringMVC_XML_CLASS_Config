@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>News.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Spring_Security_Class_Config</a> &gt; <a href="index.source.html" class="el_package">com.epam.project.models</a> &gt; <span class="el_source">News.java</span></div><h1>News.java</h1><pre class="source lang-java linenums">package com.epam.project.models;
+
+import lombok.Data;
+import org.springframework.format.annotation.DateTimeFormat;
+
+import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Size;
+import java.time.LocalDate;
+
+<span class="nc bnc" id="L11" title="All 46 branches missed.">@Data</span>
+@Entity
+@Table(name = &quot;news&quot;)
+public class News {
+    @Id
+    @Column(name = &quot;id&quot;)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+<span class="nc" id="L18">    private Integer id;</span>
+    @NotEmpty(message = &quot;News Title should not be empty&quot;)
+    @Size(min = 10, max = 50, message = &quot;News Title should be between 10 to 200 characters&quot;)
+    @Column(name = &quot;news_title&quot;)
+<span class="nc" id="L22">    private String newsTitle;</span>
+
+    @DateTimeFormat(pattern = &quot;MM/dd/yyyy&quot;)
+    @Column(name = &quot;news_date&quot;)
+<span class="nc" id="L26">    private LocalDate newsDate;</span>
+    @NotEmpty(message = &quot;Brief should not be empty&quot;)
+    @Size(min = 10, max = 500, message = &quot;Brief should be between 10 to 500 characters&quot;)
+    @Column(name = &quot;brief&quot;)
+<span class="nc" id="L30">    private String brief;</span>
+    @NotEmpty(message = &quot;Content should not be empty&quot;)
+    @Size(min = 10, max = 1000, message = &quot;Content should be between 20 to 1000 characters&quot;)
+    @Column(name = &quot;content&quot;)
+<span class="nc" id="L34">    private String content;</span>
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.10.202304240956</span></div></body></html>

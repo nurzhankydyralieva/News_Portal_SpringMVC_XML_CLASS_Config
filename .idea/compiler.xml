@@ -7,6 +7,7 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
+        <module name="News_Portal_SpringMVC_XML_CLASS_Config" />
         <module name="Spring_Security_Class_Config" />
       </profile>
     </annotationProcessing>

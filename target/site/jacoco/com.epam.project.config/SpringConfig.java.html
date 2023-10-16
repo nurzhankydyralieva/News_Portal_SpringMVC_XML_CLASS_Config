@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>SpringConfig.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">Spring_Security_Class_Config</a> &gt; <a href="index.source.html" class="el_package">com.epam.project.config</a> &gt; <span class="el_source">SpringConfig.java</span></div><h1>SpringConfig.java</h1><pre class="source lang-java linenums">package com.epam.project.config;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.config.annotation.ViewResolverRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+import org.thymeleaf.spring5.SpringTemplateEngine;
+import org.thymeleaf.spring5.templateresolver.SpringResourceTemplateResolver;
+import org.thymeleaf.spring5.view.ThymeleafViewResolver;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
+import org.springframework.core.env.Environment;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
+import org.springframework.jdbc.datasource.DriverManagerDataSource;
+import org.springframework.orm.jpa.JpaTransactionManager;
+import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
+import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
+import org.springframework.transaction.PlatformTransactionManager;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.config.annotation.ViewResolverRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+import org.thymeleaf.spring5.SpringTemplateEngine;
+import org.thymeleaf.spring5.templateresolver.SpringResourceTemplateResolver;
+import org.thymeleaf.spring5.view.ThymeleafViewResolver;
+
+import javax.sql.DataSource;
+import java.util.Properties;
+
+@Configuration
+@ComponentScan(&quot;com.epam.project&quot;)
+@EnableWebMvc
+@PropertySource(&quot;classpath:hibernate.properties&quot;)
+@EnableTransactionManagement
+@EnableJpaRepositories(&quot;com.epam.project.repositories&quot;)
+public class SpringConfig implements WebMvcConfigurer {
+    private final ApplicationContext applicationContext;
+
+    private final Environment env;
+
+    @Autowired
+<span class="nc" id="L51">    public SpringConfig(ApplicationContext applicationContext, Environment env) {</span>
+<span class="nc" id="L52">        this.applicationContext = applicationContext;</span>
+<span class="nc" id="L53">        this.env = env;</span>
+<span class="nc" id="L54">    }</span>
+
+    @Bean
+    public SpringResourceTemplateResolver templateResolver() {
+<span class="nc" id="L58">        SpringResourceTemplateResolver templateResolver = new SpringResourceTemplateResolver();</span>
+<span class="nc" id="L59">        templateResolver.setApplicationContext(applicationContext);</span>
+<span class="nc" id="L60">        templateResolver.setPrefix(&quot;/WEB-INF/views/&quot;);</span>
+<span class="nc" id="L61">        templateResolver.setCharacterEncoding(&quot;UTF-8&quot;);</span>
+<span class="nc" id="L62">        templateResolver.setSuffix(&quot;.html&quot;);</span>
+<span class="nc" id="L63">        return templateResolver;</span>
+    }
+
+    @Bean
+    public SpringTemplateEngine templateEngine() {
+<span class="nc" id="L68">        SpringTemplateEngine templateEngine = new SpringTemplateEngine();</span>
+<span class="nc" id="L69">        templateEngine.setTemplateResolver(templateResolver());</span>
+<span class="nc" id="L70">        templateEngine.setEnableSpringELCompiler(true);</span>
+<span class="nc" id="L71">        return templateEngine;</span>
+    }
+
+    @Override
+    public void configureViewResolvers(ViewResolverRegistry registry) {
+<span class="nc" id="L76">        ThymeleafViewResolver resolver = new ThymeleafViewResolver();</span>
+<span class="nc" id="L77">        resolver.setTemplateEngine(templateEngine());</span>
+<span class="nc" id="L78">        resolver.setCharacterEncoding(&quot;UTF-8&quot;);</span>
+<span class="nc" id="L79">        registry.viewResolver(resolver);</span>
+<span class="nc" id="L80">    }</span>
+
+    @Bean
+    public DataSource dataSource() {
+<span class="nc" id="L84">        DriverManagerDataSource dataSource = new DriverManagerDataSource();</span>
+
+<span class="nc" id="L86">        dataSource.setDriverClassName(env.getRequiredProperty(&quot;hibernate.driver_class&quot;));</span>
+<span class="nc" id="L87">        dataSource.setUrl(env.getRequiredProperty(&quot;hibernate.connection.url&quot;));</span>
+<span class="nc" id="L88">        dataSource.setUsername(env.getRequiredProperty(&quot;hibernate.connection.username&quot;));</span>
+<span class="nc" id="L89">        dataSource.setPassword(env.getRequiredProperty(&quot;hibernate.connection.password&quot;));</span>
+
+<span class="nc" id="L91">        return dataSource;</span>
+    }
+
+    private Properties hibernateProperties() {
+<span class="nc" id="L95">        Properties properties = new Properties();</span>
+<span class="nc" id="L96">        properties.put(&quot;hibernate.dialect&quot;, env.getRequiredProperty(&quot;hibernate.dialect&quot;));</span>
+<span class="nc" id="L97">        properties.put(&quot;hibernate.show_sql&quot;, env.getRequiredProperty(&quot;hibernate.show_sql&quot;));</span>
+
+<span class="nc" id="L99">        return properties;</span>
+    }
+
+    @Bean
+    public LocalContainerEntityManagerFactoryBean entityManagerFactory() {
+<span class="nc" id="L104">        final LocalContainerEntityManagerFactoryBean em = new LocalContainerEntityManagerFactoryBean();</span>
+<span class="nc" id="L105">        em.setDataSource(dataSource());</span>
+<span class="nc" id="L106">        em.setPackagesToScan(&quot;com.epam.project.models&quot;);</span>
+
+<span class="nc" id="L108">        final HibernateJpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();</span>
+<span class="nc" id="L109">        em.setJpaVendorAdapter(vendorAdapter);</span>
+<span class="nc" id="L110">        em.setJpaProperties(hibernateProperties());</span>
+<span class="nc" id="L111">        return em;</span>
+    }
+
+    @Bean
+    public PlatformTransactionManager transactionManager() {
+<span class="nc" id="L116">        JpaTransactionManager transactionManager = new JpaTransactionManager();</span>
+<span class="nc" id="L117">        transactionManager.setEntityManagerFactory(entityManagerFactory().getObject());</span>
+<span class="nc" id="L118">        return transactionManager;</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.10.202304240956</span></div></body></html>
