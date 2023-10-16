@@ -1,4 +1,13 @@
---Dao authentication--
+CREATE TABLE news
+(
+    id       BIGSERIAL,
+    news_title VARCHAR(100) ,
+    news_date VARCHAR(255),
+    brief    VARCHAR(255),
+    content    VARCHAR(255),
+    PRIMARY KEY (id)
+);
+
 CREATE TABLE users
 (
     id       BIGSERIAL,

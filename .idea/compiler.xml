@@ -10,8 +10,5 @@
         <module name="Spring_Security_Class_Config" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="Spring_Security_Class_Config" target="1.8" />
-    </bytecodeTargetLevel>
   </component>
 </project>
