@@ -9,7 +9,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="369185a7-4213-46c7-a5d1-7372141684a4" name="Changes" comment="added jacoco">
+    <list default="true" id="369185a7-4213-46c7-a5d1-7372141684a4" name="Changes" comment="added jacoco and sonarqube to pom.xml">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -77,7 +77,7 @@
     "project.structure.last.edited": "Artifacts",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.3218391",
-    "spring.configuration.checksum": "9b1c0cfffb71cb3cf0a07eb1e2f1c6c5",
+    "spring.configuration.checksum": "b7bfaba395a5b095a75d727da36fe6d9",
     "vue.rearranger.settings.migration": "true"
   },
   "keyToStringList": {
@@ -264,6 +264,7 @@
       <workItem from="1681383837865" duration="1376000" />
       <workItem from="1681498234817" duration="39000" />
       <workItem from="1697444141059" duration="1801000" />
+      <workItem from="1697459740168" duration="1194000" />
     </task>
     <task id="LOCAL-00001" summary="Fixed table views">
       <created>1681369549324</created>
@@ -314,7 +315,14 @@
       <option name="project" value="LOCAL" />
       <updated>1697457436939</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="added jacoco and sonarqube to pom.xml">
+      <created>1697457705708</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1697457705708</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -328,6 +336,7 @@
     <MESSAGE value="Added DaoAuthenticationProvider" />
     <MESSAGE value="fixed some files" />
     <MESSAGE value="added jacoco" />
-    <option name="LAST_COMMIT_MESSAGE" value="added jacoco" />
+    <MESSAGE value="added jacoco and sonarqube to pom.xml" />
+    <option name="LAST_COMMIT_MESSAGE" value="added jacoco and sonarqube to pom.xml" />
   </component>
 </project>
