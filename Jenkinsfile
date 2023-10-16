@@ -21,7 +21,7 @@ node {
         }
         stage ('Deploy on Tomcat Server') {
              echo "Deploy on Tomcat Server"
-            deploy adapters: [tomcat8(credentialsId: 'tomcat-deploy', path: '', url: 'http://localhost:8080')], contextPath: '/api', war: '**/*.war'
+            deploy adapters: [tomcat8(credentialsId: 'tomcat-deploy', path: '', url: 'http://localhost:8089')], contextPath: '/api', war: '**/*.war'
         }
     }
     catch (e) {
