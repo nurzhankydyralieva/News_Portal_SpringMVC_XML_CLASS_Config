@@ -9,10 +9,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="369185a7-4213-46c7-a5d1-7372141684a4" name="Changes" comment="fixed some files">
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+    <list default="true" id="369185a7-4213-46c7-a5d1-7372141684a4" name="Changes" comment="added jacoco">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/epam/project/config/SecurityConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/epam/project/config/SecurityConfig.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,6 +24,7 @@
         <option value="HTML File" />
         <option value="Interface" />
         <option value="Class" />
+        <option value="JUnit3 Test Class" />
       </list>
     </option>
   </component>
@@ -68,6 +67,8 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit3",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit3": "",
     "last_opened_file_path": "D:/EPAM_LAB/GitHub_resource/News_Portal_SpringMVC_XML_CLASS_Config/src/main/java/com/epam/project",
     "node.js.detected.package.eslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -106,11 +107,17 @@
       <recent name="D:\EPAM_LAB\GitHub_resource\News_Portal_SpringMVC_XML_CLASS_Config\src\main\webapp" />
       <recent name="D:\EPAM_LAB\GitHub_resource\News_Portal_SpringMVC_XML_CLASS_Config\src\main" />
     </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="com.epam.project.services" />
+    </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="com.epam.project.config" />
     </key>
   </component>
-  <component name="RunManager" selected="JUnit.NewsServiceTest">
+  <component name="RunManager" selected="Tomcat Server.Tomcat 8.5.85">
     <configuration name="database.sql" type="DatabaseScript" editBeforeRun="true" temporary="true" nameIsGenerated="true">
       <script-file value="$PROJECT_DIR$/src/main/resources/database.sql" />
       <script-mode>FILE</script-mode>
@@ -300,7 +307,14 @@
       <option name="project" value="LOCAL" />
       <updated>1697442598334</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="added jacoco">
+      <created>1697457436939</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1697457436939</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -313,6 +327,7 @@
     <MESSAGE value="Added Spring Security basic class configuration" />
     <MESSAGE value="Added DaoAuthenticationProvider" />
     <MESSAGE value="fixed some files" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixed some files" />
+    <MESSAGE value="added jacoco" />
+    <option name="LAST_COMMIT_MESSAGE" value="added jacoco" />
   </component>
 </project>
